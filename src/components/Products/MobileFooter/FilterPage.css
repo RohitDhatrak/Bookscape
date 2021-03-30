@@ -1,0 +1,40 @@
+.filter-page {
+    position: fixed;
+    top: 0;
+    z-index: var(--index-1);
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+}
+
+.filter-page-heading {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 1.2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--light-border);
+}
+
+.filter-page-list {
+    background-color: #faf8f8;
+    width: 35vw;
+    height: 100vh;
+    list-style: none;
+    padding-left: 0.7em;
+    font-size: 0.95rem;
+}
+
+.filter-page-list-item {
+    padding: 1em;
+    border-bottom: 1px solid var(--light-border);
+}
+
+/* mobile-footer and mobile-footer-button styling is originally defined in Products.css */
+
+.close-button {
+    font-weight: 300;
+}
+
+.apply-button {
+    color: var(--primary-colour);
+}
