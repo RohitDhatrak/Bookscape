@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --nav-bg-clr: #fff;
+    --index-1: 1;
+    --index-2: 2;
+    --card-width: 100%;
+    --card-img-height: 15em;
+    --light-border: #f0ebeb;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
 }
+
+@import url("./css/Avatar/avatar.css");
+@import url("./css/Alert/alert.css");
+@import url("./css/Badge/badge.css");
+@import url("./css/Button/button.css");
+@import url("./css/Card/card.css");
+@import url("./css/Image/image.css");
+@import url("./css/Input/input.css");
+@import url("./css/Lists/lists.css");
+@import url("./css/Navigation/navigation.css");
+@import url("./css/Toast/toast.css");
+@import url("./css/utilities.css");
+@import url("./components/Header/Header.css");
+@import url("./components/Products/Products.css");
+@import url("./components/SidePannel/SidePannel.css");
+@import url("./components/Products/MobileFooter/SortPage.css");
+@import url("./components/Products/MobileFooter/FilterPage.css");
