@@ -4,8 +4,7 @@ import { HeartSvg, Cart, SearchSvg, MenuSvg } from "../Helpers/Svg";
 
 export function Header() {
     return (
-        <header className="nav flex-wrap">
-            <div>{<MenuSvg />}</div>
+        <header className="nav">
             <a className="nav-brand-link" href="./index.js">
                 <span>
                     <img className="nav-brand-logo" src={logo} alt="" />
