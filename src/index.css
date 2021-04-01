@@ -3,17 +3,17 @@
 :root {
     --nav-bg-clr: #fff;
     --index-1: 1;
-    --index-2: 2;
-    --card-width: 100%;
+    --index-highest: 2;
+    --card-max-width: 15em;
     --card-img-height: 15em;
     --light-border: #f0ebeb;
+    --danger-colour: #ef4444;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     font-family: "Roboto", sans-serif;
-    font-weight: 400;
 }
 
 @import url("./css/Avatar/avatar.css");
@@ -29,6 +29,6 @@
 @import url("./css/utilities.css");
 @import url("./components/Header/Header.css");
 @import url("./components/Products/Products.css");
-@import url("./components/SidePannel/SidePannel.css");
-@import url("./components/Products/MobileFooter/SortPage.css");
-@import url("./components/Products/MobileFooter/FilterPage.css");
+@import url("./components/Products/Desktop/SidePannel.css");
+@import url("./components/Products/Mobile/SortPage.css");
+@import url("./components/Products/Mobile/FilterPage.css");
