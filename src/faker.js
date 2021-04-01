@@ -11,6 +11,8 @@ export const productData = [...Array(50)].map((item) => ({
     priceDiscounted: faker.commerce.price(),
     inStock: faker.datatype.boolean(),
     fastDelivery: faker.datatype.boolean(),
+    dateAdded: faker.date.past(),
+    salesCount: faker.datatype.number(),
     ratings: faker.random.arrayElement([
         0.5,
         1,
