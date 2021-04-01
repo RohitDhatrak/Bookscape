@@ -1,14 +1,15 @@
 export const sortByList = [
     "Relevance",
-    "Popularity",
+    "Best Sellers",
     "Newest Arrivals",
     "Price: Low to High",
     "Price: High to Low",
 ];
 
+export const filterList = ["Genre", "Author", "Review", "Price", "Delivery"];
+
 export const filterObj = {
     Genre: [
-        "All Genres",
         "Biography",
         "Business",
         "Fantasy",
@@ -28,6 +29,11 @@ export const filterObj = {
         "Hector Garcia",
     ],
     Review: ["⭐⭐⭐⭐ & Up", "⭐⭐⭐ & Up", "⭐⭐ & Up", "⭐ & Up"],
-    Price: [0, 100, 200, 500, 1000, Number.MAX_SAFE_INTEGER],
-    Delivery: ["Get it by Tomorrow", "Get it in 2 Days", "Cash on Delivery"],
+    Price: [
+        "Under ₹100",
+        "₹100 to ₹200",
+        "₹200 to ₹500",
+        "₹500 to ₹1000",
+        "Over ₹1000",
+    ],
 };
