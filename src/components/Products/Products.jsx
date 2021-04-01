@@ -1,9 +1,13 @@
 import React from "react";
 import { productData } from "../../faker";
 import { HeartSvg, SortSvg, FilterSvg } from "../Helpers/Svg";
-import { SortPage } from "./MobileFooter/SortPage";
-import { FilterPage } from "./MobileFooter/FilterPage";
+import { SortPage } from "./Mobile/SortPage";
+import { Header } from "../Header/Header";
+import { FilterPage } from "./Mobile/FilterPage";
 import { useProductsContext } from "../../Context/ProductsContext";
+import { sortByList } from "../Helpers/data";
+import { DownSvg } from "../Helpers/Svg";
+import { SidePannel } from "./Desktop/SidePannel";
 
 export function Products() {
     const {
@@ -11,10 +15,44 @@ export function Products() {
         setShowSortPage,
         showFilterPage,
         setShowFilterPage,
+        selectedSort,
+        setSelectedSort,
     } = useProductsContext();
 
-    return (
-        <div>
+    function SortByDropDown() {
+        return (
+            <div className="drop-down-container">
+                <div className="drop-down">
+                    <div className="drop-down-display">
+                        <div className="drop-down-selected">
+                            Sort by : <b>{selectedSort}</b>
+                        </div>
+                        <div className="down-arrow">{<DownSvg />}</div>
+                    </div>
+                    <ul className="drop-down-items-container">
+                        {sortByList.map((listItem) => (
+                            <li
+                                className="drop-down-items"
+                                style={{
+                                    backgroundColor: `${
+                                        listItem === selectedSort
+                                            ? "#F4F4F5"
+                                            : ""
+                                    }`,
+                                }}
+                                onClick={() => setSelectedSort(listItem)}
+                            >
+                                {listItem}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        );
+    }
+
+    function DisplayProducts() {
+        return (
             <ul className="products">
                 {productData.map((book) => (
                     <li className="card" key={book.id}>
@@ -39,6 +77,11 @@ export function Products() {
                     </li>
                 ))}
             </ul>
+        );
+    }
+
+    function MobileFooter() {
+        return (
             <div className="mobile-footer">
                 <button
                     className="mobile-footer-button"
@@ -55,6 +98,16 @@ export function Products() {
                     <span className="mobile-footer-button-label">Filter</span>
                 </button>
             </div>
+        );
+    }
+
+    return (
+        <div className="products-main-container">
+            <Header />
+            <SidePannel />
+            <SortByDropDown />
+            <DisplayProducts />
+            <MobileFooter />
             {showSortPage && <SortPage />}
             {showFilterPage && <FilterPage />}
         </div>
