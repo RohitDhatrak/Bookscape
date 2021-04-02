@@ -1,0 +1,9 @@
+.card {
+    justify-self: center;
+}
+
+@media (min-width: 874px) and (min-height: 500px) {
+    .card {
+        justify-self: unset;
+    }
+}
