@@ -28,7 +28,9 @@
 @import url("./css/Toast/toast.css");
 @import url("./css/utilities.css");
 @import url("./components/Header/Header.css");
-@import url("./components/ProductList/ProductList.css");
+@import url("./Pages/ProductListing/ProductListing.css");
+@import url("./components/ProductsGrid/ProductsGrid.css");
+@import url("./components/ProductCard/ProductCard.css");
 @import url("./components/Desktop/SidePannel/SidePannel.css");
 @import url("./components/Mobile/SortPage/SortPage.css");
 @import url("./components/Mobile/FilterPage/FilterPage.css");
