@@ -39,7 +39,6 @@ export const productData = [...Array(50)].map((item) => ({
         "Republic Day Sale",
     ]),
     genre: faker.random.arrayElement([
-        "All Genres",
         "Biography",
         "Business",
         "Fantasy",
