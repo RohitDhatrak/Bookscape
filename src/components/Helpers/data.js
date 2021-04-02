@@ -5,9 +5,7 @@ export const sortByList = [
     "Price: High to Low",
 ];
 
-export const filterList = ["Genre", "Author", "Review", "Price", "Delivery"];
-
-export const filterObj = {
+export const filtersObj = {
     genre: [
         "Biography",
         "Business",
@@ -27,12 +25,12 @@ export const filterObj = {
         "Francesc Miralles",
         "Hector Garcia",
     ],
-    review: ["⭐⭐⭐⭐ & Up", "⭐⭐⭐ & Up", "⭐⭐ & Up", "⭐ & Up"],
-    price: [
-        "Under ₹100",
-        "₹100 to ₹200",
-        "₹200 to ₹500",
-        "₹500 to ₹1000",
-        "Over ₹1000",
-    ],
+    // review: ["⭐⭐⭐⭐ & Up", "⭐⭐⭐ & Up", "⭐⭐ & Up", "⭐ & Up"],
+    // price: [
+    //     "Under ₹100",
+    //     "₹100 to ₹200",
+    //     "₹200 to ₹500",
+    //     "₹500 to ₹1000",
+    //     "Over ₹1000",
+    // ],
 };
