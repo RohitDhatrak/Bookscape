@@ -1,7 +1,7 @@
 import React from "react";
 import { useProductsContext } from "../../Context/ProductsContext";
 import { productData } from "../../faker";
-import { HeartSvg } from "../Helpers/Svg";
+import { ProductCard } from "../ProductCard/ProductCard";
 
 export function ProductList() {
     const { filterBy, sortBy } = useProductsContext();
@@ -43,24 +43,7 @@ export function ProductList() {
     return (
         <ul className="products">
             {sortedData.map((book) => (
-                <li className="card" key={book.id}>
-                    <img src={book.image} alt="" className="card-cover" />
-                    <div className="card-icon">
-                        <HeartSvg />
-                    </div>
-                    <div className="card-text">
-                        <div className="card-heading">{book.name}</div>
-                        <div className="card-sub-heading">{book.author}</div>
-                        <div className="card-price">
-                            <span className="price">
-                                ₹{book.priceDiscounted}
-                            </span>
-                            <span className="price-original">
-                                ₹{book.price}
-                            </span>
-                        </div>
-                    </div>
-                </li>
+                <ProductCard book={book} />
             ))}
         </ul>
     );
