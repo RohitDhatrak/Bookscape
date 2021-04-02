@@ -30,6 +30,7 @@ export function SortByDropDown() {
                                     payload: listItem.toUpperCase(),
                                 });
                             }}
+                            key={listItem}
                         >
                             {listItem}
                         </li>
