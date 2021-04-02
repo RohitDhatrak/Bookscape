@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { sortByList } from "../../Helpers/data";
 import { useProductsContext } from "../../../Context/ProductsContext";
 

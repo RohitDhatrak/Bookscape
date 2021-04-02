@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { HeartSvg, CartSvg, SearchSvg, MenuSvg } from "../Helpers/Svg";
+import { HeartSvg, CartSvg, SearchSvg } from "../Helpers/Svg";
 
 export function Header() {
     return (
