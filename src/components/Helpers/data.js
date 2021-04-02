@@ -1,6 +1,6 @@
 export const sortByList = [
     "Relevance",
-    "Best Sellers",
+    "Best Selling",
     "Newest Arrivals",
     "Price: Low to High",
     "Price: High to Low",
@@ -9,7 +9,7 @@ export const sortByList = [
 export const filterList = ["Genre", "Author", "Review", "Price", "Delivery"];
 
 export const filterObj = {
-    Genre: [
+    genre: [
         "Biography",
         "Business",
         "Fantasy",
@@ -19,7 +19,7 @@ export const filterObj = {
         "Mystery",
         "Nonfiction",
     ],
-    Author: [
+    author: [
         "Napoleon Hill",
         "J.K Rowling",
         "Dr Joseph Murphy",
@@ -28,8 +28,8 @@ export const filterObj = {
         "Francesc Miralles",
         "Hector Garcia",
     ],
-    Review: ["⭐⭐⭐⭐ & Up", "⭐⭐⭐ & Up", "⭐⭐ & Up", "⭐ & Up"],
-    Price: [
+    review: ["⭐⭐⭐⭐ & Up", "⭐⭐⭐ & Up", "⭐⭐ & Up", "⭐ & Up"],
+    price: [
         "Under ₹100",
         "₹100 to ₹200",
         "₹200 to ₹500",
