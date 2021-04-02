@@ -15,6 +15,16 @@
     border-bottom: 1px solid var(--light-border);
 }
 
+.back-button {
+    margin-right: 1.5em;
+    border: none;
+    background-color: transparent;
+}
+
+.back-arrow-svg {
+    transform: scale(1.6);
+}
+
 .clear-button {
     float: right;
     color: var(--danger-colour);
@@ -54,14 +64,4 @@
 
 .filter-page-list-details-item > input {
     margin-right: 1em;
-}
-
-/* mobile-footer and mobile-footer-button styling is originally defined in Products.css */
-
-.close-button {
-    font-weight: 300;
-}
-
-.apply-button {
-    color: var(--primary-colour);
 }

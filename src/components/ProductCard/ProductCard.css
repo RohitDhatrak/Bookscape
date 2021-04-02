@@ -2,6 +2,11 @@
     justify-self: center;
 }
 
+.heart-svg,
+.filled-heart-svg {
+    transform: scale(1.2);
+}
+
 @media (min-width: 874px) and (min-height: 500px) {
     .card {
         justify-self: unset;
