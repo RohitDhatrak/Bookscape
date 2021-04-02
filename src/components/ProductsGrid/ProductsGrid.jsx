@@ -2,17 +2,26 @@ import React from "react";
 import { useProductsContext } from "../../Context/ProductsContext";
 import { productData } from "../../faker";
 import { ProductCard } from "../ProductCard/ProductCard";
+import { filtersObj } from "../Helpers/data";
 
 export function ProductList() {
     const { filterBy, sortBy } = useProductsContext();
 
-    function filterByAuthor() {
-        return productData.filter((product) => {
-            if (!filterBy.author.length) {
+    function filterByEachCategory(data, property) {
+        return data.filter((product) => {
+            if (!filterBy[property].length) {
                 return true;
             }
-            return filterBy.author.includes(product.author);
+            return filterBy[property].includes(product[property]);
         });
+    }
+
+    function getFilteredData() {
+        return Object.keys(filtersObj).reduce(
+            (filteredArray, property) =>
+                filterByEachCategory(filteredArray, property),
+            productData
+        );
     }
 
     function getSortedData(data) {
@@ -37,7 +46,7 @@ export function ProductList() {
             );
         }
     }
-    const filteredData = filterByAuthor();
+    const filteredData = getFilteredData();
     const sortedData = getSortedData(filteredData);
 
     return (
