@@ -5,13 +5,21 @@ faker.seed(123);
 export const productData = [...Array(50)].map((item) => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
-    author: faker.name.firstName() + " " + faker.name.lastName(),
+    author: faker.random.arrayElement([
+        "Napoleon Hill",
+        "J.K Rowling",
+        "Dr Joseph Murphy",
+        "Dale Carnegie",
+        "George S. Clason",
+        "Francesc Miralles",
+        "Hector Garcia",
+    ]),
     image: faker.random.image(),
     price: faker.commerce.price(),
     priceDiscounted: faker.commerce.price(),
     inStock: faker.datatype.boolean(),
     fastDelivery: faker.datatype.boolean(),
-    dateAdded: faker.date.past(),
+    dateAdded: faker.date.past().getTime(),
     salesCount: faker.datatype.number(),
     ratings: faker.random.arrayElement([
         0.5,
@@ -30,7 +38,7 @@ export const productData = [...Array(50)].map((item) => ({
         "70% bonanza",
         "Republic Day Sale",
     ]),
-    level: faker.random.arrayElement([
+    genre: faker.random.arrayElement([
         "All Genres",
         "Biography",
         "Business",
