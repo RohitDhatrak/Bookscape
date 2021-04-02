@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { Products } from "./components/Products/Products";
+import React from "react";
+import { ProductListing } from "./Pages/ProductListing";
 import { ProductsContextProvider } from "./Context/ProductsContext";
+import { useRouteContext } from "./Context/RouteContext";
 
 export function App() {
-    const [data, update] = useState();
+    const { route } = useRouteContext();
+
     return (
         <div>
             <ProductsContextProvider>
-                <Products />
+                {route === "products" && <ProductListing />}
             </ProductsContextProvider>
+            {/* {route === "cart" && } */}
+            {/* {route === "wishlist && "} */}
         </div>
     );
 }
