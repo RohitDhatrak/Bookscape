@@ -6,6 +6,7 @@ export function ProductsContextProvider({ children }) {
     const [showSortPage, setShowSortPage] = useState(false);
     const [showFilterPage, setShowFilterPage] = useState(false);
     const [selectedSort, setSelectedSort] = useState("Best Selling");
+    const [selectedFilter, setSelectedFilter] = useState("genre");
     const [{ filterBy, sortBy }, dispatch] = useReducer(reducer, initialState);
 
     const data = {
@@ -18,6 +19,8 @@ export function ProductsContextProvider({ children }) {
         filterBy,
         sortBy,
         dispatch,
+        selectedFilter,
+        setSelectedFilter,
     };
 
     return (
