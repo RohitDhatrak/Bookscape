@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { HeartSvg, Cart, SearchSvg, MenuSvg } from "../Helpers/Svg";
+import { HeartSvg, CartSvg, SearchSvg, MenuSvg } from "../Helpers/Svg";
 
 export function Header() {
     return (
@@ -19,7 +19,7 @@ export function Header() {
 
             <ul className="nav-link-section">
                 <li className="nav-link nav-btns">{<HeartSvg />}</li>
-                <li className="nav-link nav-btns">{<Cart />}</li>
+                <li className="nav-link nav-btns">{<CartSvg />}</li>
                 <figure className="avatar avatar-std avatar-square">
                     <img
                         src="https://pbs.twimg.com/profile_images/1140298044543401985/bcpbMyIV_400x400.jpg"

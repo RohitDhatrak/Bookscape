@@ -30,7 +30,7 @@ export function FilledHertSvg() {
     );
 }
 
-export function Cart() {
+export function CartSvg() {
     return (
         <svg
             width="1em"
