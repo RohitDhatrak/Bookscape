@@ -5,6 +5,7 @@
     grid-auto-rows: auto;
     padding-left: 0;
     grid-area: products;
+    margin-bottom: 3em;
 }
 
 @media (min-width: 755px) {
@@ -16,7 +17,7 @@
 @media (min-width: 874px) and (min-height: 500px) {
     .products {
         margin-top: 2em;
-        gap: 10px 10px;
+        gap: 20px 10px;
         grid-template-columns: repeat(2, 1fr);
     }
 }
