@@ -1,5 +1,4 @@
 export const sortByList = [
-    "Relevance",
     "Best Selling",
     "Newest Arrivals",
     "Price: Low to High",

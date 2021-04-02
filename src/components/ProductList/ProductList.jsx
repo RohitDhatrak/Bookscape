@@ -35,8 +35,6 @@ export function ProductList() {
             return data.sort(
                 (product1, product2) => product2.dateAdded - product1.dateAdded
             );
-        } else if (sortBy === "RELEVANCE") {
-            return data;
         }
     }
     const filteredData = filterByAuthor();

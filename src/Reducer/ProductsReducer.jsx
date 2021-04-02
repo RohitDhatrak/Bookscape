@@ -28,5 +28,5 @@ export const initialState = {
         review: [],
         price: [],
     },
-    sortBy: "RELEVANCE",
+    sortBy: "BEST SELLING",
 };
