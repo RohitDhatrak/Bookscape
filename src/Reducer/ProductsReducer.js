@@ -1,19 +1,31 @@
 export function reducer(state, { type, payload }) {
     switch (type) {
-        case "AUTHOR":
-            let newAuthorFilter = state.filterBy.author;
-            if (state.filterBy.author.includes(payload)) {
-                newAuthorFilter = newAuthorFilter.filter(
-                    (author) => author !== payload
+        case "FILTER":
+            let newFilterProperty = state.filterBy[payload.property];
+            if (state.filterBy[payload.property].includes(payload.selection)) {
+                newFilterProperty = newFilterProperty.filter(
+                    (item) => item !== payload.selection
                 );
             } else {
-                newAuthorFilter = newAuthorFilter.concat(payload);
+                newFilterProperty = newFilterProperty.concat(payload.selection);
             }
             return {
                 ...state,
-                filterBy: { ...state.filterBy, author: newAuthorFilter },
+                filterBy: {
+                    ...state.filterBy,
+                    [payload.property]: newFilterProperty,
+                },
             };
         case "CLEAR FILTER":
+            return {
+                ...state,
+                filterBy: {
+                    genre: [],
+                    author: [],
+                    review: [],
+                    price: [],
+                },
+            };
         case "SORT":
             return { ...state, sortBy: payload };
         default:
