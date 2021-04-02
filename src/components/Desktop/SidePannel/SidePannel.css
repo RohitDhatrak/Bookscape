@@ -38,7 +38,7 @@
         padding: 0.5em 0;
     }
 
-    .sub-section-item > input {
+    .sub-section-item > label > input {
         margin-right: 1em;
     }
 }
