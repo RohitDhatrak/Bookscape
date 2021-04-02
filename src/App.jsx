@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductListing } from "./Pages/ProductListing";
+import { ProductListing } from "./Pages/ProductListing/ProductListing";
 import { ProductsContextProvider } from "./Context/ProductsContext";
 import { useRouteContext } from "./Context/RouteContext";
 
