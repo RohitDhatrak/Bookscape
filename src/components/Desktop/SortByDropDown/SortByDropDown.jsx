@@ -1,10 +1,21 @@
 import React from "react";
 import { useProductsContext } from "../../../Context/ProductsContext";
+import { useReducerContext } from "../../../Context/ReducerContext";
 import { sortByList } from "../../Helpers/data";
 import { DownSvg } from "../../Helpers/Svg";
 
 export function SortByDropDown() {
-    const { selectedSort, setSelectedSort, dispatch } = useProductsContext();
+    const { selectedSort, setSelectedSort } = useProductsContext();
+    const { dispatch } = useReducerContext();
+
+    function updateSorting(listItem) {
+        setSelectedSort(listItem);
+        dispatch({
+            type: "SORT",
+            payload: listItem.toUpperCase(),
+        });
+    }
+
     return (
         <div className="drop-down-container">
             <div className="drop-down">
@@ -23,13 +34,7 @@ export function SortByDropDown() {
                                     listItem === selectedSort ? "#F4F4F5" : ""
                                 }`,
                             }}
-                            onClick={() => {
-                                setSelectedSort(listItem);
-                                dispatch({
-                                    type: "SORT",
-                                    payload: listItem.toUpperCase(),
-                                });
-                            }}
+                            onClick={() => updateSorting(listItem)}
                             key={listItem}
                         >
                             {listItem}
