@@ -1,9 +1,23 @@
 import React from "react";
 import { filtersObj } from "../../Helpers/data";
-import { useProductsContext } from "../../../Context/ProductsContext";
+import { useReducerContext } from "../../../Context/ReducerContext";
 
 export function SidePannel() {
-    const { dispatch, filterBy } = useProductsContext();
+    const { dispatch, filterBy } = useReducerContext();
+
+    function isChecked(property, listItem) {
+        return filterBy[property].includes(listItem);
+    }
+
+    function updateFilter(property, listItem) {
+        dispatch({
+            type: "FILTER",
+            payload: {
+                property: property,
+                selection: listItem,
+            },
+        });
+    }
 
     return (
         <div className="side-pannel">
@@ -18,17 +32,9 @@ export function SidePannel() {
                                     type="checkbox"
                                     name=""
                                     id=""
-                                    checked={filterBy[property].includes(
-                                        listItem
-                                    )}
+                                    checked={isChecked(property, listItem)}
                                     onChange={() =>
-                                        dispatch({
-                                            type: "FILTER",
-                                            payload: {
-                                                property: property,
-                                                selection: listItem,
-                                            },
-                                        })
+                                        updateFilter(property, listItem)
                                     }
                                 />
                                 {listItem}
