@@ -2,10 +2,10 @@
     display: none;
 }
 
-@media (min-width: 874px) and (min-height: 500px) {
+@media (min-width: 768px) and (min-height: 500px) {
     .drop-down-container {
         grid-area: dropdown;
-        margin-right: 6.2em;
+        margin-right: 1.5em;
         display: flex;
         justify-content: flex-end;
     }
@@ -21,6 +21,7 @@
 
     .drop-down-display {
         border: 1px solid #dfdede;
+        border-radius: 0.3em;
         padding: 0.5em 1em;
         width: 100%;
         display: flex;
@@ -50,7 +51,7 @@
     }
 
     .drop-down-items {
-        padding: 0.5em 1em;
+        padding: 0.7em 1em;
     }
 
     .drop-down-items:hover {
@@ -59,5 +60,21 @@
 
     .drop-down:hover .drop-down-items-container {
         display: block;
+    }
+}
+
+@media (min-width: 874px) {
+    .side-pannel {
+        margin-left: 3.5em;
+    }
+
+    .drop-down-container {
+        margin-right: 4.2em;
+    }
+}
+
+@media (min-width: 1000px) {
+    .drop-down-container {
+        margin-right: 6em;
     }
 }
