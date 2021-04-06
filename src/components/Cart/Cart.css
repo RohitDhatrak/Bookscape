@@ -1,0 +1,21 @@
+.checkout-desktop-nav {
+    display: none;
+}
+
+.checkout-mobile-nav {
+    padding: 1em;
+    border: 1px solid #dfdede;
+}
+
+.checkout-mobile-nav-header {
+    margin-left: 1em;
+    font-weight: 500;
+}
+
+.checkout-mobile-nav-steps {
+    float: right;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #757575;
+    margin-top: 0.2em;
+}
