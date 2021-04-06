@@ -36,3 +36,5 @@
 @import url("./components/Mobile/FilterPage/FilterPage.css");
 @import url("./components/Mobile/FooterButtons/FooterButtons.css");
 @import url("./components/Desktop/SortByDropDown/SortByDropDown.css");
+@import url("./Pages/WishList/WishList.css");
+@import url("./components/Cart/Cart.css");
