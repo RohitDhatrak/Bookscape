@@ -1,0 +1,45 @@
+.cart-card {
+    background-color: #fff;
+    margin-bottom: 0.5em;
+}
+
+.horizontal-card .card-text {
+    line-height: 1.2em;
+}
+
+.card-seller {
+    font-size: 0.7rem;
+    color: #7c7c7c;
+}
+
+.cart-card-footer {
+    margin: 0 0.5em;
+    padding: 0.7em 0;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #686868;
+    border-top: 1px solid #ececec;
+}
+
+.cart-card-footer-remove-button {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+    border-right: 1px solid #e2e2e2;
+    padding: 0.4em 0;
+    cursor: pointer;
+}
+
+.cart-card-footer-wishlist {
+    width: 75%;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) and (min-height: 500px) {
+    .cart-card {
+        width: 50%;
+    }
+}
