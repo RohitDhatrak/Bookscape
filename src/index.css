@@ -4,10 +4,11 @@
     --nav-bg-clr: #fff;
     --index-1: 1;
     --index-highest: 2;
-    --card-max-width: 15em;
+    --card-max-width: 11em;
     --card-img-height: 15em;
     --light-border: #f0ebeb;
     --danger-colour: #ef4444;
+    /* --primary-colour: #009e81; */
 }
 
 * {
@@ -28,13 +29,15 @@
 @import url("./css/Toast/toast.css");
 @import url("./css/utilities.css");
 @import url("./components/Header/Header.css");
-@import url("./Pages/ProductListing/ProductListing.css");
-@import url("./components/ProductsGrid/ProductsGrid.css");
 @import url("./components/ProductCard/ProductCard.css");
-@import url("./components/Desktop/SidePannel/SidePannel.css");
-@import url("./components/Mobile/SortPage/SortPage.css");
-@import url("./components/Mobile/FilterPage/FilterPage.css");
-@import url("./components/Mobile/FooterButtons/FooterButtons.css");
-@import url("./components/Desktop/SortByDropDown/SortByDropDown.css");
+@import url("./Pages/ProductListing/ProductListing.css");
+@import url("./Pages/ProductListing/components/ProductsGrid/ProductsGrid.css");
+@import url("./Pages/ProductListing/components/Desktop/SidePannel/SidePannel.css");
+@import url("./Pages/ProductListing/components/Desktop/SortByDropDown/SortByDropDown.css");
+@import url("./Pages/ProductListing/components/Mobile/FooterButtons/FooterButtons.css");
+@import url("./Pages/ProductListing/components/Mobile/SortPage/SortPage.css");
+@import url("./Pages/ProductListing/components/Mobile/FilterPage/FilterPage.css");
 @import url("./Pages/WishList/WishList.css");
-@import url("./components/Cart/Cart.css");
+@import url("./components/CheckOutHeader/CheckOutHeader.css");
+@import url("./Pages/Cart/Cart.css");
+@import url("./Pages/Cart/CartCard/CartCard.css");
