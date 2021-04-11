@@ -1,10 +1,60 @@
 .card {
     justify-self: center;
+    text-align: center;
+    width: 11em;
+}
+
+.card-cover {
+    height: 13em;
+}
+
+.card-icon {
+    right: 1.5em;
 }
 
 .heart-svg,
 .filled-heart-svg {
     transform: scale(1.2);
+}
+
+.close-button {
+    transform: scale(1.2);
+}
+
+.card-text {
+    text-align: left;
+}
+
+.card-heading {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.8rem;
+}
+
+.card-sub-heading {
+    font-size: 0.7rem;
+}
+
+.card-price {
+    font-size: 0.8rem;
+}
+
+@media (max-width: 350px) {
+    .card {
+        width: 9em;
+    }
+
+    .card-cover {
+        height: 12em;
+    }
+}
+
+@media (min-width: 411px) {
+    .card {
+        width: 12em;
+    }
 }
 
 @media (min-width: 874px) and (min-height: 500px) {

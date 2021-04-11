@@ -1,8 +1,7 @@
-@media (min-width: 874px) and (min-height: 500px) {
+@media (min-width: 768px) and (min-height: 500px) {
     .products-main-container {
         display: grid;
-        grid-template-columns: 35vw 65vw;
-        grid-template-rows: 17vh 3vh auto;
+        grid-template-columns: 33.5vw 65vw;
         grid-template-areas:
             "header header"
             "sidepannel dropdown"
@@ -11,22 +10,14 @@
     }
 }
 
-@media (min-width: 1188px) {
+@media (min-width: 1043px) {
     .products-main-container {
-        grid-template-columns: 30vw 70vw;
-        grid-template-areas:
-            "header header"
-            "sidepannel dropdown"
-            "sidepannel products";
+        grid-template-columns: 28vw 70vw;
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1264px) {
     .products-main-container {
-        grid-template-columns: 25vw 75vw;
-        grid-template-areas:
-            "header header"
-            "sidepannel dropdown"
-            "sidepannel products";
+        grid-template-columns: 23.5vw 75vw;
     }
 }

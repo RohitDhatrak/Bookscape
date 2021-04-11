@@ -1,0 +1,52 @@
+.side-pannel {
+    display: none;
+}
+
+@media (min-width: 768px) and (min-height: 500px) {
+    .side-pannel {
+        display: block;
+        grid-area: sidepannel;
+        width: max-content;
+        margin-left: 1em;
+    }
+
+    .side-pannel-heading {
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 1em 0;
+        padding-left: 1.7em;
+        border: 1px solid #dfdede;
+        border-radius: 0.3em;
+    }
+
+    .sub-section {
+        font-size: 0.9rem;
+        list-style: none;
+        padding-left: 0;
+        border: 1px solid #dfdede;
+        border-radius: 0.3em;
+        border-top: 0;
+        padding: 1em 2em;
+        padding-right: 4em;
+    }
+
+    .sub-section-heading {
+        font-weight: 500;
+        margin-bottom: 1em;
+        text-transform: uppercase;
+    }
+
+    .sub-section-item {
+        padding: 0.5em 0;
+    }
+
+    .sub-section-item > label > input {
+        margin-right: 1em;
+    }
+}
+
+@media (min-width: 874px) {
+    .side-pannel {
+        margin-left: 3.5em;
+    }
+}
