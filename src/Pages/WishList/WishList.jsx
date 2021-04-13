@@ -5,6 +5,7 @@ import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { useRouteContext } from "../../Context/RouteContext";
 import { BackArrowSvg, CartSvg } from "../../components/Helpers/Svg";
 import wishlist from "../../assets/wishlist.png";
+import { Link } from "react-router-dom";
 
 export function WishList() {
     const { wishList } = useReducerContext();
@@ -56,12 +57,14 @@ export function WishList() {
                     <div className="wishlist-is-empty-page-text">
                         Wishlist is empty
                     </div>
-                    <button
-                        className="wishlist-is-empty-page-button"
-                        onClick={goToProductsPage}
-                    >
-                        Continue shopping
-                    </button>
+                    <Link to="/">
+                        <button
+                            className="wishlist-is-empty-page-button"
+                            onClick={goToProductsPage}
+                        >
+                            Continue shopping
+                        </button>
+                    </Link>
                 </div>
             ) : null}
         </div>
