@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useReducer } from "react";
-import { reducer, initialState } from "../Reducer/ProductsReducer";
+import { reducer, initialState } from "../Reducer/Reducer";
 const ProductsContext = createContext();
 
 export function ProductsContextProvider({ children }) {
@@ -7,7 +7,6 @@ export function ProductsContextProvider({ children }) {
     const [showFilterPage, setShowFilterPage] = useState(false);
     const [selectedSort, setSelectedSort] = useState("Best Selling");
     const [selectedFilter, setSelectedFilter] = useState("genre");
-    const [{ filterBy, sortBy }, dispatch] = useReducer(reducer, initialState);
 
     const data = {
         showSortPage,
@@ -16,9 +15,6 @@ export function ProductsContextProvider({ children }) {
         setShowFilterPage,
         selectedSort,
         setSelectedSort,
-        filterBy,
-        sortBy,
-        dispatch,
         selectedFilter,
         setSelectedFilter,
     };
