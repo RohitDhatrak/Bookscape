@@ -2,6 +2,7 @@
     justify-self: center;
     text-align: center;
     width: 11em;
+    color: #000;
 }
 
 .card-cover {
@@ -39,6 +40,26 @@
 
 .card-price {
     font-size: 0.8rem;
+}
+
+.add-to-cart-button,
+.go-to-cart-button {
+    width: 100%;
+    border: none;
+    border-radius: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.7em;
+    margin-top: 0.7em;
+    color: var(--primary-colour);
+    cursor: pointer;
+    color: #000;
+}
+
+.add-to-cart-button:hover,
+.go-to-cart-button:hover {
+    background-color: #e4e4e4;
 }
 
 @media (max-width: 350px) {
