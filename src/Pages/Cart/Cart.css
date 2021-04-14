@@ -1,6 +1,7 @@
 .cart-page {
     background-color: #f1f1f1;
     min-height: 100vh;
+    padding-bottom: 0.5em;
 }
 
 .cart-overview {
@@ -8,8 +9,12 @@
     justify-content: space-between;
     padding: 1em 1.3em;
     color: #414141;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
+}
+
+.cart-overview-quantity-desktop {
+    display: none;
 }
 
 .cart-is-empty-page {
@@ -45,13 +50,95 @@
     border-radius: 0.5em;
 }
 
+.cart-page-price-details {
+    background-color: #fff;
+    padding: 1em;
+    font-size: 0.85rem;
+}
+
+.price-details-heading {
+    padding-bottom: 0.75em;
+    border-bottom: 1px solid #ececec;
+    font-weight: 500;
+}
+
+.price-details-heading > span {
+    text-transform: uppercase;
+}
+
+.price-details-body {
+    margin-top: 1em;
+    font-weight: 300;
+}
+
+.price-details-body-item {
+    margin-bottom: 0.75em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-details-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-top: 1px solid #ececec;
+    margin-top: 0.8em;
+    padding-top: 0.9em;
+}
+
+.price-details-order-button {
+    display: none;
+}
+
+.discount-highlight {
+    color: #03a685;
+}
+
 @media (min-width: 768px) and (min-height: 500px) {
-    .cart-overview {
+    .cart-page {
+        background-color: #fff;
+    }
+
+    .cart-page-body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cart-page-body-overview-and-products {
+        width: 50%;
+    }
+
+    .cart-overview-quantity-desktop {
+        display: block;
+    }
+
+    .cart-overview-quantity-mobile {
         display: none;
     }
 
+    .cart-page-products {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-overview {
+        width: 100%;
+        max-width: 45em;
+        margin: 0 auto;
+    }
+
     .cart-is-empty-page {
-        height: 100vh;
+        height: 80vh;
         margin-top: 0;
+    }
+
+    .cart-page-price-details {
+        width: 20em;
+        margin-left: 1em;
+        margin-top: 3.4em;
+        border: 1px solid #ececec;
+        height: max-content;
     }
 }
