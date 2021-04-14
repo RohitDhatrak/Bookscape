@@ -5507,6 +5507,11 @@
   "resolved" "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz"
   "version" "1.3.0"
 
+"faker@^5.5.3":
+  "integrity" "sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g=="
+  "resolved" "https://registry.npmjs.org/faker/-/faker-5.5.3.tgz"
+  "version" "5.5.3"
+
 "fast-deep-equal@^3.1.1":
   "integrity" "sha512-8UEa58QDLauDNfpbrX55Q9jrGHThw2ZMdOky5Gl1CDtVeJDPVrG4Jxx1N8jw2gkWaff5UUuX1KJd+9zGe2B+ZA=="
   "resolved" "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz"
@@ -11068,9 +11073,9 @@
     "tweetnacl" "~0.14.0"
 
 "ssri@^6.0.1":
-  "integrity" "sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA=="
-  "resolved" "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz"
-  "version" "6.0.1"
+  "integrity" "sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q=="
+  "resolved" "https://registry.npmjs.org/ssri/-/ssri-6.0.2.tgz"
+  "version" "6.0.2"
   dependencies:
     "figgy-pudding" "^3.5.1"
 
