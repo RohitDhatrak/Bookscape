@@ -1,3 +1,7 @@
+.wish-list-count {
+    display: none;
+}
+
 .wish-list-display {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -84,9 +88,23 @@
     text-transform: uppercase;
     font-weight: 500;
     cursor: pointer;
+    border-radius: 0.5em;
 }
 
 @media (min-width: 755px) {
+    .wish-list-count {
+        font-weight: 500;
+        font-size: 1.1rem;
+        display: block;
+        margin-left: 4em;
+        margin-top: 2em;
+    }
+
+    .wish-list-count > span {
+        font-weight: 300;
+        margin-left: 0.3em;
+    }
+
     .wish-list-display {
         grid-template-columns: repeat(3, 1fr);
         gap: 1em 0;
