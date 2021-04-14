@@ -17,6 +17,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 @import url("./css/Avatar/avatar.css");
 @import url("./css/Alert/alert.css");
 @import url("./css/Badge/badge.css");
@@ -41,3 +45,7 @@
 @import url("./components/CheckOutHeader/CheckOutHeader.css");
 @import url("./Pages/Cart/Cart.css");
 @import url("./Pages/Cart/CartCard/CartCard.css");
+@import url("./Pages/404/Page404.css");
+@import url("./Pages/Login/Login.css");
+@import url("./Pages/Signup/Signup.css");
+@import url("./Pages/Home/Home.css");
