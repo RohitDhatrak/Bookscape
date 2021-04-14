@@ -1,11 +1,9 @@
 .nav {
-    flex-wrap: wrap;
     padding-bottom: 0.3em;
     grid-area: header;
     padding-left: 0;
     padding-right: 0;
     border: 1px solid #e2dede;
-    margin-bottom: 0.4em;
 }
 
 .nav-brand-link {
@@ -52,6 +50,12 @@
     margin-top: 0.1em;
 }
 
+@media (min-width: 480px) and (max-width: 768px) {
+    .nav-brand-link > span {
+        padding-top: 0;
+    }
+}
+
 @media (min-width: 768px) {
     .nav {
         padding: 0 0.2em;
@@ -59,7 +63,6 @@
         padding-bottom: 0.6em;
         border: none;
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
-        margin-bottom: 3em;
     }
 
     .nav-brand-link {

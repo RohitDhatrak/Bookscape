@@ -25,7 +25,9 @@
 @media (min-width: 768px) {
     .checkout-desktop-nav {
         display: block;
-        background-color: #fff;
+        padding: 1em 0em;
+        margin-bottom: 0.4em;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
     }
 
     .checkout-mobile-nav {
