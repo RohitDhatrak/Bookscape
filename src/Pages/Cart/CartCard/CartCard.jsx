@@ -19,7 +19,7 @@ export function CartCard({ book }) {
     }
 
     return (
-        <div className="cart-card">
+        <div className="cart-card" key={book.id}>
             <div className="horizontal-card">
                 <img src={book.image} alt="" className="card-cover" />
                 <div className="card-text">
