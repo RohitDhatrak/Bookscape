@@ -6,6 +6,7 @@
     padding-left: 0;
     grid-area: products;
     margin-bottom: 3em;
+    margin-top: 0.5em;
 }
 
 @media (min-width: 653px) {
