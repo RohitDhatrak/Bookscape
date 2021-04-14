@@ -3,6 +3,14 @@
     margin-bottom: 0.5em;
 }
 
+.horizontal-card .card-heading {
+    font-size: 0.95rem;
+}
+
+.horizontal-card .card-sub-heading {
+    font-size: 0.85rem;
+}
+
 .horizontal-card .card-text {
     line-height: 1.2em;
 }
@@ -10,6 +18,14 @@
 .card-seller {
     font-size: 0.7rem;
     color: #7c7c7c;
+}
+
+.horizontal-card .card-price {
+    font-size: 0.9rem;
+}
+
+.horizontal-card .card-price > .price-original {
+    font-size: 0.8rem;
 }
 
 .cart-card-footer {
@@ -40,6 +56,8 @@
 
 @media (min-width: 768px) and (min-height: 500px) {
     .cart-card {
-        width: 50%;
+        width: 100%;
+        max-width: 40em;
+        border: 1px solid #ececec;
     }
 }
