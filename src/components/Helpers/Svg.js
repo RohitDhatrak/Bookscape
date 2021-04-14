@@ -9,7 +9,7 @@ export function HeartSvg() {
     );
 }
 
-export function FilledHertSvg() {
+export function FilledHeartSvg() {
     return (
         <svg
             width="1em"
@@ -19,7 +19,7 @@ export function FilledHertSvg() {
         >
             <path
                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
-                fill="currentColor"
+                fill="red"
             ></path>
         </svg>
     );
@@ -108,6 +108,26 @@ export function BackArrowSvg() {
                 d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20v-2z"
                 fill="currentColor"
             ></path>
+        </svg>
+    );
+}
+
+export function CloseButton() {
+    return (
+        <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 15 15"
+            className="close-button"
+        >
+            <g fill="none">
+                <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M.877 7.5a6.623 6.623 0 1 1 13.246 0a6.623 6.623 0 0 1-13.246 0zM7.5 1.827a5.673 5.673 0 1 0 0 11.346a5.673 5.673 0 0 0 0-11.346zm2.354 3.32a.5.5 0 0 1 0 .707L8.207 7.5l1.647 1.646a.5.5 0 0 1-.708.708L7.5 8.207L5.854 9.854a.5.5 0 0 1-.708-.708L6.793 7.5L5.146 5.854a.5.5 0 0 1 .708-.708L7.5 6.793l1.646-1.647a.5.5 0 0 1 .708 0z"
+                    fill="currentColor"
+                ></path>
+            </g>
         </svg>
     );
 }
