@@ -2,19 +2,14 @@ import React from "react";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { useRouteContext } from "../../Context/RouteContext";
 import { BackArrowSvg, CartSvg } from "../../components/Helpers/Svg";
 import wishlist from "../../assets/wishlist.png";
 import { Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 export function WishList() {
     const { wishList } = useReducerContext();
-    const { route, setRoute, lastRoute, setLastRoute } = useRouteContext();
-
-    function goToProductsPage() {
-        setLastRoute([...lastRoute, route]);
-        setRoute("products");
-    }
+    const history = createBrowserHistory();
 
     return (
         <div>
@@ -22,12 +17,7 @@ export function WishList() {
                 <Header />
             </nav>
             <nav className="wishlist-mobile-nav">
-                <span
-                    onClick={() => {
-                        setRoute(lastRoute[lastRoute.length - 1]);
-                        setLastRoute(lastRoute.slice(0, -1));
-                    }}
-                >
+                <span onClick={() => history.back()}>
                     <BackArrowSvg />
                 </span>
                 <span className="wishlist-mobile-nav-header">
@@ -36,16 +26,16 @@ export function WishList() {
                         {wishList.length} Items
                     </span>
                 </span>
-                <span
-                    className="wishlist-mobile-nav-cart nav-btns"
-                    onClick={() => {
-                        setLastRoute([...lastRoute, route]);
-                        setRoute("cart");
-                    }}
-                >
-                    <CartSvg />
-                </span>
+                <Link to="/cart">
+                    <span className="wishlist-mobile-nav-cart nav-btns">
+                        <CartSvg />
+                    </span>
+                </Link>
             </nav>
+            <div className="wish-list-count">
+                My Wishlist
+                <span>{wishList.length} Items</span>
+            </div>
             <div className="wish-list-display">
                 {wishList.map((book) => (
                     <ProductCard book={book} key={book.id} />
@@ -58,10 +48,7 @@ export function WishList() {
                         Wishlist is empty
                     </div>
                     <Link to="/">
-                        <button
-                            className="wishlist-is-empty-page-button"
-                            onClick={goToProductsPage}
-                        >
+                        <button className="wishlist-is-empty-page-button">
                             Continue shopping
                         </button>
                     </Link>
