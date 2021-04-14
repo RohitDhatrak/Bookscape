@@ -43,7 +43,7 @@ export function ProductCard({ book }) {
         <Link to={`/product/${book.id}`} style={{ textDecoration: "none" }}>
             <li className="card" key={book.id}>
                 <img src={book.image} alt="" className="card-cover" />
-                {pathname === "/" ? (
+                {pathname === "/products" ? (
                     <div className="card-icon" onClick={addToWishList}>
                         {isWishListed() ? <FilledHeartSvg /> : <HeartSvg />}
                     </div>
@@ -66,12 +66,12 @@ export function ProductCard({ book }) {
                         Move to Cart
                     </button>
                 ) : null}
-                {pathname === "/" && !isAddedToCart() ? (
+                {pathname === "/products" && !isAddedToCart() ? (
                     <button className="add-to-cart-button" onClick={addToCart}>
                         Add to Cart
                     </button>
                 ) : null}
-                {pathname === "/" && isAddedToCart() ? (
+                {pathname === "/products" && isAddedToCart() ? (
                     <Link to="/cart">
                         <button className="go-to-cart-button">
                             Go to Cart
