@@ -24,6 +24,14 @@
     margin-left: 0.5em;
 }
 
+.mobile-footer-cancel-button {
+    font-weight: 300;
+}
+
+.mobile-footer-apply-button {
+    font-weight: 500;
+}
+
 @media (min-width: 768px) and (min-height: 500px) {
     .mobile-footer {
         display: none;

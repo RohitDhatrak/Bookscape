@@ -18,6 +18,18 @@ export function reducer(state, { type, payload }) {
                     [payload.property]: newFilterProperty,
                 },
             };
+        case "SAVE PREVIOUS FILTER":
+            return {
+                ...state,
+                previousFilterBy: { ...state.filterBy },
+            };
+        case "RESTORE PREVIOUS FILTER":
+            return {
+                ...state,
+                filterBy: {
+                    ...state.previousFilterBy,
+                },
+            };
         case "CLEAR FILTER":
             return {
                 ...state,
@@ -75,6 +87,7 @@ export const initialState = {
         review: [],
         price: [],
     },
+    previousFilterBy: {},
     sortBy: "BEST SELLING",
     wishList: [],
     cart: [],

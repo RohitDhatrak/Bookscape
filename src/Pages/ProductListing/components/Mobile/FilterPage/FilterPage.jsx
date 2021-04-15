@@ -3,6 +3,7 @@ import { useProductsContext } from "../../../../../Context/ProductsContext";
 import { useReducerContext } from "../../../../../Context/ReducerContext";
 import { filtersObj } from "../../../../../components/Helpers/data";
 import { BackArrowSvg } from "../../../../../components/Helpers/Svg";
+import { FooterButtons } from "../FooterButtons/FooterButtons";
 
 export function FilterPage() {
     const {
@@ -85,6 +86,7 @@ export function FilterPage() {
                     ))}
                 </ul>
             </div>
+            <FooterButtons fromFilterPage={true} />
         </div>
     );
 }
