@@ -2,11 +2,12 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import { HeartSvg, CartSvg, SearchSvg } from "../Helpers/Svg";
 import { Link } from "react-router-dom";
+import { ProfileSvg } from "../Helpers/Svg";
 
 export function Header() {
     return (
         <header className="nav">
-            <Link to="/">
+            <Link to="/" style={{ textDecoration: "none" }}>
                 <span className="nav-brand-link">
                     <span>
                         <img className="nav-brand-logo" src={logo} alt="" />
@@ -36,13 +37,6 @@ export function Header() {
                 <Link to="/cart">
                     <li className="nav-link nav-btns">{<CartSvg />}</li>
                 </Link>
-
-                <figure className="avatar avatar-std avatar-square">
-                    <img
-                        src="https://pbs.twimg.com/profile_images/1140298044543401985/bcpbMyIV_400x400.jpg"
-                        alt="profile"
-                    />
-                </figure>
             </ul>
         </header>
     );
