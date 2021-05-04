@@ -9,13 +9,16 @@ const wishList = require("./server/routers/wishlist.router");
 
 const port = 4444;
 const corsOptions = {
-    origin: "",
+    origin: [
+        "https://development--store-bookscape.netlify.app",
+        "https://store-bookscape.netlify.app/",
+    ],
     optionsSuccessStatus: 200,
 };
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use("/products", products);
 app.use("/login", login);
