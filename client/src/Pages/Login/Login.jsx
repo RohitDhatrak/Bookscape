@@ -16,7 +16,7 @@ export function Login() {
 
     useEffect(() => {
         if (isUserLoggedIn) {
-            navigate(previousPath);
+            navigate(previousPath, { replace: true });
         }
     }, [isUserLoggedIn, navigate, previousPath]);
 
@@ -25,8 +25,11 @@ export function Login() {
             const {
                 data: { userId, message },
             } = await axios.post(
-                "https://storebookscape.rohitdhatrak.repl.co/login",
-                { username, password }
+                `${process.env.REACT_APP_API_ENDPOINT}/login`,
+                {
+                    username,
+                    password,
+                }
             );
             dispatch({
                 type: "SAVE SESSION",

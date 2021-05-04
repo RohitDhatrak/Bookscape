@@ -12,7 +12,7 @@ router
             );
             res.status(200).json({ cart: userCart });
         } catch {
-            res.status(401).json({
+            res.status(400).json({
                 message: "There was some issue while fetching your data",
             });
         }
@@ -42,7 +42,7 @@ router
                 });
             }
         } catch {
-            res.status(401).json({
+            res.status(400).json({
                 message: "There was some issue while updating your data",
             });
         }
@@ -66,7 +66,7 @@ router
                 throw "Error";
             }
         } catch {
-            res.status(401).json({
+            res.status(400).json({
                 message: "There was some issue while updating your data",
             });
         }

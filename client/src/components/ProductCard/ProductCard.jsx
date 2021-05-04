@@ -61,7 +61,10 @@ export function ProductCard({ book }) {
                 ...book,
                 quantity: 1,
             });
-            if (response) {
+            const response2 = isWishListed()
+                ? await deleteWishListData(userId, book)
+                : true;
+            if (response && response2) {
                 dispatch({
                     type: "ADD TO CART",
                     payload: { ...book, quantity: 1 },

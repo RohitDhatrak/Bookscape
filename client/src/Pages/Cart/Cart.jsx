@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CartCard } from "./CartCard/CartCard";
 import { CheckOutHeader } from "../../components/CheckOutHeader/CheckOutHeader";
 import { useReducerContext } from "../../Context/ReducerContext";
@@ -9,7 +9,6 @@ export function Cart() {
     const { cart } = useReducerContext();
 
     function getCartQuantity() {
-        console.log(cart);
         return cart.reduce(
             (totalItems, item) => totalItems + 1 * item.quantity,
             0

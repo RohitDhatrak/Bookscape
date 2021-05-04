@@ -12,7 +12,7 @@ router
             );
             res.status(200).json({ wishList: userWishList });
         } catch {
-            res.status(401).json({
+            res.status(400).json({
                 message: "There was some issue while fetching your data",
             });
         }
@@ -30,7 +30,7 @@ router
             userWishList.push(product);
             res.status(200).json({ message: "Product added to wishlist" });
         } catch {
-            res.status(401).json({
+            res.status(400).json({
                 message: "There was some issue while updating your data",
             });
         }
@@ -45,7 +45,6 @@ router
             const productIndex = userWishList.findIndex(
                 (wishListItem) => wishListItem.productId === product.productId
             );
-            console.log("here");
             if (productIndex !== -1) {
                 userWishList.splice(productIndex, 1);
                 res.status(200).json({
@@ -55,7 +54,7 @@ router
                 throw "Error";
             }
         } catch {
-            res.status(401).json({
+            res.status(400).json({
                 message: "There was some issue while updating your data",
             });
         }

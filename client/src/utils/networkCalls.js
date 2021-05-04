@@ -4,9 +4,7 @@ export async function getProductsData() {
     try {
         const {
             data: { productsData },
-        } = await axios.get(
-            "https://storebookscape.rohitdhatrak.repl.co/products"
-        );
+        } = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/products`);
         return productsData;
     } catch (error) {
         console.log({ error });
@@ -18,7 +16,7 @@ export async function getCartData(userId) {
         const {
             data: { cart },
         } = await axios.get(
-            `https://storebookscape.rohitdhatrak.repl.co/cart/${userId}`
+            `${process.env.REACT_APP_API_ENDPOINT}/cart/${userId}`
         );
         return cart;
     } catch (error) {
@@ -31,7 +29,7 @@ export async function getWishListData(userId) {
         const {
             data: { wishList },
         } = await axios.get(
-            `https://storebookscape.rohitdhatrak.repl.co/wishlist/${userId}`
+            `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${userId}`
         );
         return wishList;
     } catch (error) {
@@ -42,7 +40,7 @@ export async function getWishListData(userId) {
 export async function updateCartData(userId, book) {
     try {
         const response = await axios.post(
-            `https://storebookscape.rohitdhatrak.repl.co/cart/${userId}`,
+            `${process.env.REACT_APP_API_ENDPOINT}/cart/${userId}`,
             { product: book }
         );
         return response;
@@ -54,7 +52,7 @@ export async function updateCartData(userId, book) {
 export async function updateWishListData(userId, book) {
     try {
         const response = await axios.post(
-            `https://storebookscape.rohitdhatrak.repl.co/wishlist/${userId}`,
+            `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${userId}`,
             { product: book }
         );
         return response;
@@ -66,8 +64,8 @@ export async function updateWishListData(userId, book) {
 export async function deleteCartData(userId, book) {
     try {
         const response = await axios.delete(
-            `https://storebookscape.rohitdhatrak.repl.co/cart/${userId}`,
-            { product: book }
+            `${process.env.REACT_APP_API_ENDPOINT}/cart/${userId}`,
+            { data: { product: book } }
         );
         return response;
     } catch (error) {
@@ -78,8 +76,8 @@ export async function deleteCartData(userId, book) {
 export async function deleteWishListData(userId, book) {
     try {
         const response = await axios.delete(
-            `https://storebookscape.rohitdhatrak.repl.co/wishlist/${userId}`,
-            { product: book }
+            `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${userId}`,
+            { data: { product: book } }
         );
         return response;
     } catch (error) {

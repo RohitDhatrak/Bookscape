@@ -1,25 +1,32 @@
 import React from "react";
 import { useReducerContext } from "../../../Context/ReducerContext";
 import {
-    updateCartData,
     updateWishListData,
+    deleteCartData,
 } from "../../../utils/networkCalls";
 
 export function CartCard({ book }) {
-    const { dispatch, cart, wishList } = useReducerContext();
+    const { dispatch, userId } = useReducerContext();
 
-    function removeFromCart() {
-        dispatch({
-            type: "REMOVE FROM CART",
-            payload: book,
-        });
+    async function removeFromCart() {
+        const response = await deleteCartData(userId, book);
+        if (response) {
+            dispatch({
+                type: "REMOVE FROM CART",
+                payload: book,
+            });
+        }
     }
 
-    function moveToWishList() {
-        dispatch({
-            type: "MOVE TO WISHLIST",
-            payload: book,
-        });
+    async function moveToWishList() {
+        const response = await deleteCartData(userId, book);
+        const response2 = await updateWishListData(userId, book);
+        if (response && response2) {
+            dispatch({
+                type: "MOVE TO WISHLIST",
+                payload: book,
+            });
+        }
     }
 
     return (

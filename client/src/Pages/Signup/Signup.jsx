@@ -18,8 +18,11 @@ export function Signup() {
             const {
                 data: { userId, message },
             } = await axios.post(
-                "https://storebookscape.rohitdhatrak.repl.co/signup",
-                { username, password }
+                `${process.env.REACT_APP_API_ENDPOINT}/signup`,
+                {
+                    username,
+                    password,
+                }
             );
             dispatch({
                 type: "SAVE SESSION",
