@@ -1,7 +1,7 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
-const { credentials, cart, wishList } = require("../data");
+const { credentials, cart, wishList } = require("../../data");
 
 router.route("/").post((req, res) => {
     const { username, password } = req.body;

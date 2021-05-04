@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const products = require("./routers/products.router");
-const login = require("./routers/login.router");
-const signup = require("./routers/signup.router");
-const cart = require("./routers/cart.router");
-const wishList = require("./routers/wishlist.router");
+const products = require("./server/routers/products.router");
+const login = require("./server/routers/login.router");
+const signup = require("./server/routers/signup.router");
+const cart = require("./server/routers/cart.router");
+const wishList = require("./server/routers/wishlist.router");
 
 const port = 4444;
 const corsOptions = {

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { wishList } = require("../data");
+const { wishList } = require("../../data");
 
 router
     .route("/:userId")

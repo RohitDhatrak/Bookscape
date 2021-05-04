@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { credentials } = require("../data");
+const { credentials } = require("../../data");
 
 router.route("/").post((req, res) => {
     const { username, password } = req.body;

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { cart } = require("../data");
+const { cart } = require("../../data");
 
 router
     .route("/:userId")
