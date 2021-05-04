@@ -21,6 +21,13 @@ html {
     overflow-x: hidden;
 }
 
+.loading-svg {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
 @import url("https://openui.netlify.app/css/components.css");
 @import url("./components/Header/Header.css");
 @import url("./components/ProductCard/ProductCard.css");

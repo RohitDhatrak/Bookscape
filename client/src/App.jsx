@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ProductListing } from "./Pages/ProductListing/ProductListing";
 import { WishList } from "./Pages/WishList/WishList";
@@ -12,6 +12,7 @@ import { Home } from "./Pages/Home/Home";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Account } from "./Pages/Account/Account";
 import { useReducerContext } from "./Context/ReducerContext";
+import { LoaderSvg } from "./components/Helpers/Svg";
 import {
     getProductsData,
     getCartData,
@@ -27,7 +28,8 @@ function ProductsPageWithContext() {
 }
 
 export function App() {
-    const { dispatch, userId } = useReducerContext();
+    const { dispatch } = useReducerContext();
+    const [isLoading, setIsLoading] = useState(true);
 
     async function loadInitialData() {
         const productsData = await getProductsData();
@@ -45,11 +47,20 @@ export function App() {
                 },
             });
         }
+        setIsLoading(false);
     }
 
     useEffect(() => {
         loadInitialData();
     }, []);
+
+    if (isLoading) {
+        return (
+            <div className="loading-svg">
+                <LoaderSvg />
+            </div>
+        );
+    }
 
     return (
         <Routes>
