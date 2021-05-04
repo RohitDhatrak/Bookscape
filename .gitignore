@@ -24,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 client/src/css
+.env
+/client/.env
