@@ -8,11 +8,18 @@ const cart = require("./server/routers/cart.router");
 const wishList = require("./server/routers/wishlist.router");
 
 const port = 4444;
-const corsOptions = {
-    origin: [
+const whitelist = [
         "https://development--store-bookscape.netlify.app",
         "https://store-bookscape.netlify.app/",
     ],
+const corsOptions = {
+    origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
     optionsSuccessStatus: 200,
 };
 
