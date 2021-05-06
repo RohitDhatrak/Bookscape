@@ -11,7 +11,7 @@ router.route("/").post(async (req, res) => {
             if (isPasswordCorrect) {
                 res.status(200).json({
                     message: "Logged in sucessfully",
-                    userId: user.userId,
+                    userId: user._id,
                     name: user.name,
                 });
             } else {
