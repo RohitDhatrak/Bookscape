@@ -6,7 +6,7 @@ export const sortByList = [
 ];
 
 export const filtersObj = {
-    genre: [
+    genres: [
         "Autobiography",
         "Biography",
         "Business",

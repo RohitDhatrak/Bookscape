@@ -11,7 +11,7 @@ export function ProductsGrid() {
             if (!filterBy[category].length) {
                 return true;
             }
-            product[category].forEach((field) =>
+            return product[category].some((field) =>
                 filterBy[category].includes(field)
             );
         });

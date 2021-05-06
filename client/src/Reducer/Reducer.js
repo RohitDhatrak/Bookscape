@@ -110,7 +110,7 @@ export function reducer(state, { type, payload }) {
 
 export const initialState = {
     filterBy: {
-        genre: [],
+        genres: [],
         author: [],
         review: [],
         price: [],
