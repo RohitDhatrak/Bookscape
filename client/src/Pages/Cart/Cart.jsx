@@ -18,7 +18,7 @@ export function Cart() {
     function getTotalAmount() {
         return cart.reduce(
             (totalPrice, item) =>
-                totalPrice + item.quantity * item.priceDiscounted,
+                totalPrice + item.quantity * item.discountedPrice,
             0
         );
     }

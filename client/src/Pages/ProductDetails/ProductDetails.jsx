@@ -13,7 +13,7 @@ export function ProductDetails() {
 
     return (
         <div className="card card-hz">
-            <img src={book.image} alt="" className="card-cover" />
+            <img src={book.cover} alt="" className="card-cover" />
             <div className="card-text">
                 <div className="card-text">
                     <div className="card-heading">{book.name}</div>
@@ -21,7 +21,7 @@ export function ProductDetails() {
                     <div className="card-seller">Sold by: Bookscape</div>
 
                     <div className="card-price">
-                        <span className="price">₹{book.priceDiscounted}</span>
+                        <span className="price">₹{book.discountedPrice}</span>
                         <span className="price-original">₹{book.price}</span>
                     </div>
                 </div>
