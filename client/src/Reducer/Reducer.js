@@ -50,30 +50,26 @@ export function reducer(state, { type, payload }) {
             return {
                 ...state,
                 wishList: state.wishList.filter(
-                    (item) => item.productId !== payload.productId
+                    (item) => item._id !== payload._id
                 ),
             };
         case "ADD TO CART":
             return {
                 ...state,
                 wishList: state.wishList.filter(
-                    (item) => item.productId !== payload.productId
+                    (item) => item._id !== payload._id
                 ),
                 cart: [...state.cart, payload],
             };
         case "REMOVE FROM CART":
             return {
                 ...state,
-                cart: state.cart.filter(
-                    (item) => item.productId !== payload.productId
-                ),
+                cart: state.cart.filter((item) => item._id !== payload._id),
             };
         case "MOVE TO WISHLIST":
             return {
                 ...state,
-                cart: state.cart.filter(
-                    (item) => item.productId !== payload.productId
-                ),
+                cart: state.cart.filter((item) => item._id !== payload._id),
                 wishList: [...state.wishList, payload],
             };
         case "LOAD PRODUCTS":
