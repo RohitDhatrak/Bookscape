@@ -29,7 +29,7 @@ html {
 }
 
 @import url("https://openui.netlify.app/css/components.css");
-@import url("./css/Avatar/avatar.css");
+/* @import url("./css/Avatar/avatar.css");
 @import url("./css/Alert/alert.css");
 @import url("./css/Badge/badge.css");
 @import url("./css/Button/button.css");
@@ -39,7 +39,7 @@ html {
 @import url("./css/Lists/lists.css");
 @import url("./css/Navigation/navigation.css");
 @import url("./css/Toast/toast.css");
-@import url("./css/utilities.css");
+@import url("./css/utilities.css"); */
 @import url("./components/Header/Header.css");
 @import url("./components/ProductCard/ProductCard.css");
 @import url("./Pages/ProductListing/ProductListing.css");
