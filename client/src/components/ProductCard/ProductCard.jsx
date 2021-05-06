@@ -20,11 +20,11 @@ export function ProductCard({ book }) {
     const navigate = useNavigate();
 
     function isWishListed() {
-        return wishList.some((item) => item.productId === book.productId);
+        return wishList.some((item) => item._id === book._id);
     }
 
     function isAddedToCart() {
-        return cart.some((item) => item.productId === book.productId);
+        return cart.some((item) => item._id === book._id);
     }
 
     async function addToWishList(e) {
@@ -46,7 +46,6 @@ export function ProductCard({ book }) {
         e.stopPropagation();
         const response = await deleteWishListData(userId, book);
         if (response) {
-            console.log("here");
             dispatch({
                 type: "REMOVE FROM WISHLIST",
                 payload: book,
@@ -81,13 +80,13 @@ export function ProductCard({ book }) {
     return (
         <li
             className="card"
-            key={book.id}
+            key={book._id}
             onClick={(e) => {
                 e.stopPropagation();
-                navigate(`/product/${book.id}`);
+                navigate(`/product/${book._id}`);
             }}
         >
-            <img src={book.image} alt="" className="card-cover" />
+            <img src={book.cover} alt="" className="card-cover" />
             {pathname === "/products" ? (
                 <div className="card-icon" onClick={addToWishList}>
                     {isWishListed() ? <FilledHeartSvg /> : <HeartSvg />}
@@ -102,7 +101,7 @@ export function ProductCard({ book }) {
                 <div className="card-heading">{book.name}</div>
                 <div className="card-sub-heading">{book.author}</div>
                 <div className="card-price">
-                    <span className="price">₹{book.priceDiscounted}</span>
+                    <span className="price">₹{book.discountedPrice}</span>
                     <span className="price-original">₹{book.price}</span>
                 </div>
             </div>

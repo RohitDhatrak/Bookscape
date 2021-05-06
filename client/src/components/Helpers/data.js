@@ -7,6 +7,7 @@ export const sortByList = [
 
 export const filtersObj = {
     genre: [
+        "Autobiography",
         "Biography",
         "Business",
         "Fantasy",
@@ -15,6 +16,7 @@ export const filtersObj = {
         "Humor and Comedy",
         "Mystery",
         "Nonfiction",
+        "Romance",
     ],
     author: [
         "Napoleon Hill",

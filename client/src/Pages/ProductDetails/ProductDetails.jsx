@@ -7,7 +7,7 @@ export function ProductDetails() {
     const { productsList } = useReducerContext();
 
     function getBook() {
-        return productsList.find((book) => book.id === bookId);
+        return productsList.find((book) => book._id === bookId);
     }
     const book = getBook();
 

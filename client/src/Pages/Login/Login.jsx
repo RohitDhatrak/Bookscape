@@ -6,7 +6,7 @@ import { useReducerContext } from "../../Context/ReducerContext";
 import { getCartData, getWishListData } from "../../utils/networkCalls";
 
 export function Login() {
-    const [username, setUsername] = useState();
+    const [emailId, setEmailId] = useState();
     const [password, setPassword] = useState();
     const { isUserLoggedIn, dispatch } = useReducerContext();
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ export function Login() {
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/login`,
                 {
-                    username,
+                    emailId,
                     password,
                 }
             );
@@ -46,7 +46,7 @@ export function Login() {
             });
             navigate(previousPath, { replace: "true" });
         } catch (error) {
-            console.log(error.message);
+            console.log({ error });
         }
     }
 
@@ -61,7 +61,7 @@ export function Login() {
                         <input
                             type="email"
                             id="email"
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setEmailId(e.target.value)}
                         />
                     </div>
                     <div className="login-form-input">

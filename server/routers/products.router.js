@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { productsData } = require("../../data");
+const { Product } = require("../models/product.model");
 
-router.route("/").get((req, res) => {
-    res.status(200).json({ productsData });
+router.route("/").get(async (req, res) => {
+    try {
+        const productsData = await Product.find({});
+        res.status(200).json({ productsData });
+    } catch (error) {
+        res.status(400).json({ message: "Could not fetch the products data" });
+    }
 });
 
 router.route("/:id").get((req, res) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CartCard } from "./CartCard/CartCard";
 import { CheckOutHeader } from "../../components/CheckOutHeader/CheckOutHeader";
 import { useReducerContext } from "../../Context/ReducerContext";

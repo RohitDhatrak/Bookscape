@@ -1,22 +1,31 @@
 const express = require("express");
 const router = express.Router();
-const { credentials } = require("../../data");
+const { User } = require("../models/user.model");
 
-router.route("/").post((req, res) => {
-    const { username, password } = req.body;
-    const user = credentials.find((user) => user.username === username);
-    if (user) {
-        const isPasswordCorrect = user.password === password;
-        if (isPasswordCorrect) {
-            res.status(200).json({
-                message: "Logged in sucessfully",
-                userId: user.userId,
-            });
+router.route("/").post(async (req, res) => {
+    try {
+        const { password, emailId } = req.body;
+        const user = await User.findOne({ emailId }).exec();
+        if (user) {
+            const isPasswordCorrect = user.password === password;
+            if (isPasswordCorrect) {
+                res.status(200).json({
+                    message: "Logged in sucessfully",
+                    userId: user.userId,
+                    name: user.name,
+                });
+            } else {
+                res.status(401).json({
+                    message: "The password does not match",
+                });
+            }
         } else {
-            res.status(401).json({ message: "The password does not match" });
+            res.status(401).json({ message: "This email is not registered" });
         }
-    } else {
-        res.status(401).json({ message: "This email is not registered" });
+    } catch {
+        res.status(400).json({
+            message: "There was some error while authentication",
+        });
     }
 });
 

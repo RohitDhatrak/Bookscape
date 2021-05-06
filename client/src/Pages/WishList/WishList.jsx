@@ -38,7 +38,7 @@ export function WishList() {
             </div>
             <div className="wish-list-display">
                 {wishList.map((book) => (
-                    <ProductCard book={book} key={book.id} />
+                    <ProductCard book={book} key={book._id} />
                 ))}
             </div>
             {wishList.length === 0 ? (

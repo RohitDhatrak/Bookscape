@@ -41,7 +41,7 @@ export async function updateCartData(userId, book) {
     try {
         const response = await axios.post(
             `${process.env.REACT_APP_API_ENDPOINT}/cart/${userId}`,
-            { product: book }
+            { cartUpdates: { _id: book._id } }
         );
         return response;
     } catch (error) {
@@ -53,11 +53,11 @@ export async function updateWishListData(userId, book) {
     try {
         const response = await axios.post(
             `${process.env.REACT_APP_API_ENDPOINT}/wishlist/${userId}`,
-            { product: book }
+            { wishListUpdates: { _id: book._id } }
         );
         return response;
     } catch (error) {
-        console.log({ error });
+        console.log(error.response.data.message);
     }
 }
 

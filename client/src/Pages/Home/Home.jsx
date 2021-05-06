@@ -50,7 +50,7 @@ export function Home() {
                 </div>
                 <div className="books-listing-grid">
                     {getBestSellingBooks().map((book) => (
-                        <ProductCard book={book} key={book.id} />
+                        <ProductCard book={book} key={book._id} />
                     ))}
                 </div>
             </div>
@@ -63,7 +63,7 @@ export function Home() {
                 </div>
                 <div className="books-listing-grid">
                     {getNewBooks().map((book) => (
-                        <ProductCard book={book} key={book.id} />
+                        <ProductCard book={book} key={book._id} />
                     ))}
                 </div>
             </div>

@@ -5,7 +5,8 @@ import { useReducerContext } from "../../Context/ReducerContext";
 import { Header } from "../../components/Header/Header";
 
 export function Signup() {
-    const [username, setUsername] = useState();
+    const [name, setName] = useState();
+    const [emailId, setEmailId] = useState();
     const [password, setPassword] = useState();
     const { dispatch } = useReducerContext();
     const navigate = useNavigate();
@@ -20,8 +21,11 @@ export function Signup() {
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/signup`,
                 {
-                    username,
-                    password,
+                    newUser: {
+                        name,
+                        emailId,
+                        password,
+                    },
                 }
             );
             dispatch({
@@ -30,7 +34,7 @@ export function Signup() {
             });
             navigate(previousPath, { replace: "true" });
         } catch (error) {
-            console.log(error.message);
+            console.log({ error });
         }
     }
 
@@ -41,11 +45,19 @@ export function Signup() {
                 <div className="login-form">
                     <div className="login-form-heading">Sign-up</div>
                     <div className="login-form-input">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div className="login-form-input">
                         <label htmlFor="email">Email</label>
                         <input
                             type="text"
                             id="email"
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setEmailId(e.target.value)}
                         />
                     </div>
                     <div className="login-form-input">
@@ -70,7 +82,11 @@ export function Signup() {
                         <span className="sign-up-link-text">
                             Already have an account?
                         </span>
-                        <Link to="/login" className="sign-up-link">
+                        <Link
+                            to="/login"
+                            state={{ previousPath: `${previousPath}` }}
+                            className="sign-up-link"
+                        >
                             Login
                         </Link>
                     </div>
