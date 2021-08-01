@@ -1,22 +1,22 @@
 {
-  "name": "ecommerce-app-backend",
-  "version": "1.0.0",
-  "description": "backend for an eCommerce application",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "author": "Rohit Dhatrak",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "faker": "^5.5.3",
-    "lodash": "^4.17.21",
-    "mongoose": "^5.12.7",
-    "uuid": "^8.3.2"
-  }
+    "name": "ecommerce-app-backend",
+    "version": "1.0.0",
+    "description": "backend for an eCommerce application",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon index.js"
+    },
+    "author": "Rohit Dhatrak",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "faker": "^5.5.3",
+        "lodash": "^4.17.21",
+        "mongoose": "^5.12.7",
+        "uuid": "^8.3.2"
+    }
 }

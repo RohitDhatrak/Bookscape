@@ -11,12 +11,10 @@ const WishListSchema = Schema(
             required: [true, "The user id is required"],
             unique: true,
         },
-        wishList: [
+        products: [
             {
-                _id: {
-                    type: Schema.Types.ObjectId,
-                    ref: "Product",
-                },
+                type: Schema.Types.ObjectId,
+                ref: "Product",
             },
         ],
     },

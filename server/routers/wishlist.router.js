@@ -22,23 +22,21 @@ router
     .route("/:userId")
     .get(async (req, res) => {
         let wishList = req.wishList;
-        wishList = await wishList.populate("wishList._id").execPopulate();
-        const normalizedWishList = wishList.wishList.map(
-            (item) => item._id._doc
-        );
+        wishList = await wishList.populate("products").execPopulate();
+
         res.status(200).json({
-            wishList: normalizedWishList,
+            wishList: wishList.products,
         });
     })
     .post(async (req, res) => {
         try {
             let wishList = req.wishList;
             const { wishListUpdates } = req.body;
-            wishList.wishList = [...wishList.wishList, wishListUpdates];
+            wishList.products = [...wishList.products, wishListUpdates];
             await wishList.save();
             res.status(200).json({
                 message: "Product added to wishlist",
-                wishList: wishList.wishList,
+                wishList: wishList.products,
             });
         } catch {
             res.status(400).json({
@@ -50,17 +48,17 @@ router
         try {
             const { product } = req.body;
             let wishList = req.wishList;
-            const productIndex = wishList.wishList.findIndex((wishListItem) => {
+            const productIndex = wishList.products.findIndex((wishListItem) => {
                 return wishListItem._id == product._id;
             });
             if (productIndex !== -1) {
-                wishList.wishList.splice(productIndex, 1);
+                wishList.products.splice(productIndex, 1);
                 wishList.save();
                 res.status(200).json({
                     message: "Product removed from wishlist",
                 });
             } else {
-                throw "Error";
+                throw Error;
             }
         } catch {
             res.status(400).json({

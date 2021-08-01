@@ -16,23 +16,20 @@ const { initializeDBConnection } = require("./server/db/db.connect");
 const port = 4444;
 const whitelist = [
     "https://development--store-bookscape.netlify.app",
-    "https://store-bookscape.netlify.app/",
-    "http://localhost:3000",
+    "https://store-bookscape.netlify.app",
 ];
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: whitelist,
     optionsSuccessStatus: 200,
 };
 
 const app = express();
 app.use(express.json());
-app.use(cors(corsOptions));
+if (process.env.DEV) {
+    app.use(cors());
+} else {
+    app.use(cors(corsOptions));
+}
 
 initializeDBConnection();
 

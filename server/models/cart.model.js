@@ -11,16 +11,10 @@ const CartSchema = Schema(
             required: [true, "The user id is required"],
             unique: true,
         },
-        cart: [
+        products: [
             {
-                _id: {
-                    type: Schema.Types.ObjectId,
-                    ref: "Product",
-                },
-                // quantity: {
-                //     type: Number,
-                //     required: [true, "The product quantity is required"],
-                // },
+                type: Schema.Types.ObjectId,
+                ref: "Product",
             },
         ],
     },
