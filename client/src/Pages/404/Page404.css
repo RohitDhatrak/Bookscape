@@ -1,0 +1,32 @@
+.page-404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.page-404-heading {
+    font-size: 8rem;
+}
+
+.page-404-subheading {
+    font-size: 2rem;
+}
+
+.page-404-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.page-404-button {
+    margin-top: 1em;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    background-color: rgb(231, 231, 231);
+    font-size: 1.1rem;
+}

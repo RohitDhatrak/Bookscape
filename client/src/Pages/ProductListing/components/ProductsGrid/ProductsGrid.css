@@ -1,0 +1,37 @@
+.products {
+    margin: 0em 0.5em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    padding-left: 0;
+    grid-area: products;
+    margin-bottom: 3em;
+    margin-top: 0.5em;
+}
+
+@media (min-width: 653px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (min-height: 500px) {
+    .products {
+        margin-top: 2em;
+        gap: 20px 10px;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+}
+
+@media (min-width: 1043px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1264px) {
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

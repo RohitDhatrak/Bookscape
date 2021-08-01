@@ -1,0 +1,23 @@
+@media (min-width: 768px) and (min-height: 500px) {
+    .products-main-container {
+        display: grid;
+        grid-template-columns: 33.5vw 65vw;
+        grid-template-areas:
+            "header header"
+            "sidepannel dropdown"
+            "sidepannel products";
+        align-items: start;
+    }
+}
+
+@media (min-width: 1043px) {
+    .products-main-container {
+        grid-template-columns: 28vw 70vw;
+    }
+}
+
+@media (min-width: 1264px) {
+    .products-main-container {
+        grid-template-columns: 23.5vw 75vw;
+    }
+}

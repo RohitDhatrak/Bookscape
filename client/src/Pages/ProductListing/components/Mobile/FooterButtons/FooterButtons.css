@@ -1,0 +1,39 @@
+.mobile-footer {
+    position: fixed;
+    bottom: 0em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #fff;
+    height: 3em;
+    width: 100vw;
+    border-top: 1px solid var(--light-border);
+}
+
+.mobile-footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border: none;
+}
+
+.mobile-footer-button-label {
+    margin-left: 0.5em;
+}
+
+.mobile-footer-cancel-button {
+    font-weight: 300;
+}
+
+.mobile-footer-apply-button {
+    font-weight: 500;
+}
+
+@media (min-width: 768px) and (min-height: 500px) {
+    .mobile-footer {
+        display: none;
+    }
+}
