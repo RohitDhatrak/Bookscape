@@ -62,7 +62,7 @@ export function Cart() {
                     )}
                     <div className="cart-page-products">
                         {cart.map((item) => (
-                            <CartCard book={item} key={item.id} />
+                            <CartCard book={item} key={item._id} />
                         ))}
                     </div>
                 </div>

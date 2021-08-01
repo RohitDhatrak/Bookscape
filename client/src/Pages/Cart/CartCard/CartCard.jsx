@@ -6,7 +6,7 @@ import {
 } from "../../../utils/networkCalls";
 
 export function CartCard({ book }) {
-    const { dispatch, userId } = useReducerContext();
+    const { dispatch, userId, wishList } = useReducerContext();
 
     async function removeFromCart() {
         const response = await deleteCartData(userId, book);
@@ -19,6 +19,14 @@ export function CartCard({ book }) {
     }
 
     async function moveToWishList() {
+        const isWishListed = wishList.find((item) => item._id === book._id);
+        if (isWishListed) {
+            dispatch({
+                type: "REMOVE FROM CART",
+                payload: book,
+            });
+            return;
+        }
         const response = await deleteCartData(userId, book);
         const response2 = await updateWishListData(userId, book);
         if (response && response2) {
