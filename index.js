@@ -41,6 +41,10 @@ if (false) {
     seedDB();
 }
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+});
 app.use("/products", products);
 app.use("/login", login);
 app.use("/signup", signup);
