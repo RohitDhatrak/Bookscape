@@ -43,7 +43,6 @@ export function ProductsGrid() {
             );
         } else if (sortBy === "NEWEST ARRIVALS") {
             return data.sort((product1, product2) => {
-                console.log(product2.dateAdded);
                 return product2.dateAdded - product1.dateAdded;
             });
         }

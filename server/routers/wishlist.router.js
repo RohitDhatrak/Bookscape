@@ -7,13 +7,17 @@ router.param("userId", async (req, res, next, userId) => {
     try {
         const wishList = await WishList.findOne({ userId });
         if (!wishList) {
-            return res.status(400).json({ message: "WishList not found" });
+            return res.status(400).json({
+                message:
+                    "There was some problem while retriving your wish list",
+            });
         }
         req.wishList = wishList;
         next();
     } catch (error) {
         res.status(400).json({
-            message: "There was some problem while retriving your WishList",
+            message: "There was some problem while retriving your wish list",
+            error,
         });
     }
 });
@@ -21,12 +25,19 @@ router.param("userId", async (req, res, next, userId) => {
 router
     .route("/:userId")
     .get(async (req, res) => {
-        let wishList = req.wishList;
-        wishList = await wishList.populate("products").execPopulate();
+        try {
+            let wishList = req.wishList;
+            wishList = await wishList.populate("products").execPopulate();
 
-        res.status(200).json({
-            wishList: wishList.products,
-        });
+            res.status(200).json({
+                wishList: wishList.products,
+            });
+        } catch (error) {
+            res.status(400).json({
+                message: "There was some issue while retriving your wish list",
+                error,
+            });
+        }
     })
     .post(async (req, res) => {
         try {
@@ -38,9 +49,10 @@ router
                 message: "Product added to wishlist",
                 wishList: wishList.products,
             });
-        } catch {
+        } catch (error) {
             res.status(400).json({
-                message: "There was some issue while updating your WishList",
+                message: "There was some issue while updating your wish list",
+                error,
             });
         }
     })
@@ -55,14 +67,15 @@ router
                 wishList.products.splice(productIndex, 1);
                 wishList.save();
                 res.status(200).json({
-                    message: "Product removed from wishlist",
+                    message: "Product removed from wish list",
                 });
             } else {
                 throw Error;
             }
-        } catch {
+        } catch (error) {
             res.status(400).json({
                 message: "There was some issue while updating your data",
+                error,
             });
         }
     });

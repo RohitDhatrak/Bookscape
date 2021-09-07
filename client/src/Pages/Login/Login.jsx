@@ -3,22 +3,24 @@ import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
-import { getCartData, getWishListData } from "../../utils/networkCalls";
+import { getCartData, getWishListData } from "../../services/networkCalls";
+import { setupAuthHeaderForServiceCalls } from "../../services/setupAuthHeaders";
+import { getCookies } from "../../utils/getCookies";
 
 export function Login() {
     const [emailId, setEmailId] = useState();
     const [password, setPassword] = useState();
-    const { isUserLoggedIn, dispatch } = useReducerContext();
+    const { userId, dispatch } = useReducerContext();
     const navigate = useNavigate();
     const {
         state: { previousPath },
     } = useLocation();
 
     useEffect(() => {
-        if (isUserLoggedIn) {
+        if (userId) {
             navigate(previousPath, { replace: true });
         }
-    }, [isUserLoggedIn, navigate, previousPath]);
+    }, [userId, navigate, previousPath]);
 
     async function loginAndRedirect() {
         try {
@@ -29,22 +31,29 @@ export function Login() {
                 {
                     emailId,
                     password,
-                }
-            );
-            dispatch({
-                type: "SAVE SESSION",
-                payload: userId,
-            });
-            const cart = await getCartData(userId);
-            const wishList = await getWishListData(userId);
-            dispatch({
-                type: "LOAD USER DATA",
-                payload: {
-                    cart: cart,
-                    wishList: wishList,
                 },
-            });
-            navigate(previousPath, { replace: "true" });
+                { withCredentials: true }
+            );
+
+            if (userId) {
+                dispatch({
+                    type: "SAVE SESSION",
+                    payload: userId,
+                });
+                const { jwt } = getCookies();
+                console.log({ jwt });
+                setupAuthHeaderForServiceCalls(jwt);
+                const cart = await getCartData(userId);
+                const wishList = await getWishListData(userId);
+                dispatch({
+                    type: "LOAD USER DATA",
+                    payload: {
+                        cart: cart,
+                        wishList: wishList,
+                    },
+                });
+                navigate(previousPath, { replace: "true" });
+            }
         } catch (error) {
             console.log({ error });
         }

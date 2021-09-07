@@ -77,26 +77,24 @@ export function reducer(state, { type, payload }) {
                 ...state,
                 productsList: [...payload],
             };
-        case "CLEAR SESSION STATE":
-            return {
-                ...state,
-                cart: [],
-                wishList: [],
-            };
         case "SAVE SESSION":
             localStorage.setItem(
                 "session",
-                JSON.stringify({ isUserLoggedIn: true, userId: payload })
+                JSON.stringify({
+                    userId: payload,
+                })
             );
-            return { ...state, isUserLoggedIn: true, userId: payload };
+            return { ...state, userId: payload };
         case "RESUME SESSION":
-            return { ...state, isUserLoggedIn: true, userId: payload };
+            return { ...state, userId: payload };
         case "END SESSION":
-            localStorage.setItem(
-                "session",
-                JSON.stringify({ isUserLoggedIn: false, userId: null })
-            );
-            return { ...state, isUserLoggedIn: false, userId: null };
+            localStorage.setItem("session", JSON.stringify({ userId: null }));
+            return {
+                ...state,
+                userId: null,
+                cart: [],
+                wishList: [],
+            };
         case "LOAD USER DATA":
             return {
                 ...state,
@@ -120,6 +118,5 @@ export const initialState = {
     wishList: [],
     cart: [],
     productsList: [],
-    isUserLoggedIn: false,
     userId: null,
 };

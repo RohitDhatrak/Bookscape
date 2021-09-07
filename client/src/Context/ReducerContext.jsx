@@ -4,15 +4,7 @@ const ReducerContext = createContext();
 
 export function ReducerContextProvider({ children }) {
     const [
-        {
-            filterBy,
-            sortBy,
-            wishList,
-            cart,
-            productsList,
-            isUserLoggedIn,
-            userId,
-        },
+        { filterBy, sortBy, wishList, cart, productsList, userId },
         dispatch,
     ] = useReducer(reducer, initialState);
 
@@ -23,7 +15,6 @@ export function ReducerContextProvider({ children }) {
         cart,
         productsList,
         dispatch,
-        isUserLoggedIn,
         userId,
     };
 

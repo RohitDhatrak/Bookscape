@@ -6,16 +6,10 @@ import {
     updateCartData,
     updateWishListData,
     deleteWishListData,
-} from "../../utils/networkCalls";
+} from "../../services/networkCalls";
 
 export function ProductCard({ book }) {
-    const {
-        wishList,
-        cart,
-        dispatch,
-        isUserLoggedIn,
-        userId,
-    } = useReducerContext();
+    const { wishList, cart, dispatch, userId } = useReducerContext();
     const { pathname } = useLocation();
     const navigate = useNavigate();
 
@@ -29,7 +23,7 @@ export function ProductCard({ book }) {
 
     async function addToWishList(e) {
         e.stopPropagation();
-        if (isUserLoggedIn) {
+        if (userId) {
             const response = await updateWishListData(userId, book);
             if (response) {
                 dispatch({
@@ -55,7 +49,16 @@ export function ProductCard({ book }) {
 
     async function addToCart(e) {
         e.stopPropagation();
-        if (isUserLoggedIn) {
+        if (isAddedToCart()) {
+            await deleteWishListData(userId, book);
+            dispatch({
+                type: "REMOVE FROM WISHLIST",
+                payload: book,
+            });
+            return;
+        }
+
+        if (userId) {
             const response = await updateCartData(userId, {
                 ...book,
                 quantity: 1,
@@ -70,10 +73,7 @@ export function ProductCard({ book }) {
                 });
             }
         } else {
-            dispatch({
-                type: "ADD TO CART",
-                payload: book,
-            });
+            navigate("/login", { state: { previousPath: "/products" } });
         }
     }
 

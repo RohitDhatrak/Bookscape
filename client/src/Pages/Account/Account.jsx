@@ -1,13 +1,14 @@
 import React from "react";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
+import { setupAuthHeaderForServiceCalls } from "../..//services/setupAuthHeaders";
 
 export function Account() {
     const { dispatch } = useReducerContext();
 
     function logoutUser() {
-        dispatch({ type: "CLEAR SESSION STATE" });
         dispatch({ type: "END SESSION" });
+        setupAuthHeaderForServiceCalls(null);
     }
 
     return (

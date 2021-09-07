@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { Header } from "../../components/Header/Header";
+import { setupAuthHeaderForServiceCalls } from "../../services/setupAuthHeaders";
+import { getCookies } from "../../utils/getCookies";
 
 export function Signup() {
     const [name, setName] = useState();
@@ -17,7 +19,7 @@ export function Signup() {
     async function signupAndRedirect() {
         try {
             const {
-                data: { userId, message },
+                data: { message, userId },
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/signup`,
                 {
@@ -26,13 +28,16 @@ export function Signup() {
                         emailId,
                         password,
                     },
-                }
+                },
+                { withCredentials: true }
             );
-            dispatch({
-                type: "SAVE SESSION",
-                payload: userId,
-            });
-            navigate(previousPath, { replace: "true" });
+            if (userId) {
+                dispatch({ type: "SAVE SESSION", payload: userId });
+                const { jwt } = getCookies();
+                console.log({ jwt });
+                setupAuthHeaderForServiceCalls(jwt);
+                navigate(previousPath, { replace: "true" });
+            }
         } catch (error) {
             console.log({ error });
         }

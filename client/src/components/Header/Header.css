@@ -16,6 +16,10 @@
     padding-top: 0.3em;
 }
 
+.nav-brand-logo {
+    width: 2em;
+}
+
 .nav-search {
     display: none;
 }

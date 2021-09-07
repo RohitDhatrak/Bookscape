@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const { isEmail } = require("validator");
+const bcrypt = require("bcrypt");
 
 const UserSchema = Schema(
     {
@@ -13,6 +15,7 @@ const UserSchema = Schema(
             type: String,
             required: [true, "User's email-id is required"],
             unique: true,
+            validate: [isEmail, "Please enter a valid email address"],
         },
         password: {
             type: String,
@@ -26,6 +29,25 @@ const UserSchema = Schema(
         timestamps: true,
     }
 );
+
+UserSchema.pre("save", async function (next) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
+
+UserSchema.statics.login = async function (emailId, password) {
+    const user = await this.findOne({ emailId }).exec();
+    if (user) {
+        const doesMatch = await bcrypt.compare(password, user.password);
+        if (doesMatch) {
+            return user;
+        }
+        throw new Error("Incorrect Password");
+    } else {
+        throw Error("User not found");
+    }
+};
 
 const User = mongoose.model("User", UserSchema);
 

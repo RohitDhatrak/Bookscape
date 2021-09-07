@@ -3,7 +3,7 @@ import { useReducerContext } from "../../../Context/ReducerContext";
 import {
     updateWishListData,
     deleteCartData,
-} from "../../../utils/networkCalls";
+} from "../../../services/networkCalls";
 
 export function CartCard({ book }) {
     const { dispatch, userId, wishList } = useReducerContext();
@@ -25,6 +25,7 @@ export function CartCard({ book }) {
                 type: "REMOVE FROM CART",
                 payload: book,
             });
+            await deleteCartData(userId, book);
             return;
         }
         const response = await deleteCartData(userId, book);

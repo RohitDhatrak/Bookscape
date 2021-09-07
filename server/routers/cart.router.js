@@ -12,7 +12,8 @@ router.param("userId", async (req, res, next, userId) => {
         next();
     } catch (error) {
         res.status(400).json({
-            message: "There was some problem while retriving your WishList",
+            message: "There was some problem while retriving your cart",
+            error,
         });
     }
 });
@@ -20,9 +21,16 @@ router.param("userId", async (req, res, next, userId) => {
 router
     .route("/:userId")
     .get(async (req, res) => {
-        let cart = req.cart;
-        cart = await cart.populate("products").execPopulate();
-        res.status(200).json({ cart: cart.products });
+        try {
+            let cart = req.cart;
+            cart = await cart.populate("products").execPopulate();
+            res.status(200).json({ cart: cart.products });
+        } catch (error) {
+            res.status(400).json({
+                message: "There was some problem while retriving your cart",
+                error,
+            });
+        }
     })
     .post(async (req, res) => {
         try {
@@ -34,9 +42,10 @@ router
                 message: "Product added to cart",
                 cart,
             });
-        } catch {
+        } catch (error) {
             res.status(400).json({
                 message: "There was some issue while updating your data",
+                error,
             });
         }
     })
@@ -56,9 +65,10 @@ router
             } else {
                 throw Error;
             }
-        } catch {
+        } catch (error) {
             res.status(400).json({
                 message: "There was some issue while updating your data",
+                error,
             });
         }
     });

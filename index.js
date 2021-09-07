@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const products = require("./server/routers/products.router");
 const login = require("./server/routers/login.router");
 const signup = require("./server/routers/signup.router");
@@ -12,6 +13,8 @@ const {
     errorHandler,
 } = require("./server/middlewares/error-handler.middleware");
 const { initializeDBConnection } = require("./server/db/db.connect");
+const { seedDB } = require("./server/utils/seedDB");
+const { auth } = require("./server/middlewares/auth");
 
 const port = 4444;
 const whitelist = [
@@ -21,29 +24,27 @@ const whitelist = [
 const corsOptions = {
     origin: whitelist,
     optionsSuccessStatus: 200,
+    credentials: true,
 };
 
 const app = express();
 app.use(express.json());
-if (process.env.DEV) {
-    app.use(cors());
+app.use(cookieParser());
+if (process.env.NODE_ENV === "development") {
+    app.use(cors({ origin: true, credentials: true }));
 } else {
     app.use(cors(corsOptions));
 }
 
 initializeDBConnection();
-
-// const { modifiedData } = require("./dataModelling");
-// const { Product } = require("./server/models/product.model");
-
-// modifiedData.map(async (product) => {
-//     const newProduct = new Product(product);
-//     await newProduct.save();
-// });
+if (false) {
+    seedDB();
+}
 
 app.use("/products", products);
 app.use("/login", login);
 app.use("/signup", signup);
+app.use(auth);
 app.use("/cart", cart);
 app.use("/wishlist", wishList);
 

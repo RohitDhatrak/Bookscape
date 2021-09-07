@@ -1,9 +1,9 @@
 const express = require("express");
-const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
 const { User } = require("../models/user.model");
 const { WishList } = require("../models/wishlist.model");
 const { Cart } = require("../models/cart.model");
+const { signTokenAndSetCookie } = require("../utils/signTokenAndSetCookie");
 
 router.route("/").post(async (req, res) => {
     try {
@@ -18,6 +18,7 @@ router.route("/").post(async (req, res) => {
                 userId: newUserFromDB._id,
             });
             await newWishListFromDB.save();
+            signTokenAndSetCookie(newUserFromDB._id, res);
             res.status(200).json({
                 userId: newUserFromDB._id,
                 message: "Successfully registered",
@@ -30,6 +31,7 @@ router.route("/").post(async (req, res) => {
     } catch (error) {
         res.status(400).json({
             message: "There was some error while creating your account",
+            error,
         });
     }
 });

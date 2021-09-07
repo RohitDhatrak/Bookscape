@@ -7,14 +7,24 @@ router.route("/").get(async (req, res) => {
         const productsData = await Product.find({});
         res.status(200).json({ productsData });
     } catch (error) {
-        res.status(400).json({ message: "Could not fetch the products data" });
+        res.status(400).json({
+            message: "Could not get the products data",
+            error,
+        });
     }
 });
 
 router.route("/:id").get((req, res) => {
-    const { id } = req.params;
-    const product = productsData.find((product) => product.id === id);
-    res.status(200).json({ product });
+    try {
+        const { id } = req.params;
+        const product = productsData.find((product) => product.id === id);
+        res.status(200).json({ product });
+    } catch (error) {
+        res.status(400).json({
+            message: "Could not get the product data",
+            error,
+        });
+    }
 });
 
 module.exports = router;
