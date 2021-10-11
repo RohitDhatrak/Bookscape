@@ -10,7 +10,7 @@ export function CheckOutHeader({ heading, step }) {
     return (
         <div>
             <nav className="checkout-desktop-nav">
-                <Link to="/">
+                <Link to="/" style={{ textDecoration: "none" }}>
                     <span className="nav-brand-link">
                         <span>
                             <img className="nav-brand-logo" src={logo} alt="" />

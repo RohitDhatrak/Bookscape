@@ -1,1 +1,0 @@
-export { getCookies } from "./getCookies";

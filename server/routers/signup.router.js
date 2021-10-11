@@ -18,10 +18,11 @@ router.route("/").post(async (req, res) => {
                 userId: newUserFromDB._id,
             });
             await newWishListFromDB.save();
-            signTokenAndSetCookie(newUserFromDB._id, res);
+            const jwt = signTokenAndSetCookie(newUserFromDB._id);
             res.status(200).json({
                 userId: newUserFromDB._id,
                 message: "Successfully registered",
+                jwt,
             });
         } else {
             res.status(400).json({

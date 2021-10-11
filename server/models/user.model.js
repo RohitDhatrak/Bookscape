@@ -43,9 +43,9 @@ UserSchema.statics.login = async function (emailId, password) {
         if (doesMatch) {
             return user;
         }
-        throw new Error("Incorrect Password");
+        return 401;
     } else {
-        throw Error("User not found");
+        return 404;
     }
 };
 

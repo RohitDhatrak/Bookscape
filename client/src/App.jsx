@@ -22,7 +22,6 @@ import {
 } from "./services/networkCalls";
 import { setupAuthHeaderForServiceCalls } from "./services/setupAuthHeaders";
 import { setupAuthExceptionHandler } from "./services/setupAuthExceptionHandler";
-import { getCookies } from "./utils";
 
 function ProductsPageWithContext() {
     return (
@@ -36,13 +35,11 @@ export function App() {
     const { dispatch } = useReducerContext();
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
-    const { jwt } = getCookies();
+    const session = JSON.parse(localStorage.getItem("session"));
 
     function logoutUser() {
         dispatch({ type: "END SESSION" });
         setupAuthHeaderForServiceCalls(null);
-        document.cookie =
-            "jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     }
 
     async function loadInitialData() {
@@ -50,7 +47,6 @@ export function App() {
         if (productsData) {
             dispatch({ type: "LOAD PRODUCTS", payload: productsData });
         }
-        const session = JSON.parse(localStorage.getItem("session"));
         if (session?.userId) {
             const cart = await getCartData(session.userId);
             const wishList = await getWishListData(session.userId);
@@ -71,7 +67,7 @@ export function App() {
     }
 
     useEffect(() => {
-        setupAuthHeaderForServiceCalls(jwt);
+        setupAuthHeaderForServiceCalls(session.jwt);
         setupAuthExceptionHandler(logoutUser, navigate);
         loadInitialData();
     }, []);

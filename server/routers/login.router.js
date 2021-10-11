@@ -7,15 +7,22 @@ router.route("/").post(async (req, res) => {
     try {
         const { password, emailId } = req.body;
         const user = await User.login(emailId, password);
-        signTokenAndSetCookie(user._id, res);
-        res.status(200).json({
-            userId: user._id,
-            message: "Logged in successfully",
-        });
+        if (user === 404) {
+            throw "User not found";
+        } else if (user === 401) {
+            throw "The password is incorrect";
+        } else {
+            const jwt = signTokenAndSetCookie(user._id);
+            res.status(200).json({
+                userId: user._id,
+                message: "Logged in successfully",
+                jwt,
+            });
+        }
     } catch (error) {
         res.status(401).json({
-            message: "There was some error while authentication",
-            error,
+            message:
+                error.trim() || "There was some error while authentication",
         });
     }
 });

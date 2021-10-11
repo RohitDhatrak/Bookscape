@@ -5,7 +5,6 @@ import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { getCartData, getWishListData } from "../../services/networkCalls";
 import { setupAuthHeaderForServiceCalls } from "../../services/setupAuthHeaders";
-import { getCookies } from "../../utils/getCookies";
 
 export function Login() {
     const [emailId, setEmailId] = useState();
@@ -25,7 +24,7 @@ export function Login() {
     async function loginAndRedirect() {
         try {
             const {
-                data: { userId, message },
+                data: { userId, message, jwt },
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/login`,
                 {
@@ -38,10 +37,8 @@ export function Login() {
             if (userId) {
                 dispatch({
                     type: "SAVE SESSION",
-                    payload: userId,
+                    payload: { userId, jwt },
                 });
-                const { jwt } = getCookies();
-                console.log({ jwt });
                 setupAuthHeaderForServiceCalls(jwt);
                 const cart = await getCartData(userId);
                 const wishList = await getWishListData(userId);

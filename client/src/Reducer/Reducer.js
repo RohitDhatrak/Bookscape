@@ -81,14 +81,18 @@ export function reducer(state, { type, payload }) {
             localStorage.setItem(
                 "session",
                 JSON.stringify({
-                    userId: payload,
+                    userId: payload.userId,
+                    jwt: payload.jwt,
                 })
             );
             return { ...state, userId: payload };
         case "RESUME SESSION":
             return { ...state, userId: payload };
         case "END SESSION":
-            localStorage.setItem("session", JSON.stringify({ userId: null }));
+            localStorage.setItem(
+                "session",
+                JSON.stringify({ userId: null, jwt: null })
+            );
             return {
                 ...state,
                 userId: null,
