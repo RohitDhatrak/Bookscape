@@ -67,7 +67,7 @@ export function App() {
     }
 
     useEffect(() => {
-        setupAuthHeaderForServiceCalls(session.jwt);
+        setupAuthHeaderForServiceCalls(session?.jwt);
         setupAuthExceptionHandler(logoutUser, navigate);
         loadInitialData();
     }, []);
