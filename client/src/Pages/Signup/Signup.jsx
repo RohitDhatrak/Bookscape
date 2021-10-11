@@ -17,8 +17,6 @@ export function Signup() {
     const {
         state: { previousPath },
     } = useLocation();
-    var regularExpression =
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
     function validateEmail(e) {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -30,23 +28,24 @@ export function Signup() {
         }
     }
 
-    function checkPasswordCriteria(e) {
-        setPassword(e.target.value);
+    function validatePassword(e, isRetyped) {
+        var regularExpression =
+            /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        setError("");
+
+        if (isRetyped) {
+            setRetypedPassword(e.target.value);
+        } else {
+            setPassword(e.target.value);
+        }
+
+        if (password !== e.target.value) {
+            setError("Passwords do not match");
+        }
         if (!regularExpression.test(e.target.value)) {
             setError(
                 "The password should be 6-16 characters and should contain atleast 1 number & 1 special character"
             );
-        } else {
-            setError("");
-        }
-    }
-
-    function checkPasswordMatch(e) {
-        setRetypedPassword(e.target.value);
-        if (password !== e.target.value) {
-            setError("Passwords do not match");
-        } else {
-            setError("");
         }
     }
 
@@ -106,7 +105,7 @@ export function Signup() {
                             type="password"
                             id="password"
                             required
-                            onChange={checkPasswordCriteria}
+                            onChange={(e) => validatePassword(e, false)}
                         />
                     </div>
                     <div className="login-form-input">
@@ -115,7 +114,7 @@ export function Signup() {
                             type="password"
                             required
                             id="password"
-                            onChange={checkPasswordMatch}
+                            onChange={(e) => validatePassword(e, true)}
                         />
                     </div>
                     <div className="login-form-error-message">{error}</div>
