@@ -9,16 +9,52 @@ export function Signup() {
     const [name, setName] = useState();
     const [emailId, setEmailId] = useState();
     const [password, setPassword] = useState();
+    const [retypedPassword, setRetypedPassword] = useState();
+    const [error, setError] = useState();
+
     const { dispatch } = useReducerContext();
     const navigate = useNavigate();
     const {
         state: { previousPath },
     } = useLocation();
+    var regularExpression =
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
-    async function signupAndRedirect() {
+    function validateEmail(e) {
+        const emailRegex = /\S+@\S+\.\S+/;
+        setEmailId(e.target.value);
+        if (!emailRegex.test(e.target.value.toLowerCase())) {
+            setError("Enter a valid email address");
+        } else {
+            setError("");
+        }
+    }
+
+    function checkPasswordCriteria(e) {
+        setPassword(e.target.value);
+        if (!regularExpression.test(e.target.value)) {
+            setError(
+                "The password should be 6-16 characters and should contain atleast 1 number & 1 special character"
+            );
+        } else {
+            setError("");
+        }
+    }
+
+    function checkPasswordMatch(e) {
+        setRetypedPassword(e.target.value);
+        if (password !== e.target.value) {
+            setError("Passwords do not match");
+        } else {
+            setError("");
+        }
+    }
+
+    async function signupAndRedirect(e) {
+        e.preventDefault();
         try {
             const {
-                data: { message, userId, jwt },
+                data: { userId, jwt },
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/signup`,
                 {
@@ -30,13 +66,13 @@ export function Signup() {
                 },
                 { withCredentials: true }
             );
-            if (userId) {
+            if (userId && jwt) {
                 dispatch({ type: "SAVE SESSION", payload: { userId, jwt } });
                 setupAuthHeaderForServiceCalls(jwt);
                 navigate(previousPath, { replace: "true" });
             }
         } catch (error) {
-            console.log({ error });
+            setError(error.response.data.message);
         }
     }
 
@@ -44,22 +80,24 @@ export function Signup() {
         <div>
             <Header />
             <div className="login-page">
-                <div className="login-form">
+                <form className="login-form">
                     <div className="login-form-heading">Sign-up</div>
                     <div className="login-form-input">
                         <label htmlFor="name">Name</label>
                         <input
                             type="text"
                             id="name"
+                            required
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
                     <div className="login-form-input">
                         <label htmlFor="email">Email</label>
                         <input
-                            type="text"
+                            type="email"
                             id="email"
-                            onChange={(e) => setEmailId(e.target.value)}
+                            required
+                            onChange={validateEmail}
                         />
                     </div>
                     <div className="login-form-input">
@@ -67,19 +105,28 @@ export function Signup() {
                         <input
                             type="password"
                             id="password"
-                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            onChange={checkPasswordCriteria}
                         />
                     </div>
                     <div className="login-form-input">
                         <label htmlFor="password">Confirm password</label>
-                        <input type="password" id="password" />
+                        <input
+                            type="password"
+                            required
+                            id="password"
+                            onChange={checkPasswordMatch}
+                        />
                     </div>
-                    <button
-                        className="login-form-button"
-                        onClick={signupAndRedirect}
-                    >
-                        Sign-up
-                    </button>
+                    <div className="login-form-error-message">{error}</div>
+                    {name && emailId && password && retypedPassword && !error && (
+                        <button
+                            className="login-form-button"
+                            onClick={signupAndRedirect}
+                        >
+                            Sign-up
+                        </button>
+                    )}
                     <div>
                         <span className="sign-up-link-text">
                             Already have an account?
@@ -92,7 +139,7 @@ export function Signup() {
                             Login
                         </Link>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );

@@ -45,6 +45,11 @@
     border: 1px solid #8b8b8b;
 }
 
+.login-form-error-message {
+    color: rgb(209, 16, 16);
+    margin: 0.5em 0;
+}
+
 .login-form-button {
     width: 100%;
     padding: 0.5em 0;

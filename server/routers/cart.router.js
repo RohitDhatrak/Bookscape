@@ -36,7 +36,7 @@ router
         try {
             let cart = req.cart;
             const { cartUpdates } = req.body;
-            cart.products = [...cart.products, cartUpdates];
+            cart.products.push(cartUpdates);
             await cart.save();
             res.status(200).json({
                 message: "Product added to cart",
@@ -49,7 +49,7 @@ router
             });
         }
     })
-    .delete((req, res) => {
+    .delete(async (req, res) => {
         try {
             const { product } = req.body;
             let cart = req.cart;
@@ -58,7 +58,7 @@ router
             );
             if (productIndex !== -1) {
                 cart.products.splice(productIndex, 1);
-                cart.save();
+                await cart.save();
                 res.status(200).json({
                     message: "Product removed from cart",
                 });

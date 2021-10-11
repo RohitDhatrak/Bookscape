@@ -43,7 +43,7 @@ router
         try {
             let wishList = req.wishList;
             const { wishListUpdates } = req.body;
-            wishList.products = [...wishList.products, wishListUpdates];
+            wishList.products.push(wishListUpdates);
             await wishList.save();
             res.status(200).json({
                 message: "Product added to wishlist",
@@ -56,7 +56,7 @@ router
             });
         }
     })
-    .delete((req, res) => {
+    .delete(async (req, res) => {
         try {
             const { product } = req.body;
             let wishList = req.wishList;
@@ -65,7 +65,7 @@ router
             });
             if (productIndex !== -1) {
                 wishList.products.splice(productIndex, 1);
-                wishList.save();
+                await wishList.save();
                 res.status(200).json({
                     message: "Product removed from wish list",
                 });

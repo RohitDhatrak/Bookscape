@@ -9,7 +9,6 @@ const WishListSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: "User",
             required: [true, "The user id is required"],
-            unique: true,
         },
         products: [
             {

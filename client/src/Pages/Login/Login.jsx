@@ -9,6 +9,7 @@ import { setupAuthHeaderForServiceCalls } from "../../services/setupAuthHeaders"
 export function Login() {
     const [emailId, setEmailId] = useState();
     const [password, setPassword] = useState();
+    const [error, setError] = useState();
     const { userId, dispatch } = useReducerContext();
     const navigate = useNavigate();
     const {
@@ -21,10 +22,21 @@ export function Login() {
         }
     }, [userId, navigate, previousPath]);
 
-    async function loginAndRedirect() {
+    function updatePassword(e) {
+        setPassword(e.target.value);
+        setError("");
+    }
+
+    function updateEmail(e) {
+        setEmailId(e.target.value);
+        setError("");
+    }
+
+    async function loginAndRedirect(e) {
+        e.preventDefault();
         try {
             const {
-                data: { userId, message, jwt },
+                data: { userId, jwt },
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/login`,
                 {
@@ -52,7 +64,7 @@ export function Login() {
                 navigate(previousPath, { replace: "true" });
             }
         } catch (error) {
-            console.log({ error });
+            setError(error.response.data.message);
         }
     }
 
@@ -60,30 +72,30 @@ export function Login() {
         <div>
             <Header />
             <div className="login-page">
-                <div className="login-form">
+                <form className="login-form">
                     <div className="login-form-heading">Login</div>
                     <div className="login-form-input">
                         <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            onChange={(e) => setEmailId(e.target.value)}
-                        />
+                        <input type="email" id="email" onChange={updateEmail} />
                     </div>
                     <div className="login-form-input">
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             id="password"
-                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            onChange={updatePassword}
                         />
                     </div>
-                    <button
-                        className="login-form-button"
-                        onClick={loginAndRedirect}
-                    >
-                        Login
-                    </button>
+                    <div className="login-form-error-message">{error}</div>
+                    {emailId && password && !error && (
+                        <button
+                            className="login-form-button"
+                            onClick={loginAndRedirect}
+                        >
+                            Login
+                        </button>
+                    )}
                     <div>
                         <span className="sign-up-link-text">
                             Don't have an account yet?
@@ -96,7 +108,7 @@ export function Login() {
                             Sign-up
                         </Link>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );

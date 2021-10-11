@@ -60,9 +60,10 @@ export function App() {
                     },
                 });
             }
-        } else {
-            navigate("login", { state: { previousPath: "/" } });
         }
+        // else {
+        //     navigate("login", { state: { previousPath: "/" } });
+        // }
         setIsLoading(false);
     }
 
