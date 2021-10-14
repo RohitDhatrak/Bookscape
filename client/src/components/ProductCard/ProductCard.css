@@ -5,6 +5,10 @@
     color: #000;
 }
 
+.card > a {
+    text-decoration: none;
+}
+
 .card-cover {
     height: 13em;
 }
@@ -52,14 +56,25 @@
     font-weight: 500;
     padding: 0.7em;
     margin-top: 0.7em;
-    color: var(--primary-colour);
     cursor: pointer;
-    color: #000;
+    color: #fff;
+    background-color: var(--primary-colour);
+}
+
+.go-to-cart-button {
+    display: flex;
+    justify-content: center;
+}
+
+.go-to-cart-button > svg {
+    margin-top: 0.5;
+    margin-left: 0.5em;
+    transform: scale(1.2);
 }
 
 .add-to-cart-button:hover,
 .go-to-cart-button:hover {
-    background-color: #e4e4e4;
+    background-color: #009e81;
 }
 
 @media (max-width: 350px) {

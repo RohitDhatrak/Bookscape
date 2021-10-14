@@ -19,6 +19,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    height: 3.2em;
 }
 
 .wishlist-mobile-nav-header {
@@ -51,12 +52,13 @@
     font-weight: 500;
     padding: 0.7em;
     margin-top: 0.7em;
-    color: var(--primary-colour);
+    background-color: var(--primary-colour);
     cursor: pointer;
+    color: #fff;
 }
 
 .move-to-cart-button:hover {
-    background-color: #e4e4e4;
+    background-color: #009e81;
 }
 
 .wishlist-is-empty-page {

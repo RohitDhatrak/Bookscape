@@ -1,5 +1,10 @@
 import React from "react";
-import { HeartSvg, FilledHeartSvg, CloseButton } from "../Helpers/Svg";
+import {
+    HeartSvg,
+    FilledHeartSvg,
+    CloseButton,
+    RightArrow,
+} from "../Helpers/Svg";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
@@ -117,7 +122,9 @@ export function ProductCard({ book }) {
             ) : null}
             {pathname === "/products" && isAddedToCart() ? (
                 <Link to="/cart" onClick={(e) => e.stopPropagation()}>
-                    <button className="go-to-cart-button">Go to Cart</button>
+                    <button className="go-to-cart-button">
+                        Go to Cart <RightArrow />
+                    </button>
                 </Link>
             ) : null}
         </li>
