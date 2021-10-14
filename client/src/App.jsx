@@ -61,9 +61,6 @@ export function App() {
                 });
             }
         }
-        // else {
-        //     navigate("login", { state: { previousPath: "/" } });
-        // }
         setIsLoading(false);
     }
 
