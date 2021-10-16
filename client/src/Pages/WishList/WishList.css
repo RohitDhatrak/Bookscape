@@ -15,11 +15,13 @@
 
 .wishlist-mobile-nav {
     padding-left: 1em;
+    padding-right: 0.6em;
     border: 1px solid #dfdede;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 4em;
 }
 
 .wishlist-mobile-nav-heading-container {
@@ -43,7 +45,7 @@
 }
 
 .wishlist-mobile-nav-btn-container {
-    margin-right: 0.8em;
+    /* margin-right: 0.8em; */
 }
 
 .wishlist-mobile-nav-cart {

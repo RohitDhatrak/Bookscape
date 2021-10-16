@@ -53,7 +53,6 @@ export function ProductDetails() {
                 <span onClick={() => history.back()}>
                     <BackArrowSvg />
                 </span>
-                <span className="wishlist-mobile-nav-header"></span>
                 <Link to="/cart">
                     <span className="wishlist-mobile-nav-cart nav-btns">
                         <CartSvg />

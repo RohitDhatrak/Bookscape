@@ -3,9 +3,11 @@ import logo from "../../assets/logo.png";
 import { HeartSvg, CartSvg, LogOutSvg } from "../Helpers/Svg";
 import { Link } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
+import { useLocation } from "react-router-dom";
 
 export function Header() {
     const { dispatch } = useReducerContext();
+    const { pathname } = useLocation();
 
     function logoutUser() {
         dispatch({ type: "CLEAR SESSION STATE" });
@@ -28,9 +30,11 @@ export function Header() {
                     <div className="nav-link nav-btns">{<HeartSvg />}</div>
                     <div></div>
                 </Link>
-                <Link to="/cart">
-                    <div className="nav-link nav-btns">{<CartSvg />}</div>
-                </Link>
+                {pathname !== "/cart" && (
+                    <Link to="/cart">
+                        <div className="nav-link nav-btns">{<CartSvg />}</div>
+                    </Link>
+                )}
                 <div
                     className="nav-link nav-btns profile-button"
                     onClick={logoutUser}
