@@ -7,24 +7,21 @@ export const sortByList = [
 
 export const filtersObj = {
     genres: [
+        "Fiction",
+        "Nonfiction",
         "Autobiography",
         "Biography",
-        "Business",
         "Fantasy",
-        "Fiction",
-        "Historical Fiction",
-        "Humor and Comedy",
         "Mystery",
-        "Nonfiction",
         "Romance",
     ],
     author: [
-        "Napoleon Hill",
-        "J.K Rowling",
-        "Dr Joseph Murphy",
-        "Dale Carnegie",
-        "George S. Clason",
-        "Francesc Miralles",
-        "Hector Garcia",
+        "John Green",
+        "Fredrik Backman",
+        "George R.R. Martin",
+        "Walter Isaacson",
+        "Agatha Christie",
+        "Tara Westover",
+        "Rachael Lippincott",
     ],
 };
