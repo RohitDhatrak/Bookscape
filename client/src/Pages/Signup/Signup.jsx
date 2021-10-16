@@ -113,7 +113,7 @@ export function Signup() {
                         <input
                             type="password"
                             required
-                            id="password"
+                            id="repassword"
                             onChange={(e) => validatePassword(e, true)}
                         />
                     </div>

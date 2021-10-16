@@ -2,8 +2,16 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import { HeartSvg, CartSvg, LogOutSvg } from "../Helpers/Svg";
 import { Link } from "react-router-dom";
+import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Header() {
+    const { dispatch } = useReducerContext();
+
+    function logoutUser() {
+        dispatch({ type: "CLEAR SESSION STATE" });
+        dispatch({ type: "END SESSION" });
+    }
+
     return (
         <header className="nav">
             <Link to="/" style={{ textDecoration: "none" }}>
@@ -23,11 +31,12 @@ export function Header() {
                 <Link to="/cart">
                     <div className="nav-link nav-btns">{<CartSvg />}</div>
                 </Link>
-                <Link to="/my/profile">
-                    <div className="nav-link nav-btns profile-button">
-                        <LogOutSvg />
-                    </div>
-                </Link>
+                <div
+                    className="nav-link nav-btns profile-button"
+                    onClick={logoutUser}
+                >
+                    <LogOutSvg />
+                </div>
             </div>
         </header>
     );

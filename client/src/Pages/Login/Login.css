@@ -30,7 +30,6 @@
 }
 
 .login-form-input > label {
-    font-size: 0.8rem;
     font-weight: 500;
     margin-bottom: 0.2em;
     margin-left: 0.2em;
@@ -60,11 +59,11 @@
 
 .sign-up-link-text {
     margin-right: 0.3em;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .sign-up-link {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #0066c0;
     text-decoration: none;
 }

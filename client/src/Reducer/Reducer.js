@@ -32,10 +32,8 @@ export function reducer(state, { type, payload }) {
             return {
                 ...state,
                 filterBy: {
-                    genre: [],
+                    genres: [],
                     author: [],
-                    review: [],
-                    price: [],
                 },
             };
         case "SORT":
@@ -114,8 +112,6 @@ export const initialState = {
     filterBy: {
         genres: [],
         author: [],
-        review: [],
-        price: [],
     },
     previousFilterBy: {},
     sortBy: "BEST SELLING",

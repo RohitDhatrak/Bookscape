@@ -2,14 +2,19 @@ import React from "react";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { BackArrowSvg, CartSvg } from "../../components/Helpers/Svg";
+import { BackArrowSvg, CartSvg, LogOutSvg } from "../../components/Helpers/Svg";
 import wishlist from "../../assets/wishlist.png";
 import { Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 export function WishList() {
-    const { wishList } = useReducerContext();
+    const { wishList, dispatch } = useReducerContext();
     const history = createBrowserHistory();
+
+    function logoutUser() {
+        dispatch({ type: "CLEAR SESSION STATE" });
+        dispatch({ type: "END SESSION" });
+    }
 
     return (
         <div>
@@ -17,21 +22,31 @@ export function WishList() {
                 <Header />
             </nav>
             <nav className="wishlist-mobile-nav">
-                <span onClick={() => history.back()}>
-                    <BackArrowSvg />
-                </span>
-                <span className="wishlist-mobile-nav-header">
-                    <span className="wishlist-heading">Wishlist</span>
-                    <span className="wishlist-sub-heading">
-                        {wishList.length}{" "}
-                        {wishList.length === 1 ? "Item" : "Items"}
+                <span className="wishlist-mobile-nav-heading-container">
+                    <span onClick={() => history.back()}>
+                        <BackArrowSvg />
+                    </span>
+                    <span className="wishlist-mobile-nav-header">
+                        <span className="wishlist-heading">Wishlist</span>
+                        <span className="wishlist-sub-heading">
+                            {wishList.length}{" "}
+                            {wishList.length === 1 ? "Item" : "Items"}
+                        </span>
                     </span>
                 </span>
-                <Link to="/cart">
-                    <span className="wishlist-mobile-nav-cart nav-btns">
-                        <CartSvg />
+                <div className="wishlist-mobile-nav-btn-container">
+                    <Link to="/cart">
+                        <span className="wishlist-mobile-nav-cart nav-btns">
+                            <CartSvg />
+                        </span>
+                    </Link>
+                    <span
+                        className="wishlist-mobile-nav-cart nav-btns"
+                        onClick={logoutUser}
+                    >
+                        <LogOutSvg />
                     </span>
-                </Link>
+                </div>
             </nav>
             <div className="wish-list-count">
                 My Wishlist

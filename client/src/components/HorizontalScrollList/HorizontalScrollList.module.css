@@ -7,7 +7,7 @@
 
 .header {
     padding: 0 0.5em;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 500;
 }
 
@@ -16,6 +16,8 @@
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
+    text-decoration: none;
+    color: #2c8373;
 }
 
 .grid {

@@ -19,6 +19,12 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.wishlist-mobile-nav-heading-container {
+    display: flex;
+    align-items: center;
 }
 
 .wishlist-mobile-nav-header {
@@ -36,9 +42,11 @@
     color: #525050;
 }
 
+.wishlist-mobile-nav-btn-container {
+    margin-right: 0.8em;
+}
+
 .wishlist-mobile-nav-cart {
-    float: right;
-    position: absolute;
     top: 0.2em;
     right: 0.5em;
 }

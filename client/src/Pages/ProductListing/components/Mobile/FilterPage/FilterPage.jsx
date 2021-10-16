@@ -24,7 +24,6 @@ export function FilterPage() {
             },
         });
     }
-    console.log(selectedFilter);
 
     return (
         <div className="filter-page">
