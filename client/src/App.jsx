@@ -13,7 +13,6 @@ import {
     Login,
     Signup,
     Home,
-    Account,
 } from "./Pages";
 import {
     getProductsData,
@@ -88,7 +87,6 @@ export function App() {
             <Route path="*" element={<Page404 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <PrivateRoute path="/my/profile" element={<Account />} />
         </Routes>
     );
 }

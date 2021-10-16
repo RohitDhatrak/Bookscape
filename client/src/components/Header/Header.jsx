@@ -1,8 +1,7 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { HeartSvg, CartSvg, SearchSvg } from "../Helpers/Svg";
+import { HeartSvg, CartSvg, LogOutSvg } from "../Helpers/Svg";
 import { Link } from "react-router-dom";
-import { ProfileSvg } from "../Helpers/Svg";
 
 export function Header() {
     return (
@@ -26,7 +25,7 @@ export function Header() {
                 </Link>
                 <Link to="/my/profile">
                     <div className="nav-link nav-btns profile-button">
-                        {<ProfileSvg />}
+                        <LogOutSvg />
                     </div>
                 </Link>
             </div>

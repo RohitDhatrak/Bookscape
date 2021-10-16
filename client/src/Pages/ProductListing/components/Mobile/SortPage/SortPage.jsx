@@ -4,11 +4,8 @@ import { useProductsContext } from "../../../../../Context/ProductsContext";
 import { useReducerContext } from "../../../../../Context/ReducerContext";
 
 export function SortPage() {
-    const {
-        setShowSortPage,
-        selectedSort,
-        setSelectedSort,
-    } = useProductsContext();
+    const { setShowSortPage, selectedSort, setSelectedSort } =
+        useProductsContext();
 
     const { dispatch } = useReducerContext();
 
@@ -28,7 +25,7 @@ export function SortPage() {
                     <li
                         style={{
                             color: `${
-                                selectedSort === listItem ? "red" : "#000"
+                                selectedSort === listItem ? "#2c8373" : "#000"
                             }`,
                         }}
                         className={`sort-page-list-item `}

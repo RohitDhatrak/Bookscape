@@ -6,11 +6,8 @@ import { BackArrowSvg } from "../../../../../components/Helpers/Svg";
 import { FooterButtons } from "../FooterButtons/FooterButtons";
 
 export function FilterPage() {
-    const {
-        setShowFilterPage,
-        selectedFilter,
-        setSelectedFilter,
-    } = useProductsContext();
+    const { setShowFilterPage, selectedFilter, setSelectedFilter } =
+        useProductsContext();
 
     const { dispatch, filterBy } = useReducerContext();
 
@@ -27,6 +24,7 @@ export function FilterPage() {
             },
         });
     }
+    console.log(selectedFilter);
 
     return (
         <div className="filter-page">

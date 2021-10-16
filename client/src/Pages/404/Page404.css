@@ -27,6 +27,6 @@
     border: none;
     padding: 0.5em 1em;
     border-radius: 0.5em;
-    background-color: rgb(231, 231, 231);
+    background-color: var(--primary-colour);
     font-size: 1.1rem;
 }

@@ -36,22 +36,6 @@ export function CartSvg() {
     );
 }
 
-export function ProfileSvg() {
-    return (
-        <svg
-            width="1em"
-            height="1em"
-            viewBox="0 0 24 24"
-            className="profile-svg"
-        >
-            <path
-                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2zm6.39 8.56C16.71 13.7 14.53 13 12 13s-4.71.7-6.39 1.56A2.97 2.97 0 0 0 4 17.22V20h16v-2.78c0-1.12-.61-2.15-1.61-2.66zM18 18H6v-.78c0-.38.2-.72.52-.88C7.71 15.73 9.63 15 12 15c2.37 0 4.29.73 5.48 1.34c.32.16.52.5.52.88V18z"
-                fill="currentColor"
-            ></path>
-        </svg>
-    );
-}
-
 export function SortSvg() {
     return (
         <svg width="1em" height="1em" viewBox="0 0 24 24">
@@ -277,6 +261,22 @@ export function PrevArrow() {
                 fillRule="evenodd"
                 d="M27.066 1L7 21.068l19.568 19.569l4.934-4.933l-14.637-14.636L32 5.933z"
                 fill="#00b594"
+            ></path>
+        </svg>
+    );
+}
+
+export function LogOutSvg() {
+    return (
+        <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            className="logout-svg"
+        >
+            <path
+                d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12c0 3.87-3.13 7-7 7A6.995 6.995 0 0 1 7.58 6.58L6.17 5.17A8.932 8.932 0 0 0 3 12a9 9 0 0 0 18 0c0-2.74-1.23-5.18-3.17-6.83z"
+                fill="#DC2626"
             ></path>
         </svg>
     );
