@@ -9,25 +9,18 @@ export function Cart() {
     const { cart } = useReducerContext();
 
     function getCartQuantity() {
-        return cart.reduce(
-            (totalItems, item) => totalItems + 1 * item.quantity,
-            0
-        );
+        return cart.reduce((totalItems, item) => totalItems + 1, 0);
     }
 
     function getTotalAmount() {
         return cart.reduce(
-            (totalPrice, item) =>
-                totalPrice + item.quantity * item.discountedPrice,
+            (totalPrice, item) => totalPrice + item.discountedPrice,
             0
         );
     }
 
     function getTotalAmountBeforeDiscount() {
-        return cart.reduce(
-            (totalPrice, item) => totalPrice + item.quantity * item.price,
-            0
-        );
+        return cart.reduce((totalPrice, item) => totalPrice + item.price, 0);
     }
 
     return (

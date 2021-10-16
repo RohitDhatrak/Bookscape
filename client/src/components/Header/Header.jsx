@@ -16,33 +16,20 @@ export function Header() {
                 </span>
             </Link>
 
-            <div className="nav-search">
-                <input
-                    type="text"
-                    placeholder="Search for book, author or genre"
-                />
-                {<SearchSvg />}
-            </div>
-
-            <ul className="nav-link-section">
-                <li
-                    className="nav-link nav-btns nav-search-btn"
-                    onClick={() => {}}
-                >
-                    {<SearchSvg />}
-                </li>
+            <div className="nav-link-section">
                 <Link to="/wishlist">
-                    <li className="nav-link nav-btns">{<HeartSvg />}</li>
+                    <div className="nav-link nav-btns">{<HeartSvg />}</div>
+                    <div></div>
                 </Link>
                 <Link to="/cart">
-                    <li className="nav-link nav-btns">{<CartSvg />}</li>
+                    <div className="nav-link nav-btns">{<CartSvg />}</div>
                 </Link>
                 <Link to="/my/profile">
-                    <li className="nav-link nav-btns profile-button">
+                    <div className="nav-link nav-btns profile-button">
                         {<ProfileSvg />}
-                    </li>
+                    </div>
                 </Link>
-            </ul>
+            </div>
         </header>
     );
 }

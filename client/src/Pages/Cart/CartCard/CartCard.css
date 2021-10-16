@@ -29,13 +29,16 @@
 }
 
 .cart-card-footer {
-    margin: 0 0.5em;
-    padding: 0.7em 0;
     text-transform: uppercase;
     font-size: 0.75rem;
     font-weight: 500;
     color: #686868;
     border-top: 1px solid #ececec;
+}
+
+.cart-card-footer-remove-button,
+.cart-card-footer-wishlist {
+    padding: 1.2em;
 }
 
 .cart-card-footer-remove-button {

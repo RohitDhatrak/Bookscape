@@ -36,22 +36,6 @@ export function CartSvg() {
     );
 }
 
-export function SearchSvg() {
-    return (
-        <svg
-            width="1em"
-            height="1em"
-            viewBox="0 0 24 24"
-            className="search-svg"
-        >
-            <path
-                d="M20.29 18.88l-5.56-5.56c1.13-1.55 1.63-3.58.98-5.74c-.68-2.23-2.57-3.98-4.85-4.44a6.511 6.511 0 0 0-7.72 7.72c.46 2.29 2.21 4.18 4.44 4.85c2.16.65 4.19.15 5.74-.98l5.56 5.56a.996.996 0 1 0 1.41-1.41zM5 9.5C5 7.01 7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14S5 11.99 5 9.5z"
-                fill="currentColor"
-            ></path>
-        </svg>
-    );
-}
-
 export function ProfileSvg() {
     return (
         <svg
@@ -62,17 +46,6 @@ export function ProfileSvg() {
         >
             <path
                 d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2zm6.39 8.56C16.71 13.7 14.53 13 12 13s-4.71.7-6.39 1.56A2.97 2.97 0 0 0 4 17.22V20h16v-2.78c0-1.12-.61-2.15-1.61-2.66zM18 18H6v-.78c0-.38.2-.72.52-.88C7.71 15.73 9.63 15 12 15c2.37 0 4.29.73 5.48 1.34c.32.16.52.5.52.88V18z"
-                fill="currentColor"
-            ></path>
-        </svg>
-    );
-}
-
-export function MenuSvg() {
-    return (
-        <svg width="1em" height="1em" viewBox="0 0 24 24" className="nav-menu">
-            <path
-                d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"
                 fill="currentColor"
             ></path>
         </svg>
@@ -270,6 +243,40 @@ export function RightArrow() {
             <path
                 d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11H4z"
                 fill="currentColor"
+            ></path>
+        </svg>
+    );
+}
+
+export function NextArrow() {
+    return (
+        <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 42 42"
+            className="next-arrow"
+        >
+            <path
+                fillRule="evenodd"
+                d="M13.933 1L34 21.068L14.431 40.637l-4.933-4.933l14.638-14.636L9 5.933z"
+                fill="#00b594"
+            ></path>
+        </svg>
+    );
+}
+
+export function PrevArrow() {
+    return (
+        <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 42 42"
+            className="prev-arrow"
+        >
+            <path
+                fillRule="evenodd"
+                d="M27.066 1L7 21.068l19.568 19.569l4.934-4.933l-14.637-14.636L32 5.933z"
+                fill="#00b594"
             ></path>
         </svg>
     );

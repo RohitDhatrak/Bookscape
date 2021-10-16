@@ -120,10 +120,9 @@
     }
 
     .primary {
-        color: #fff;
+        color: #000;
         background-color: var(--primary-colour);
         margin-right: 1em;
-        font-weight: 400;
     }
 
     .secondary {
@@ -136,7 +135,7 @@
 @media (min-width: 1024px) {
     .container {
         flex-direction: unset;
-        margin-top: 10em;
+        margin-top: 5em;
         margin-bottom: 5em;
         justify-content: space-between;
     }

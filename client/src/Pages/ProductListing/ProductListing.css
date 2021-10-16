@@ -4,7 +4,7 @@
         grid-template-columns: 33.5vw 65vw;
         grid-template-areas:
             "header header"
-            "sidepannel dropdown"
+            "dropdown dropdown"
             "sidepannel products";
         align-items: start;
     }

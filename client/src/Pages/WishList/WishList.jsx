@@ -23,7 +23,8 @@ export function WishList() {
                 <span className="wishlist-mobile-nav-header">
                     <span className="wishlist-heading">Wishlist</span>
                     <span className="wishlist-sub-heading">
-                        {wishList.length} Items
+                        {wishList.length}{" "}
+                        {wishList.length === 1 ? "Item" : "Items"}
                     </span>
                 </span>
                 <Link to="/cart">

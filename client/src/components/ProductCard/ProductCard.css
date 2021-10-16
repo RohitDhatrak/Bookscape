@@ -19,11 +19,11 @@
 
 .heart-svg,
 .filled-heart-svg {
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 .close-button {
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 .card-text {
@@ -35,29 +35,29 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .card-sub-heading {
-    font-size: 0.7rem;
-}
-
-.card-price {
     font-size: 0.8rem;
 }
 
+.card-price {
+    font-size: 0.9rem;
+}
+
 .add-to-cart-button,
+.move-to-cart-button,
 .go-to-cart-button {
     width: 100%;
     border: none;
     border-radius: 0.5em;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     padding: 0.7em;
     margin-top: 0.7em;
     cursor: pointer;
-    color: #fff;
     background-color: var(--primary-colour);
 }
 
@@ -73,8 +73,9 @@
 }
 
 .add-to-cart-button:hover,
+.move-to-cart-button:hover,
 .go-to-cart-button:hover {
-    background-color: #009e81;
+    background-color: #59d4be;
 }
 
 @media (max-width: 350px) {

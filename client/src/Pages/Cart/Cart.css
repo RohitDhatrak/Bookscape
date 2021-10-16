@@ -39,7 +39,6 @@
 
 .cart-is-empty-page-button {
     background-color: transparent;
-    color: (--primary-colour);
     margin-top: 2em;
     border: 1px solid #000;
     padding: 0.8em;
@@ -92,7 +91,7 @@
 }
 
 .discount-highlight {
-    color: #03a685;
+    color: #097c63;
 }
 
 @media (min-width: 768px) and (min-height: 500px) {
