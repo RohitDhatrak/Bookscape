@@ -8,79 +8,17 @@ import {
 import { useReducerContext } from "../../Context/ReducerContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-    updateCartData,
-    updateWishListData,
-    deleteWishListData,
-} from "../../services/networkCalls";
+    isWishListed,
+    isAddedToCart,
+    addToWishList,
+    removeFromWishList,
+    addToCart,
+} from "../../services/productCardCalls";
 
 export function ProductCard({ book }) {
     const { wishList, cart, dispatch, userId } = useReducerContext();
     const { pathname } = useLocation();
     const navigate = useNavigate();
-
-    function isWishListed() {
-        return wishList.some((item) => item._id === book._id);
-    }
-
-    function isAddedToCart() {
-        return cart.some((item) => item._id === book._id);
-    }
-
-    async function addToWishList(e) {
-        e.stopPropagation();
-        if (userId) {
-            const response = await updateWishListData(userId, book);
-            if (response) {
-                dispatch({
-                    type: "ADD TO WISHLIST",
-                    payload: book,
-                });
-            }
-        } else {
-            navigate("/login", { state: { previousPath: "/products" } });
-        }
-    }
-
-    async function removeFromWishList(e) {
-        e.stopPropagation();
-        const response = await deleteWishListData(userId, book);
-        if (response) {
-            dispatch({
-                type: "REMOVE FROM WISHLIST",
-                payload: book,
-            });
-        }
-    }
-
-    async function addToCart(e) {
-        e.stopPropagation();
-        if (isAddedToCart()) {
-            await deleteWishListData(userId, book);
-            dispatch({
-                type: "REMOVE FROM WISHLIST",
-                payload: book,
-            });
-            return;
-        }
-
-        if (userId) {
-            const response = await updateCartData(userId, {
-                ...book,
-                quantity: 1,
-            });
-            const response2 = isWishListed()
-                ? await deleteWishListData(userId, book)
-                : true;
-            if (response && response2) {
-                dispatch({
-                    type: "ADD TO CART",
-                    payload: { ...book, quantity: 1 },
-                });
-            }
-        } else {
-            navigate("/login", { state: { previousPath: "/products" } });
-        }
-    }
 
     return (
         <li
@@ -93,12 +31,26 @@ export function ProductCard({ book }) {
         >
             <img src={book.cover} alt="" className="card-cover" />
             {pathname === "/products" ? (
-                <div className="card-icon" onClick={addToWishList}>
-                    {isWishListed() ? <FilledHeartSvg /> : <HeartSvg />}
+                <div
+                    className="card-icon"
+                    onClick={(e) =>
+                        addToWishList(e, userId, book, dispatch, navigate)
+                    }
+                >
+                    {isWishListed(wishList, book) ? (
+                        <FilledHeartSvg />
+                    ) : (
+                        <HeartSvg />
+                    )}
                 </div>
             ) : null}
             {pathname === "/wishlist" ? (
-                <div className="card-icon" onClick={removeFromWishList}>
+                <div
+                    className="card-icon"
+                    onClick={(e) =>
+                        removeFromWishList(e, userId, book, dispatch)
+                    }
+                >
                     <CloseButton />
                 </div>
             ) : null}
@@ -111,16 +63,42 @@ export function ProductCard({ book }) {
                 </div>
             </div>
             {pathname === "/wishlist" ? (
-                <button className="move-to-cart-button" onClick={addToCart}>
+                <button
+                    className="move-to-cart-button"
+                    onClick={(e) =>
+                        addToCart(
+                            e,
+                            userId,
+                            book,
+                            dispatch,
+                            navigate,
+                            wishList,
+                            cart
+                        )
+                    }
+                >
                     Move to Cart
                 </button>
             ) : null}
-            {pathname === "/products" && !isAddedToCart() ? (
-                <button className="add-to-cart-button" onClick={addToCart}>
+            {pathname === "/products" && !isAddedToCart(cart, book) ? (
+                <button
+                    className="add-to-cart-button"
+                    onClick={(e) =>
+                        addToCart(
+                            e,
+                            userId,
+                            book,
+                            dispatch,
+                            navigate,
+                            wishList,
+                            cart
+                        )
+                    }
+                >
                     Add to Cart
                 </button>
             ) : null}
-            {pathname === "/products" && isAddedToCart() ? (
+            {pathname === "/products" && isAddedToCart(cart, book) ? (
                 <Link to="/cart" onClick={(e) => e.stopPropagation()}>
                     <button className="go-to-cart-button">
                         Go to Cart <RightArrow />

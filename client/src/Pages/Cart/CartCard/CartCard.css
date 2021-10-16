@@ -3,10 +3,6 @@
     margin-bottom: 0.5em;
 }
 
-.horizontal-card .card-heading {
-    font-size: 0.95rem;
-}
-
 .horizontal-card .card-sub-heading {
     font-size: 0.85rem;
 }
@@ -16,21 +12,13 @@
 }
 
 .card-seller {
-    font-size: 0.7rem;
-    color: #7c7c7c;
-}
-
-.horizontal-card .card-price {
-    font-size: 0.9rem;
-}
-
-.horizontal-card .card-price > .price-original {
     font-size: 0.8rem;
+    color: #7c7c7c;
 }
 
 .cart-card-footer {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: #686868;
     border-top: 1px solid #ececec;

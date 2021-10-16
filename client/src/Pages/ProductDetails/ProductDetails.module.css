@@ -45,6 +45,10 @@
     width: 100vw;
 }
 
+.buttons > a {
+    text-decoration: none;
+}
+
 .primary,
 .secondary {
     font-size: 1rem;
@@ -86,7 +90,7 @@
 }
 
 .readmore {
-    color: #009e81;
+    color: #2c8373;
     cursor: pointer;
 }
 
@@ -115,7 +119,7 @@
         padding: 0.7em;
         margin-top: 0.7em;
         cursor: pointer;
-        width: 10em;
+        width: 12em;
         height: unset;
     }
 
@@ -127,8 +131,8 @@
 
     .secondary {
         background-color: transparent;
-        border: 1px solid var(--primary-colour);
-        color: var(--primary-colour);
+        border: 1px solid #2c8373;
+        color: #2c8373;
     }
 }
 

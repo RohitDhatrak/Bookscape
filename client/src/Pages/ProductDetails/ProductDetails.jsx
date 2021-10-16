@@ -1,16 +1,28 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
 import card from "./ProductDetails.module.css";
 import { Header } from "../../components/Header/Header";
-import { BackArrowSvg, CartSvg } from "../../components/Helpers/Svg";
+import {
+    BackArrowSvg,
+    CartSvg,
+    RightArrow,
+} from "../../components/Helpers/Svg";
 import { createBrowserHistory } from "history";
+import {
+    isAddedToCart,
+    addToCart,
+    addToWishList,
+    isWishListed,
+} from "../../services/productCardCalls";
 
 export function ProductDetails() {
     const { bookId } = useParams();
-    const { productsList } = useReducerContext();
+    const { productsList, cart, wishList, dispatch, userId } =
+        useReducerContext();
     const [isReadMoreEnabled, setIsReadMoreEnabled] = useState(false);
     const history = createBrowserHistory();
+    const navigate = useNavigate();
 
     function getBook() {
         return productsList.find((book) => book._id === bookId);
@@ -63,10 +75,60 @@ export function ProductDetails() {
                         </span>
                     </div>
                     <div className={card.buttons}>
-                        <button className={card.primary}>Add to Cart</button>
-                        <button className={card.secondary}>
-                            Add to Wishlist
-                        </button>
+                        {!isAddedToCart(cart, book) ? (
+                            <button
+                                className={card.primary}
+                                onClick={(e) =>
+                                    addToCart(
+                                        e,
+                                        userId,
+                                        book,
+                                        dispatch,
+                                        navigate,
+                                        wishList,
+                                        cart
+                                    )
+                                }
+                            >
+                                Add to Cart
+                            </button>
+                        ) : null}
+                        {isAddedToCart(cart, book) ? (
+                            <Link
+                                to="/cart"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <button className={card.primary}>
+                                    Go to Cart <RightArrow />
+                                </button>
+                            </Link>
+                        ) : null}
+                        {!isWishListed(wishList, book) ? (
+                            <button
+                                className={card.secondary}
+                                onClick={(e) =>
+                                    addToWishList(
+                                        e,
+                                        userId,
+                                        book,
+                                        dispatch,
+                                        navigate
+                                    )
+                                }
+                            >
+                                Add to Wishlist
+                            </button>
+                        ) : null}
+                        {isWishListed(wishList, book) ? (
+                            <Link
+                                to="/wishlist"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <button className={card.secondary}>
+                                    Go to Wishlist <RightArrow />
+                                </button>
+                            </Link>
+                        ) : null}
                     </div>
 
                     <div className={card.description}>

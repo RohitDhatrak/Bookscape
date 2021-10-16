@@ -1,6 +1,6 @@
 import React from "react";
 import { CartCard } from "./CartCard/CartCard";
-import { CheckOutHeader } from "../../components/CheckOutHeader/CheckOutHeader";
+import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
 import bag from "../../assets/bag.png";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ export function Cart() {
 
     return (
         <div className="cart-page">
-            <CheckOutHeader heading={"Cart"} step={"Step 1/3"} />
+            <Header />
             <div className="cart-page-body">
                 <div className="cart-page-body-overview-and-products">
                     {cart.length !== 0 ? (
