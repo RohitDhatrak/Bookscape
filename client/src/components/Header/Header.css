@@ -4,6 +4,7 @@
     padding-left: 0;
     padding-right: 0;
     border: 1px solid #e2dede;
+    z-index: 3;
 }
 
 .nav-brand-link {
