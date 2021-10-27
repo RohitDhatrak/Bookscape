@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4em;
+    height: 3.7em;
 }
 
 .wishlist-mobile-nav-heading-container {
@@ -45,7 +45,7 @@
 }
 
 .wishlist-mobile-nav-btn-container {
-    /* margin-right: 0.8em; */
+    display: flex;
 }
 
 .wishlist-mobile-nav-cart {
@@ -83,6 +83,10 @@
     font-weight: 500;
     cursor: pointer;
     border-radius: 0.5em;
+}
+
+.mobile-cart-quantity {
+    top: -0.2em;
 }
 
 @media (min-width: 755px) {

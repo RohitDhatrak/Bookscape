@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 export function WishList() {
-    const { wishList, dispatch } = useReducerContext();
+    const { wishList, dispatch, cart } = useReducerContext();
     const history = createBrowserHistory();
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,10 +38,15 @@ export function WishList() {
                     </span>
                 </span>
                 <div className="wishlist-mobile-nav-btn-container">
-                    <Link to="/cart">
-                        <span className="wishlist-mobile-nav-cart nav-btns">
+                    <Link to="/cart" className="cart-logo-container">
+                        <div className="wishlist-mobile-nav-cart nav-btns">
                             <CartSvg />
-                        </span>
+                        </div>
+                        {!!cart.length && (
+                            <div className=" cart-quantity mobile-cart-quantity">
+                                {cart.length}
+                            </div>
+                        )}
                     </Link>
                     <span
                         className="wishlist-mobile-nav-cart nav-btns"

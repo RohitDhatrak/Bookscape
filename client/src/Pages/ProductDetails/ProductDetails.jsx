@@ -56,10 +56,13 @@ export function ProductDetails() {
                 <span onClick={() => history.back()}>
                     <BackArrowSvg />
                 </span>
-                <Link to="/cart">
+                <Link to="/cart" className="cart-logo-container">
                     <span className="wishlist-mobile-nav-cart nav-btns">
                         <CartSvg />
                     </span>
+                    {!!cart.length && (
+                        <div className="cart-quantity">{cart.length}</div>
+                    )}
                 </Link>
             </nav>
             <div className={card.container}>

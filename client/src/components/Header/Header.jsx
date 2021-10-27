@@ -1,9 +1,8 @@
 import React from "react";
 import logo from "../../assets/logo.png";
 import { HeartSvg, CartSvg, LogOutSvg } from "../Helpers/Svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
-import { useLocation } from "react-router-dom";
 
 export function Header() {
     const { dispatch, cart } = useReducerContext();
@@ -28,7 +27,6 @@ export function Header() {
             <div className="nav-link-section">
                 <Link to="/wishlist">
                     <div className="nav-link nav-btns">{<HeartSvg />}</div>
-                    <div></div>
                 </Link>
                 {pathname !== "/cart" && (
                     <Link to="/cart" className="cart-logo-container">
