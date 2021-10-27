@@ -61,7 +61,7 @@
         display: block;
         position: absolute;
         top: 50%;
-        z-index: 2;
+        z-index: var(--index-1);
         border-radius: 50%;
         border: none;
         padding: 1.7em 1.9em;

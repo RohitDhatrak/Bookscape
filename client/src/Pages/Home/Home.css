@@ -19,7 +19,7 @@
     width: 100%;
     height: 100%;
     background-color: rgb(54, 54, 54, 0.75);
-    z-index: 1;
+    z-index: var(--index-1);
     position: absolute;
     top: 0;
     display: flex;
