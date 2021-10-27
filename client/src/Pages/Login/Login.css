@@ -51,10 +51,17 @@
 
 .login-form-button {
     width: 100%;
-    padding: 0.5em 0;
+    padding: 0.7em 0;
     margin: 1em 0;
-    border: 1px solid #8b8b8b;
-    border-radius: 0.2em;
+    border: none;
+    border-radius: 0.5em;
+    font-weight: 500;
+    background-color: var(--primary-colour);
+    cursor: pointer;
+}
+
+.login-form-button:hover {
+    background-color: #59d4be;
 }
 
 .sign-up-link-text {

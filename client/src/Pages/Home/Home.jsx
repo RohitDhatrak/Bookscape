@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import bookbanner from "../../assets/book-banner.jpg";
 import { Link } from "react-router-dom";
@@ -7,6 +7,10 @@ import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Home() {
     const { productsList } = useReducerContext();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     function getBestSellingBooks() {
         return productsList

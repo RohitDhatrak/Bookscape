@@ -22,7 +22,7 @@ export function ProductCard({ book }) {
 
     return (
         <li
-            className="card"
+            className="card noSelect"
             key={book._id}
             onClick={(e) => {
                 e.stopPropagation();

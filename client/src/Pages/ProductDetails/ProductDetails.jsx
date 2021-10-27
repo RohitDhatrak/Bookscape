@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
 import card from "./ProductDetails.module.css";
@@ -23,6 +23,9 @@ export function ProductDetails() {
     const [isReadMoreEnabled, setIsReadMoreEnabled] = useState(false);
     const history = createBrowserHistory();
     const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     function getBook() {
         return productsList.find((book) => book._id === bookId);

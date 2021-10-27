@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
@@ -10,6 +10,9 @@ import { createBrowserHistory } from "history";
 export function WishList() {
     const { wishList, dispatch } = useReducerContext();
     const history = createBrowserHistory();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     function logoutUser() {
         dispatch({ type: "CLEAR SESSION STATE" });

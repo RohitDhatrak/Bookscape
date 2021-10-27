@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CartCard } from "./CartCard/CartCard";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 
 export function Cart() {
     const { cart } = useReducerContext();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     function getCartQuantity() {
         return cart.reduce((totalItems, item) => totalItems + 1, 0);

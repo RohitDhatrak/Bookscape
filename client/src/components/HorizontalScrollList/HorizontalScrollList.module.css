@@ -23,7 +23,7 @@
 .grid {
     display: flex;
     margin-top: 1em;
-    overflow: auto;
+    overflow: scroll;
 }
 
 .grid > li {
@@ -64,14 +64,22 @@
         z-index: 2;
         border-radius: 50%;
         border: none;
-        padding: 1.8em 2em;
+        padding: 1.7em 1.9em;
         cursor: pointer;
-        background-color: #d6f5f0;
+        background-color: #c3ebe4;
+    }
+
+    .backward {
+        padding-left: 1.8em;
+    }
+
+    .forward {
+        padding-right: 1.8em;
     }
 
     .forward:hover,
     .backward:hover {
-        background-color: #c3ebe4;
+        background-color: #b1dfd7;
     }
 
     .forward {

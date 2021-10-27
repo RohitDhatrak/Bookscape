@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useProductsContext } from "../../Context/ProductsContext";
 import { Header } from "../../components/Header/Header";
 import { SortByDropDown } from "./components/Desktop/SortByDropDown/SortByDropDown";
@@ -10,6 +10,10 @@ import { FilterPage } from "./components/Mobile/FilterPage/FilterPage";
 
 export function ProductListing() {
     const { showSortPage, showFilterPage } = useProductsContext();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="products-main-container">
             <Header />
