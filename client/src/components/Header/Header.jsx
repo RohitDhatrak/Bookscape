@@ -6,7 +6,7 @@ import { useReducerContext } from "../../Context/ReducerContext";
 import { useLocation } from "react-router-dom";
 
 export function Header() {
-    const { dispatch } = useReducerContext();
+    const { dispatch, cart } = useReducerContext();
     const { pathname } = useLocation();
 
     function logoutUser() {
@@ -31,8 +31,11 @@ export function Header() {
                     <div></div>
                 </Link>
                 {pathname !== "/cart" && (
-                    <Link to="/cart">
-                        <div className="nav-link nav-btns">{<CartSvg />}</div>
+                    <Link to="/cart" className="cart-logo-container">
+                        <div className="nav-link nav-btns">{<CartSvg />} </div>
+                        {!!cart.length && (
+                            <div className="cart-quantity">{cart.length}</div>
+                        )}
                     </Link>
                 )}
                 <div

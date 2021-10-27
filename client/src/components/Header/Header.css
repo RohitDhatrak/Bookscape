@@ -43,6 +43,21 @@
     margin-top: 0.1em;
 }
 
+.cart-logo-container {
+    position: relative;
+}
+
+.cart-quantity {
+    position: absolute;
+    top: -1.2em;
+    right: 0;
+    background-color: rgb(221, 19, 19);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
 @media (min-width: 480px) and (max-width: 768px) {
     .nav-brand-link > span {
         padding-top: 0;
