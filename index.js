@@ -16,7 +16,7 @@ const { initializeDBConnection } = require("./server/db/db.connect");
 // const { seedDB } = require("./server/utils/seedDB");
 const { auth } = require("./server/middlewares/auth");
 
-const port = 4444;
+const port = process.env.PORT || 4444;
 const whitelist = [
     "https://development--store-bookscape.netlify.app",
     "https://store-bookscape.netlify.app",
