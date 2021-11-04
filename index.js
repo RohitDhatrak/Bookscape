@@ -13,7 +13,6 @@ const {
     errorHandler,
 } = require("./server/middlewares/error-handler.middleware");
 const { initializeDBConnection } = require("./server/db/db.connect");
-// const { seedDB } = require("./server/utils/seedDB");
 const { auth } = require("./server/middlewares/auth");
 
 const port = process.env.PORT || 4444;
@@ -37,7 +36,6 @@ if (process.env.NODE_ENV === "development") {
 }
 
 initializeDBConnection();
-// seedDB();
 
 app.use("/products", products);
 app.use("/login", login);
