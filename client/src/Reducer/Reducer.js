@@ -83,7 +83,7 @@ export function reducer(state, { type, payload }) {
                     jwt: payload.jwt,
                 })
             );
-            return { ...state, userId: payload };
+            return { ...state, userId: payload.userId };
         case "RESUME SESSION":
             return { ...state, userId: payload };
         case "END SESSION":
