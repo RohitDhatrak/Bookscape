@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import list from "./HorizontalScrollList.module.css";
 import { Link } from "react-router-dom";
+import list from "./HorizontalScrollList.module.css";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { NextArrow, PrevArrow } from "../Helpers/Svg";
 

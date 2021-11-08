@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import bookbanner from "../../assets/book-banner.jpg";
-import { Link } from "react-router-dom";
 import { HorizontalScrollList } from "../../components/HorizontalScrollList/HorizontalScrollList";
 import { useReducerContext } from "../../Context/ReducerContext";
 

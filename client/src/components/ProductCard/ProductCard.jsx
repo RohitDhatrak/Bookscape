@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
     HeartSvg,
     FilledHeartSvg,
@@ -6,7 +7,6 @@ import {
     RightArrow,
 } from "../Helpers/Svg";
 import { useReducerContext } from "../../Context/ReducerContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
     isWishListed,
     isAddedToCart,
@@ -30,6 +30,7 @@ export function ProductCard({ book }) {
             }}
         >
             <img src={book.cover} alt="" className="card-cover" />
+
             {pathname === "/products" ? (
                 <div
                     className="card-icon"
@@ -44,6 +45,7 @@ export function ProductCard({ book }) {
                     )}
                 </div>
             ) : null}
+
             {pathname === "/wishlist" ? (
                 <div
                     className="card-icon"
@@ -54,6 +56,7 @@ export function ProductCard({ book }) {
                     <CloseButton />
                 </div>
             ) : null}
+
             <div className="card-text">
                 <div className="card-heading">{book.name}</div>
                 <div className="card-sub-heading">{book.author}</div>
@@ -62,6 +65,7 @@ export function ProductCard({ book }) {
                     <span className="price-original">₹{book.price}</span>
                 </div>
             </div>
+
             {pathname === "/wishlist" ? (
                 <button
                     className="move-to-cart-button"
@@ -80,6 +84,7 @@ export function ProductCard({ book }) {
                     Move to Cart
                 </button>
             ) : null}
+
             {pathname === "/products" && !isAddedToCart(cart, book) ? (
                 <button
                     className="add-to-cart-button"
@@ -98,6 +103,7 @@ export function ProductCard({ book }) {
                     Add to Cart
                 </button>
             ) : null}
+
             {pathname === "/products" && isAddedToCart(cart, book) ? (
                 <Link to="/cart" onClick={(e) => e.stopPropagation()}>
                     <button className="go-to-cart-button">

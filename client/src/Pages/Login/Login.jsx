@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import { Header } from "../../components/Header/Header";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { getCartData, getWishListData } from "../../services/networkCalls";
@@ -69,7 +69,7 @@ export function Login() {
     }
 
     return (
-        <div>
+        <>
             <Header />
             <div className="login-page">
                 <form className="login-form">
@@ -110,6 +110,6 @@ export function Login() {
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     );
 }

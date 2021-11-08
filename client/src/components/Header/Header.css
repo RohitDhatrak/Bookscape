@@ -62,6 +62,16 @@
     .nav-brand-link > span {
         padding-top: 0;
     }
+
+    .nav-brand-link {
+        margin-top: 0;
+        margin-left: 0.8em;
+    }
+
+    .nav-link-section {
+        margin-top: 0.3em;
+        margin-right: 1em;
+    }
 }
 
 @media (min-width: 768px) {

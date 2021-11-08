@@ -76,7 +76,7 @@ export function Signup() {
     }
 
     return (
-        <div>
+        <>
             <Header />
             <div className="login-page">
                 <form className="login-form">
@@ -140,6 +140,6 @@ export function Signup() {
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     );
 }

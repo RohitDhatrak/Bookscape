@@ -1,9 +1,9 @@
 import React from "react";
-import { useReducerContext } from "../../../Context/ReducerContext";
+import { useReducerContext } from "../../../../Context/ReducerContext";
 import {
     updateWishListData,
     deleteCartData,
-} from "../../../services/networkCalls";
+} from "../../../../services/networkCalls";
 
 export function CartCard({ book }) {
     const { dispatch, userId, wishList } = useReducerContext();

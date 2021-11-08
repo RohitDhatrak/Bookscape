@@ -24,7 +24,7 @@ export function FooterButtons({ fromFilterPage }) {
     }
 
     return (
-        <div>
+        <>
             {fromFilterPage ? (
                 <div className="mobile-footer">
                     <button
@@ -64,6 +64,6 @@ export function FooterButtons({ fromFilterPage }) {
                     </button>
                 </div>
             )}
-        </div>
+        </>
     );
 }

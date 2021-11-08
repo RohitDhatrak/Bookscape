@@ -1,7 +1,7 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { HeartSvg, CartSvg, LogOutSvg } from "../Helpers/Svg";
-import { Link, useLocation } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Header() {
