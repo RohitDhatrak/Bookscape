@@ -20,6 +20,10 @@
     width: 2em;
 }
 
+.nav-brand-name {
+    display: none;
+}
+
 .nav-link-section {
     margin-right: 0.5em;
 }
@@ -31,6 +35,19 @@
     padding-bottom: 0.5em;
     margin: 0.2em;
     color: #000;
+}
+
+.session-btn {
+    border-radius: 0.8em;
+    border: 1px solid #c9c5c5;
+    padding: 0.7em;
+    margin: 0.2em;
+    text-decoration: none;
+    color: #000;
+}
+
+.logout-btn {
+    color: rgb(189, 48, 48);
 }
 
 .cart-svg,
@@ -56,6 +73,12 @@
     padding: 2px 6px;
     font-size: 0.8rem;
     color: #fff;
+}
+
+@media (min-width: 400px) {
+    .nav-brand-name {
+        display: block;
+    }
 }
 
 @media (min-width: 480px) and (max-width: 768px) {

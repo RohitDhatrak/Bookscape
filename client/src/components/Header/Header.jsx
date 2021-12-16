@@ -1,16 +1,18 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { HeartSvg, CartSvg, LogOutSvg } from "../Helpers/Svg";
+import { HeartSvg, CartSvg } from "../Helpers/Svg";
 import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Header() {
-    const { dispatch, cart } = useReducerContext();
+    const { dispatch, cart, userId } = useReducerContext();
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     function logoutUser() {
         dispatch({ type: "CLEAR SESSION STATE" });
         dispatch({ type: "END SESSION" });
+        navigate("/login");
     }
 
     return (
@@ -36,12 +38,22 @@ export function Header() {
                         )}
                     </Link>
                 )}
-                <div
-                    className="nav-link nav-btns profile-button"
-                    onClick={logoutUser}
-                >
-                    <LogOutSvg />
-                </div>
+                {!userId && (
+                    <div
+                        className="nav-link session-btn"
+                        onClick={() => navigate("/login")}
+                    >
+                        Login
+                    </div>
+                )}
+                {userId && (
+                    <div
+                        className="nav-link session-btn logout-btn"
+                        onClick={logoutUser}
+                    >
+                        Logout
+                    </div>
+                )}
             </div>
         </header>
     );

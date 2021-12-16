@@ -1,17 +1,14 @@
 import React from "react";
 import { createBrowserHistory } from "history";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useReducerContext } from "../../../Context/ReducerContext";
 import { Header } from "../../../components/Header/Header";
-import {
-    BackArrowSvg,
-    CartSvg,
-    LogOutSvg,
-} from "../../../components/Helpers/Svg";
+import { BackArrowSvg, CartSvg } from "../../../components/Helpers/Svg";
 
 export function NavBar() {
     const history = createBrowserHistory();
-    const { wishList, dispatch, cart } = useReducerContext();
+    const { wishList, dispatch, cart, userId } = useReducerContext();
+    const navigate = useNavigate();
 
     function logoutUser() {
         dispatch({ type: "CLEAR SESSION STATE" });
@@ -47,12 +44,23 @@ export function NavBar() {
                             </div>
                         )}
                     </Link>
-                    <span
-                        className="wishlist-mobile-nav-cart nav-btns"
-                        onClick={logoutUser}
-                    >
-                        <LogOutSvg />
-                    </span>
+
+                    {!userId && (
+                        <div
+                            className="nav-link session-btn"
+                            onClick={() => navigate("/login")}
+                        >
+                            Login
+                        </div>
+                    )}
+                    {userId && (
+                        <div
+                            className="nav-link session-btn logout-btn"
+                            onClick={logoutUser}
+                        >
+                            Logout
+                        </div>
+                    )}
                 </div>
             </nav>
         </>

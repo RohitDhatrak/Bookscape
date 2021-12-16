@@ -14,9 +14,8 @@ export function Signup() {
 
     const { dispatch } = useReducerContext();
     const navigate = useNavigate();
-    const {
-        state: { previousPath },
-    } = useLocation();
+    const { state } = useLocation();
+    const previousPath = state?.previousPath || "/";
 
     function validateEmail(e) {
         const emailRegex = /\S+@\S+\.\S+/;

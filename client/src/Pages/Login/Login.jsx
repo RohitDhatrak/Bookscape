@@ -7,14 +7,16 @@ import { getCartData, getWishListData } from "../../services/networkCalls";
 import { setupAuthHeaderForServiceCalls } from "../../services/setupAuthHeaders";
 
 export function Login() {
-    const [emailId, setEmailId] = useState();
-    const [password, setPassword] = useState();
+    const [emailId, setEmailId] = useState(process.env.REACT_APP_GUEST_EMAIL);
+    const [password, setPassword] = useState(
+        process.env.REACT_APP_GUEST_PASSWORD
+    );
+    const [asGuest, setAsGuest] = useState(true);
     const [error, setError] = useState();
     const { userId, dispatch } = useReducerContext();
     const navigate = useNavigate();
-    const {
-        state: { previousPath },
-    } = useLocation();
+    const { state } = useLocation();
+    const previousPath = state?.previousPath || "/";
 
     useEffect(() => {
         if (userId) {
@@ -25,11 +27,13 @@ export function Login() {
     function updatePassword(e) {
         setPassword(e.target.value);
         setError("");
+        setAsGuest(false);
     }
 
     function updateEmail(e) {
         setEmailId(e.target.value);
         setError("");
+        setAsGuest(false);
     }
 
     async function loginAndRedirect(e) {
@@ -76,7 +80,12 @@ export function Login() {
                     <div className="login-form-heading">Login</div>
                     <div className="login-form-input">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={updateEmail} />
+                        <input
+                            type="email"
+                            id="email"
+                            value={emailId}
+                            onChange={updateEmail}
+                        />
                     </div>
                     <div className="login-form-input">
                         <label htmlFor="password">Password</label>
@@ -84,16 +93,25 @@ export function Login() {
                             type="password"
                             id="password"
                             required
+                            value={password}
                             onChange={updatePassword}
                         />
                     </div>
                     <div className="login-form-error-message">{error}</div>
-                    {emailId && password && !error && (
+                    {emailId && password && !error && !asGuest && (
                         <button
                             className="login-form-button"
                             onClick={loginAndRedirect}
                         >
                             Login
+                        </button>
+                    )}
+                    {asGuest && (
+                        <button
+                            className="login-form-button"
+                            onClick={loginAndRedirect}
+                        >
+                            Login as Guest
                         </button>
                     )}
                     <div>

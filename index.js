@@ -17,7 +17,6 @@ const { auth } = require("./server/middlewares/auth");
 
 const port = process.env.PORT || 4444;
 const whitelist = [
-    "https://development--store-bookscape.netlify.app",
     "https://store-bookscape.netlify.app",
 ];
 const corsOptions = {
