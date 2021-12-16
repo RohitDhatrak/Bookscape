@@ -33,7 +33,6 @@ export function Login() {
     function updateEmail(e) {
         setEmailId(e.target.value);
         setError("");
-        setAsGuest(false);
     }
 
     async function loginAndRedirect(e) {
@@ -80,12 +79,7 @@ export function Login() {
                     <div className="login-form-heading">Login</div>
                     <div className="login-form-input">
                         <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={emailId}
-                            onChange={updateEmail}
-                        />
+                        <input type="email" id="email" onChange={updateEmail} />
                     </div>
                     <div className="login-form-input">
                         <label htmlFor="password">Password</label>
@@ -105,6 +99,7 @@ export function Login() {
                             Login
                         </button>
                     )}
+                    {asGuest && <div>OR</div>}
                     {asGuest && (
                         <button
                             className="login-form-button"
