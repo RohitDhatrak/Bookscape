@@ -5,4 +5,5 @@
 
 ### Connect With Me
 - Twitter – [@rohit_dhatrak_](https://twitter.com/rohit_dhatrak_)
-- LinkedIn – [Rohit Dhatrak](https://www.linkedin.com/in/rohitdhatrak)
+- LinkedIn – [/rohitdhatrak](https://www.linkedin.com/in/rohitdhatrak)
+- Other Links – [/rohitdhatrak](https://linktr.ee/rohitdhatrak)
