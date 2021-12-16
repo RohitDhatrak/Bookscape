@@ -93,7 +93,6 @@ export function Login() {
                             type="password"
                             id="password"
                             required
-                            value={password}
                             onChange={updatePassword}
                         />
                     </div>
