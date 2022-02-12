@@ -9,6 +9,9 @@ export function ProductDetails() {
     const { bookId } = useParams();
     const { productsList } = useReducerContext();
     const [isReadMoreEnabled, setIsReadMoreEnabled] = useState(false);
+    const book = getBook();
+    const [description, setDescription] = useState(getShortenedDescription());
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -16,8 +19,6 @@ export function ProductDetails() {
     function getBook() {
         return productsList.find((book) => book._id === bookId);
     }
-    const book = getBook();
-    const [description, setDescription] = useState(getShortenedDescription());
 
     function getShortenedDescription() {
         return book.description.split(" ").splice(0, 100).join(" ");

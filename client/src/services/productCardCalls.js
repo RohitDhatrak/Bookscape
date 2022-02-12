@@ -12,8 +12,18 @@ export function isAddedToCart(cart, book) {
     return cart.some((item) => item._id === book._id);
 }
 
-export async function addToWishList(e, userId, book, dispatch, navigate) {
+export async function addToWishList(
+    e,
+    userId,
+    book,
+    dispatch,
+    navigate,
+    isAddingToWishList,
+    setIsAddingToWishList
+) {
     e.stopPropagation();
+    if (isAddingToWishList) return;
+    setIsAddingToWishList(true);
     if (userId) {
         const response = await updateWishListData(userId, book);
         if (response) {
@@ -25,10 +35,20 @@ export async function addToWishList(e, userId, book, dispatch, navigate) {
     } else {
         navigate("/login", { state: { previousPath: "/products" } });
     }
+    setIsAddingToWishList(false);
 }
 
-export async function removeFromWishList(e, userId, book, dispatch) {
+export async function removeFromWishList(
+    e,
+    userId,
+    book,
+    dispatch,
+    isRemoving,
+    setIsRemoving
+) {
     e.stopPropagation();
+    if (isRemoving) return;
+    setIsRemoving(true);
     const response = await deleteWishListData(userId, book);
     if (response) {
         dispatch({
@@ -36,6 +56,7 @@ export async function removeFromWishList(e, userId, book, dispatch) {
             payload: book,
         });
     }
+    setIsRemoving(false);
 }
 
 export async function addToCart(
@@ -45,15 +66,20 @@ export async function addToCart(
     dispatch,
     navigate,
     wishList,
-    cart
+    cart,
+    isLoading,
+    setIsLoading
 ) {
     e.stopPropagation();
+    if (isLoading) return;
+    setIsLoading(true);
     if (isAddedToCart(cart, book)) {
         await deleteWishListData(userId, book);
         dispatch({
             type: "REMOVE FROM WISHLIST",
             payload: book,
         });
+        setIsLoading(false);
         return;
     }
 
@@ -74,4 +100,5 @@ export async function addToCart(
     } else {
         navigate("/login", { state: { previousPath: "/products" } });
     }
+    setIsLoading(false);
 }

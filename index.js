@@ -16,9 +16,7 @@ const { initializeDBConnection } = require("./server/db/db.connect");
 const { auth } = require("./server/middlewares/auth");
 
 const port = process.env.PORT || 4444;
-const whitelist = [
-    "https://store-bookscape.netlify.app",
-];
+const whitelist = ["https://store-bookscape.netlify.app"];
 const corsOptions = {
     origin: whitelist,
     optionsSuccessStatus: 200,

@@ -105,9 +105,9 @@ export function CloseButton() {
     );
 }
 
-export function LoaderSvg() {
+export function LoaderSvg({ width = "100px", height = "100px" }) {
     return (
-        <svg width="100px" height="100px" viewBox="0 0 100 100">
+        <svg width={width} height={height} viewBox="0 0 100 100">
             <circle cx="84" cy="50" r="10" fill="#4cd4cc">
                 <animate
                     attributeName="r"

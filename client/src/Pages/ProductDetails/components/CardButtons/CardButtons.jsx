@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
     isAddedToCart,
@@ -15,6 +15,8 @@ export function CardButtons() {
     const { productsList, cart, wishList, dispatch, userId } =
         useReducerContext();
     const navigate = useNavigate();
+    const [isAddingToCart, setIsAddingToCart] = useState(false);
+    const [isAddingToWishList, setIsAddingToWishList] = useState(false);
 
     function getBook() {
         return productsList.find((book) => book._id === bookId);
@@ -34,11 +36,13 @@ export function CardButtons() {
                             dispatch,
                             navigate,
                             wishList,
-                            cart
+                            cart,
+                            isAddingToCart,
+                            setIsAddingToCart
                         )
                     }
                 >
-                    Add to Cart
+                    {isAddingToCart ? "Adding to Cart..." : "Add to Cart"}
                 </button>
             ) : null}
             {isAddedToCart(cart, book) ? (
@@ -52,10 +56,18 @@ export function CardButtons() {
                 <button
                     className={card.secondary}
                     onClick={(e) =>
-                        addToWishList(e, userId, book, dispatch, navigate)
+                        addToWishList(
+                            e,
+                            userId,
+                            book,
+                            dispatch,
+                            navigate,
+                            isAddingToWishList,
+                            setIsAddingToWishList
+                        )
                     }
                 >
-                    Add to Wishlist
+                    {isAddingToWishList ? "Adding..." : "Add to Wishlist"}
                 </button>
             ) : null}
             {isWishListed(wishList, book) ? (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useReducerContext } from "../../../../Context/ReducerContext";
 import {
     updateWishListData,
@@ -7,8 +7,12 @@ import {
 
 export function CartCard({ book }) {
     const { dispatch, userId, wishList } = useReducerContext();
+    const [isMovingToWishList, setIsMovingToWishList] = useState(false);
+    const [isRemoving, setIsRemoving] = useState(false);
 
     async function removeFromCart() {
+        if (isMovingToWishList || isRemoving) return;
+        setIsRemoving(true);
         const response = await deleteCartData(userId, book);
         if (response) {
             dispatch({
@@ -19,6 +23,8 @@ export function CartCard({ book }) {
     }
 
     async function moveToWishList() {
+        if (isMovingToWishList || isRemoving) return;
+        setIsMovingToWishList(true);
         const isWishListed = wishList.find((item) => item._id === book._id);
         if (isWishListed) {
             dispatch({
@@ -57,13 +63,15 @@ export function CartCard({ book }) {
                     className="cart-card-footer-remove-button"
                     onClick={removeFromCart}
                 >
-                    Remove
+                    {isRemoving ? "Removing..." : "Remove"}
                 </span>
                 <span
                     className="cart-card-footer-wishlist"
                     onClick={moveToWishList}
                 >
-                    Move to wishlist
+                    {isMovingToWishList
+                        ? "Moving to wishlist..."
+                        : "Move to wishlist"}
                 </span>
             </div>
         </div>

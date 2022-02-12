@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
     HeartSvg,
     FilledHeartSvg,
     CloseButton,
     RightArrow,
+    LoaderSvg,
 } from "../Helpers/Svg";
 import { useReducerContext } from "../../Context/ReducerContext";
 import {
@@ -19,6 +20,10 @@ export function ProductCard({ book }) {
     const { wishList, cart, dispatch, userId } = useReducerContext();
     const { pathname } = useLocation();
     const navigate = useNavigate();
+    const [isAddingToCart, setIsAddingToCart] = useState(false);
+    const [isMovingToCart, setIsMovingToCart] = useState(false);
+    const [isAddingToWishList, setIsAddingToWishList] = useState(false);
+    const [isRemoving, setIsRemoving] = useState(false);
 
     return (
         <li
@@ -35,13 +40,26 @@ export function ProductCard({ book }) {
                 <div
                     className="card-icon"
                     onClick={(e) =>
-                        addToWishList(e, userId, book, dispatch, navigate)
+                        addToWishList(
+                            e,
+                            userId,
+                            book,
+                            dispatch,
+                            navigate,
+                            isAddingToWishList,
+                            setIsAddingToWishList
+                        )
                     }
                 >
-                    {isWishListed(wishList, book) ? (
+                    {!isAddingToWishList && isWishListed(wishList, book) && (
                         <FilledHeartSvg />
-                    ) : (
+                    )}
+                    {!isAddingToWishList && !isWishListed(wishList, book) && (
                         <HeartSvg />
+                    )}
+
+                    {isAddingToWishList && (
+                        <LoaderSvg width="15px" height="15px" />
                     )}
                 </div>
             ) : null}
@@ -50,10 +68,21 @@ export function ProductCard({ book }) {
                 <div
                     className="card-icon"
                     onClick={(e) =>
-                        removeFromWishList(e, userId, book, dispatch)
+                        removeFromWishList(
+                            e,
+                            userId,
+                            book,
+                            dispatch,
+                            isRemoving,
+                            setIsRemoving
+                        )
                     }
                 >
-                    <CloseButton />
+                    {isRemoving ? (
+                        <LoaderSvg width="15px" height="15px" />
+                    ) : (
+                        <CloseButton />
+                    )}
                 </div>
             ) : null}
 
@@ -77,11 +106,13 @@ export function ProductCard({ book }) {
                             dispatch,
                             navigate,
                             wishList,
-                            cart
+                            cart,
+                            isMovingToCart,
+                            setIsMovingToCart
                         )
                     }
                 >
-                    Move to Cart
+                    {isMovingToCart ? "Moving to Cart..." : "Move to Cart"}
                 </button>
             ) : null}
 
@@ -96,11 +127,13 @@ export function ProductCard({ book }) {
                             dispatch,
                             navigate,
                             wishList,
-                            cart
+                            cart,
+                            isAddingToCart,
+                            setIsAddingToCart
                         )
                     }
                 >
-                    Add to Cart
+                    {isAddingToCart ? "Adding to Cart..." : "Add to Cart"}
                 </button>
             ) : null}
 
