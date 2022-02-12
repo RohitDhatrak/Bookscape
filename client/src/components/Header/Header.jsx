@@ -27,9 +27,11 @@ export function Header() {
             </Link>
 
             <div className="nav-link-section">
-                <Link to="/wishlist">
-                    <div className="nav-link nav-btns">{<HeartSvg />}</div>
-                </Link>
+                {pathname !== "/wishlist" && (
+                    <Link to="/wishlist">
+                        <div className="nav-link nav-btns">{<HeartSvg />}</div>
+                    </Link>
+                )}
                 {pathname !== "/cart" && (
                     <Link to="/cart" className="cart-logo-container">
                         <div className="nav-link nav-btns">{<CartSvg />} </div>
