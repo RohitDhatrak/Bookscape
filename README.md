@@ -13,7 +13,7 @@ React, Node, Express, MongoDB, mongoose, jsonwebtoken & bcrypt
 - Fully responsive
 - Tested for contrast issues
 
-Things I want to improve/explore further
+### Things I want to improve/explore further
 - Keyboard accessiblity
 - Adding pagination
 - Adding a test payment gateway like Razorpay
