@@ -16,7 +16,7 @@ React, Node, Express, MongoDB, mongoose, jsonwebtoken & bcrypt
 ### Things I want to improve/explore further
 - Keyboard accessiblity
 - Adding pagination
-- Adding a test payment gateway like Razorpay
+- Adding a payment gateway like Razorpay
 
 ### Connect With Me
 - Twitter – [@rohit_dhatrak_](https://twitter.com/rohit_dhatrak_)
