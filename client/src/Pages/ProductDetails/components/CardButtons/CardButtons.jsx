@@ -48,10 +48,7 @@ export function CardButtons() {
             {isAddedToCart(cart, book) ? (
                 <button
                     className={card.primary}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        navigate("/cart");
-                    }}
+                    onClick={() => navigate("/cart")}
                 >
                     Go to Cart <RightArrow />
                 </button>
@@ -77,10 +74,7 @@ export function CardButtons() {
             {isWishListed(wishList, book) ? (
                 <button
                     className={card.secondary}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        navigate("/wishlist");
-                    }}
+                    onClick={() => navigate("/wishlist")}
                 >
                     Go to Wishlist <RightArrow />
                 </button>
