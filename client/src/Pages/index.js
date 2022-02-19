@@ -6,3 +6,4 @@ export { ProductDetails } from "./ProductDetails/ProductDetails";
 export { ProductListing } from "./ProductListing/ProductListing";
 export { Signup } from "./Signup/Signup";
 export { WishList } from "./WishList/WishList";
+export { FilterPage } from "./ProductListing/components/Mobile/FilterPage/FilterPage";

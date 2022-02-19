@@ -4,12 +4,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { App } from "./App.jsx";
 import { ReducerContextProvider } from "./Context/ReducerContext";
+import { ProductsContextProvider } from "./Context/ProductsContext";
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
             <ReducerContextProvider>
-                <App />
+                <ProductsContextProvider>
+                    <App />
+                </ProductsContextProvider>
             </ReducerContextProvider>
         </Router>
     </React.StrictMode>,

@@ -6,9 +6,11 @@ import wishlist from "../../assets/wishlist.png";
 import { NavBar } from "./NavBar/NavBar";
 
 export function WishList() {
-    const { wishList } = useReducerContext();
+    const { wishList, dispatch } = useReducerContext();
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        dispatch({ type: "CLEAR FILTER" });
     }, []);
 
     return (

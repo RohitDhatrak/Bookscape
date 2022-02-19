@@ -6,10 +6,11 @@ import { HorizontalScrollList } from "../../components/HorizontalScrollList/Hori
 import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Home() {
-    const { productsList } = useReducerContext();
+    const { productsList, dispatch } = useReducerContext();
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        dispatch({ type: "CLEAR FILTER" });
     }, []);
 
     function getBestSellingBooks() {

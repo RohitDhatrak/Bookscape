@@ -1,14 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useProductsContext } from "../../../../../Context/ProductsContext";
 import { useReducerContext } from "../../../../../Context/ReducerContext";
 import { filtersObj } from "../../../../../components/Helpers/data";
 import { BackArrowSvg } from "../../../../../components/Helpers/Svg";
-import { FooterButtons } from "../FooterButtons/FooterButtons";
 
 export function FilterPage() {
-    const { setShowFilterPage, selectedFilter, setSelectedFilter } =
-        useProductsContext();
-
+    const { selectedFilter, setSelectedFilter } = useProductsContext();
+    const navigate = useNavigate();
     const { dispatch, filterBy } = useReducerContext();
 
     function isChecked(property, listItem) {
@@ -30,7 +29,7 @@ export function FilterPage() {
             <div className="filter-page-heading">
                 <button
                     className="back-button"
-                    onClick={() => setShowFilterPage(false)}
+                    onClick={() => navigate("/products")}
                 >
                     <BackArrowSvg />
                 </button>
@@ -83,7 +82,6 @@ export function FilterPage() {
                     ))}
                 </ul>
             </div>
-            <FooterButtons fromFilterPage={true} />
         </div>
     );
 }

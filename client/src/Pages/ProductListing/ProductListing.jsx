@@ -6,16 +6,12 @@ import { SidePannel } from "./components/Desktop/SidePannel/SidePannel";
 import { ProductsGrid } from "./components/ProductsGrid/ProductsGrid";
 import { FooterButtons } from "./components/Mobile/FooterButtons/FooterButtons";
 import { SortPage } from "./components/Mobile/SortPage/SortPage";
-import { FilterPage } from "./components/Mobile/FilterPage/FilterPage";
-import { useReducerContext } from "../../Context/ReducerContext";
 
 export function ProductListing() {
-    const { showSortPage, showFilterPage } = useProductsContext();
-    const { dispatch } = useReducerContext();
+    const { showSortPage } = useProductsContext();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        return () => dispatch({ type: "CLEAR FILTER" });
     }, []);
 
     return (
@@ -26,7 +22,6 @@ export function ProductListing() {
             <ProductsGrid />
             <FooterButtons />
             {showSortPage && <SortPage />}
-            {showFilterPage && <FilterPage />}
         </div>
     );
 }

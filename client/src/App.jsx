@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { ProductsContextProvider } from "./Context/ProductsContext";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { useReducerContext } from "./Context/ReducerContext";
 import { LoaderSvg } from "./components/Helpers/Svg";
@@ -13,6 +12,7 @@ import {
     Login,
     Signup,
     Home,
+    FilterPage,
 } from "./Pages";
 import {
     getProductsData,
@@ -21,14 +21,6 @@ import {
 } from "./services/networkCalls";
 import { setupAuthHeaderForServiceCalls } from "./services/setupAuthHeaders";
 import { setupAuthExceptionHandler } from "./services/setupAuthExceptionHandler";
-
-function ProductsPageWithContext() {
-    return (
-        <ProductsContextProvider>
-            <ProductListing />
-        </ProductsContextProvider>
-    );
-}
 
 export function App() {
     const { dispatch } = useReducerContext();
@@ -81,12 +73,13 @@ export function App() {
         <Routes>
             <Route path="/" element={<Home />} />
             <PrivateRoute path="/wishlist" element={<WishList />} />
-            <Route path="/products" element={<ProductsPageWithContext />} />
+            <Route path="/products" element={<ProductListing />} />
             <PrivateRoute path="/cart" element={<Cart />} />
             <Route path="/product/:bookId" element={<ProductDetails />} />
             <Route path="*" element={<Page404 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/filter" element={<FilterPage />} />
         </Routes>
     );
 }

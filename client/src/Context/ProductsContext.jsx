@@ -3,15 +3,12 @@ const ProductsContext = createContext();
 
 export function ProductsContextProvider({ children }) {
     const [showSortPage, setShowSortPage] = useState(false);
-    const [showFilterPage, setShowFilterPage] = useState(false);
     const [selectedSort, setSelectedSort] = useState("Best Selling");
     const [selectedFilter, setSelectedFilter] = useState("genres");
 
     const data = {
         showSortPage,
         setShowSortPage,
-        showFilterPage,
-        setShowFilterPage,
         selectedSort,
         setSelectedSort,
         selectedFilter,
