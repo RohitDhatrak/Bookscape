@@ -14,7 +14,6 @@ React, Node, Express, MongoDB, mongoose, jsonwebtoken & bcrypt
 - Tested for contrast issues
 
 ### Things I want to improve/explore further
-- Keyboard accessiblity
 - Adding pagination
 - Adding a payment gateway like Razorpay
 
