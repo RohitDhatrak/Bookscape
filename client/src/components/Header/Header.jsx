@@ -28,33 +28,41 @@ export function Header() {
 
             <div className="nav-link-section">
                 {pathname !== "/wishlist" && (
-                    <Link to="/wishlist">
-                        <div className="nav-link nav-btns">{<HeartSvg />}</div>
-                    </Link>
+                    <button
+                        className="nav-link nav-btns"
+                        onClick={() => navigate("/wishlist")}
+                    >
+                        {<HeartSvg />}
+                    </button>
                 )}
                 {pathname !== "/cart" && (
-                    <Link to="/cart" className="cart-logo-container">
-                        <div className="nav-link nav-btns">{<CartSvg />} </div>
+                    <div className="cart-logo-container">
+                        <button
+                            className="nav-link nav-btns"
+                            onClick={() => navigate("/cart")}
+                        >
+                            {<CartSvg />}{" "}
+                        </button>
                         {!!cart.length && (
                             <div className="cart-quantity">{cart.length}</div>
                         )}
-                    </Link>
+                    </div>
                 )}
                 {!userId && (
-                    <div
+                    <button
                         className="nav-link session-btn"
                         onClick={() => navigate("/login")}
                     >
                         Login
-                    </div>
+                    </button>
                 )}
                 {userId && (
-                    <div
+                    <button
                         className="nav-link session-btn logout-btn"
                         onClick={logoutUser}
                     >
                         Logout
-                    </div>
+                    </button>
                 )}
             </div>
         </header>

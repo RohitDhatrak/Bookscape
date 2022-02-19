@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import bookbanner from "../../assets/book-banner.jpg";
 import { HorizontalScrollList } from "../../components/HorizontalScrollList/HorizontalScrollList";
@@ -7,6 +7,7 @@ import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Home() {
     const { productsList, dispatch } = useReducerContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -39,11 +40,12 @@ export function Home() {
                     <div className="text-overlay-text">
                         Books are a uniquely portable magic. ~ Stephen King
                     </div>
-                    <Link to="/products">
-                        <button className="text-overlay-button">
-                            Shop now
-                        </button>
-                    </Link>
+                    <button
+                        className="text-overlay-button"
+                        onClick={() => navigate("/products")}
+                    >
+                        Shop now
+                    </button>
                 </div>
             </div>
             <HorizontalScrollList

@@ -59,7 +59,10 @@ export function ProductCard({ book }) {
             <img src={book.cover} alt="" className="card-cover" />
 
             {pathname === "/products" ? (
-                <div className="card-icon" onClick={(e) => toggleWishList(e)}>
+                <button
+                    className="card-icon"
+                    onClick={(e) => toggleWishList(e)}
+                >
                     {!isAddingToWishList &&
                         !isRemoving &&
                         isWishListed(wishList, book) && <FilledHeartSvg />}
@@ -70,11 +73,11 @@ export function ProductCard({ book }) {
                     {(isRemoving || isAddingToWishList) && (
                         <LoaderSvg width="15px" height="15px" />
                     )}
-                </div>
+                </button>
             ) : null}
 
             {pathname === "/wishlist" ? (
-                <div
+                <button
                     className="card-icon"
                     onClick={(e) =>
                         removeFromWishList(
@@ -92,11 +95,13 @@ export function ProductCard({ book }) {
                     ) : (
                         <CloseButton />
                     )}
-                </div>
+                </button>
             ) : null}
 
             <div className="card-text">
-                <div className="card-heading">{book.name}</div>
+                <Link to={`/product/${book._id}`}>
+                    <div className="card-heading">{book.name}</div>
+                </Link>
                 <div className="card-sub-heading">{book.author}</div>
                 <div className="card-price">
                     <span className="price">₹{book.discountedPrice}</span>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useReducerContext } from "../../Context/ReducerContext";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import wishlist from "../../assets/wishlist.png";
@@ -7,6 +7,7 @@ import { NavBar } from "./NavBar/NavBar";
 
 export function WishList() {
     const { wishList, dispatch } = useReducerContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -33,11 +34,12 @@ export function WishList() {
                     <div className="wishlist-is-empty-page-text">
                         Wishlist is empty
                     </div>
-                    <Link to="/">
-                        <button className="wishlist-is-empty-page-button">
-                            Continue shopping
-                        </button>
-                    </Link>
+                    <button
+                        className="wishlist-is-empty-page-button"
+                        onClick={() => navigate("/products")}
+                    >
+                        Continue shopping
+                    </button>
                 </div>
             ) : null}
         </>

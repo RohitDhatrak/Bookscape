@@ -54,12 +54,12 @@ export function NavBar() {
                         </div>
                     )}
                     {userId && (
-                        <div
+                        <button
                             className="nav-link session-btn logout-btn"
                             onClick={logoutUser}
                         >
                             Logout
-                        </div>
+                        </button>
                     )}
                 </div>
             </nav>

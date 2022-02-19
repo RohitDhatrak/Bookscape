@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useReducerContext } from "../../../../Context/ReducerContext";
 import bag from "../../../../assets/bag.png";
 import { CartCard } from "../CartCard/CartCard";
@@ -7,6 +7,7 @@ import { getCartQuantity, getTotalAmount } from "../../utils";
 
 export function CartProducts() {
     const { cart } = useReducerContext();
+    const navigate = useNavigate();
 
     return (
         <div className="cart-page-body-overview-and-products">
@@ -26,11 +27,12 @@ export function CartProducts() {
                 <div className="cart-is-empty-page">
                     <img src={bag} alt="bag" className="bag-image" />
                     <div className="cart-is-empty-page-text">Cart is empty</div>
-                    <Link to="/wishlist">
-                        <button className="cart-is-empty-page-button">
-                            Add items from wishlist
-                        </button>
-                    </Link>
+                    <button
+                        className="cart-is-empty-page-button"
+                        onClick={() => navigate("/wishlist")}
+                    >
+                        Add items from wishlist
+                    </button>
                 </div>
             )}
             <div className="cart-page-products">

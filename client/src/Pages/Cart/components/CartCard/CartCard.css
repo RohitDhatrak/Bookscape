@@ -1,6 +1,7 @@
 .cart-card {
     background-color: #fff;
     margin-bottom: 0.5em;
+    cursor: pointer;
 }
 
 .horizontal-card .card-sub-heading {
@@ -17,10 +18,7 @@
 }
 
 .cart-card-footer {
-    text-transform: uppercase;
     font-size: 0.8rem;
-    font-weight: 500;
-    color: #686868;
     border-top: 1px solid #ececec;
 }
 
@@ -30,15 +28,26 @@
 }
 
 .cart-card-footer-remove-button {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #686868;
+    background-color: transparent;
+    text-transform: uppercase;
+    border: none;
     width: 24%;
     display: inline-block;
     text-align: center;
     border-right: 1px solid #e2e2e2;
-    padding: 0.4em 0;
     cursor: pointer;
 }
 
 .cart-card-footer-wishlist {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #686868;
+    background-color: transparent;
+    text-transform: uppercase;
+    border: none;
     width: 75%;
     display: inline-block;
     text-align: center;

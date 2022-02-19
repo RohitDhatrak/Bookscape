@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useReducerContext } from "../../../../Context/ReducerContext";
 import {
     updateWishListData,
@@ -9,8 +10,10 @@ export function CartCard({ book }) {
     const { dispatch, userId, wishList } = useReducerContext();
     const [isMovingToWishList, setIsMovingToWishList] = useState(false);
     const [isRemoving, setIsRemoving] = useState(false);
+    const navigate = useNavigate();
 
-    async function removeFromCart() {
+    async function removeFromCart(e) {
+        e.stopPropagation();
         if (isMovingToWishList || isRemoving) return;
         setIsRemoving(true);
         const response = await deleteCartData(userId, book);
@@ -22,7 +25,8 @@ export function CartCard({ book }) {
         }
     }
 
-    async function moveToWishList() {
+    async function moveToWishList(e) {
+        e.stopPropagation();
         if (isMovingToWishList || isRemoving) return;
         setIsMovingToWishList(true);
         const isWishListed = wishList.find((item) => item._id === book._id);
@@ -45,11 +49,17 @@ export function CartCard({ book }) {
     }
 
     return (
-        <div className="cart-card" key={book._id}>
+        <div
+            className="cart-card"
+            key={book._id}
+            onClick={() => navigate(`/product/${book._id}`)}
+        >
             <div className="horizontal-card">
                 <img src={book.cover} alt="" className="card-cover" />
                 <div className="card-text">
-                    <div className="card-heading">{book.name}</div>
+                    <Link to={`/product/${book._id}`}>
+                        <div className="card-heading">{book.name}</div>
+                    </Link>
                     <div className="card-sub-heading">{book.author}</div>
                     <div className="card-seller">Sold by: Bookscape</div>
                     <div className="card-price">
@@ -59,20 +69,20 @@ export function CartCard({ book }) {
                 </div>
             </div>
             <div className="cart-card-footer">
-                <span
+                <button
                     className="cart-card-footer-remove-button"
                     onClick={removeFromCart}
                 >
                     {isRemoving ? "Removing..." : "Remove"}
-                </span>
-                <span
+                </button>
+                <button
                     className="cart-card-footer-wishlist"
                     onClick={moveToWishList}
                 >
                     {isMovingToWishList
                         ? "Moving to wishlist..."
                         : "Move to wishlist"}
-                </span>
+                </button>
             </div>
         </div>
     );
