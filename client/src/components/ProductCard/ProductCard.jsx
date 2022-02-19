@@ -60,14 +60,14 @@ export function ProductCard({ book }) {
 
             {pathname === "/products" ? (
                 <div className="card-icon" onClick={(e) => toggleWishList(e)}>
-                    {!isAddingToWishList && isWishListed(wishList, book) && (
-                        <FilledHeartSvg />
-                    )}
-                    {!isAddingToWishList && !isWishListed(wishList, book) && (
-                        <HeartSvg />
-                    )}
+                    {!isAddingToWishList &&
+                        !isRemoving &&
+                        isWishListed(wishList, book) && <FilledHeartSvg />}
+                    {!isAddingToWishList &&
+                        !isRemoving &&
+                        !isWishListed(wishList, book) && <HeartSvg />}
 
-                    {isAddingToWishList && (
+                    {(isRemoving || isAddingToWishList) && (
                         <LoaderSvg width="15px" height="15px" />
                     )}
                 </div>
