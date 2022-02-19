@@ -25,6 +25,28 @@ export function ProductCard({ book }) {
     const [isAddingToWishList, setIsAddingToWishList] = useState(false);
     const [isRemoving, setIsRemoving] = useState(false);
 
+    function toggleWishList(e) {
+        if (isWishListed(wishList, book))
+            removeFromWishList(
+                e,
+                userId,
+                book,
+                dispatch,
+                isRemoving,
+                setIsRemoving
+            );
+        else
+            addToWishList(
+                e,
+                userId,
+                book,
+                dispatch,
+                navigate,
+                isAddingToWishList,
+                setIsAddingToWishList
+            );
+    }
+
     return (
         <li
             className="card noSelect"
@@ -37,20 +59,7 @@ export function ProductCard({ book }) {
             <img src={book.cover} alt="" className="card-cover" />
 
             {pathname === "/products" ? (
-                <div
-                    className="card-icon"
-                    onClick={(e) =>
-                        addToWishList(
-                            e,
-                            userId,
-                            book,
-                            dispatch,
-                            navigate,
-                            isAddingToWishList,
-                            setIsAddingToWishList
-                        )
-                    }
-                >
+                <div className="card-icon" onClick={(e) => toggleWishList(e)}>
                     {!isAddingToWishList && isWishListed(wishList, book) && (
                         <FilledHeartSvg />
                     )}
