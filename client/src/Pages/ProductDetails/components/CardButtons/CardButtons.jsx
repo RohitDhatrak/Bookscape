@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
     isAddedToCart,
     addToCart,
@@ -46,11 +46,15 @@ export function CardButtons() {
                 </button>
             ) : null}
             {isAddedToCart(cart, book) ? (
-                <Link to="/cart" onClick={(e) => e.stopPropagation()}>
-                    <button className={card.primary}>
-                        Go to Cart <RightArrow />
-                    </button>
-                </Link>
+                <button
+                    className={card.primary}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        navigate("/cart");
+                    }}
+                >
+                    Go to Cart <RightArrow />
+                </button>
             ) : null}
             {!isWishListed(wishList, book) ? (
                 <button
@@ -71,11 +75,15 @@ export function CardButtons() {
                 </button>
             ) : null}
             {isWishListed(wishList, book) ? (
-                <Link to="/wishlist" onClick={(e) => e.stopPropagation()}>
-                    <button className={card.secondary}>
-                        Go to Wishlist <RightArrow />
-                    </button>
-                </Link>
+                <button
+                    className={card.secondary}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        navigate("/wishlist");
+                    }}
+                >
+                    Go to Wishlist <RightArrow />
+                </button>
             ) : null}
         </div>
     );
