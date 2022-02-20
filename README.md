@@ -17,6 +17,7 @@ React, Node, Express, MongoDB, mongoose, jsonwebtoken & bcrypt
 ### Additional Things
 - Fully responsive
 - Tested for contrast issues
+- All interactive elements are keyboard accessible
 
 ### Things I want to improve/explore further
 - Adding pagination
