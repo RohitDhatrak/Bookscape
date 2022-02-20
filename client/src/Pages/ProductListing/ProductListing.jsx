@@ -8,14 +8,17 @@ import { FooterButtons } from "./components/Mobile/FooterButtons/FooterButtons";
 import { SortPage } from "./components/Mobile/SortPage/SortPage";
 
 export function ProductListing() {
-    const { showSortPage } = useProductsContext();
+    const { showSortPage, setShowSortMenu } = useProductsContext();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     return (
-        <div className="products-main-container">
+        <div
+            className="products-main-container"
+            onClick={() => setShowSortMenu(false)}
+        >
             <Header />
             <SidePannel />
             <SortByDropDown />

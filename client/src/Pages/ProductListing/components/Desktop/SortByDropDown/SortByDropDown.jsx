@@ -5,7 +5,8 @@ import { sortByList } from "../../../../../components/Helpers/data";
 import { DownSvg } from "../../../../../components/Helpers/Svg";
 
 export function SortByDropDown() {
-    const { selectedSort, setSelectedSort } = useProductsContext();
+    const { selectedSort, setSelectedSort, showSortMenu, setShowSortMenu } =
+        useProductsContext();
     const { dispatch } = useReducerContext();
 
     function updateSorting(listItem) {
@@ -19,15 +20,24 @@ export function SortByDropDown() {
     return (
         <div className="drop-down-container">
             <div className="drop-down">
-                <div className="drop-down-display">
+                <button
+                    className="drop-down-display"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setShowSortMenu((value) => !value);
+                    }}
+                >
                     <div className="drop-down-selected">
                         Sort by : <b>{selectedSort}</b>
                     </div>
                     <div className="down-arrow">{<DownSvg />}</div>
-                </div>
-                <ul className="drop-down-items-container">
+                </button>
+                <ul
+                    className="drop-down-items-container"
+                    style={{ display: showSortMenu ? "block" : "none" }}
+                >
                     {sortByList.map((listItem) => (
-                        <li
+                        <button
                             className="drop-down-items"
                             style={{
                                 backgroundColor: `${
@@ -38,7 +48,7 @@ export function SortByDropDown() {
                             key={listItem}
                         >
                             {listItem}
-                        </li>
+                        </button>
                     ))}
                 </ul>
             </div>

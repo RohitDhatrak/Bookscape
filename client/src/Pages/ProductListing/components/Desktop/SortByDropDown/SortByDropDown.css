@@ -21,6 +21,9 @@
     }
 
     .drop-down-display {
+        font-size: 0.9rem;
+        background-color: transparent;
+        font-weight: 300;
         border: 1px solid #dfdede;
         border-radius: 0.3em;
         padding: 0.5em 1em;
@@ -54,6 +57,14 @@
     }
 
     .drop-down-items {
+        display: block;
+        width: 100%;
+        border: none;
+        text-align: start;
+        font-size: 0.9rem;
+        background-color: transparent;
+        font-weight: 300;
+        cursor: pointer;
         padding: 0.7em 1em;
     }
 

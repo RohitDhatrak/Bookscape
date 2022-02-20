@@ -27,11 +27,9 @@ export function SidePannel() {
                     <li className="sub-section-heading">{property}</li>
                     {filtersObj[property].map((listItem) => (
                         <li className="sub-section-item" key={listItem}>
-                            <label>
+                            <label style={{ cursor: "pointer" }}>
                                 <input
                                     type="checkbox"
-                                    name=""
-                                    id=""
                                     checked={isChecked(property, listItem)}
                                     onChange={() =>
                                         updateFilter(property, listItem)
