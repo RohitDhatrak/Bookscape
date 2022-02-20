@@ -9,9 +9,15 @@ Bookscape is an eCommerce store for books.
 ### Tech Stack
 React, Node, Express, MongoDB, mongoose, jsonwebtoken & bcrypt
 
+### Features
+- Add products to cart or wishlist
+- Filter products by genre or authors
+- Sort products by price, best selling or new arrivals
+
 ### Additional Things
 - Fully responsive
 - Tested for contrast issues
+- All interactive elements are keyboard accessible
 
 ### Things I want to improve/explore further
 - Adding pagination
