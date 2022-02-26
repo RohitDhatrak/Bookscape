@@ -21,6 +21,8 @@
         "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.21",
         "mongoose": "^5.12.7",
+        "razorpay": "^2.8.0",
+        "shortid": "^2.2.16",
         "uuid": "^8.3.2",
         "validator": "^13.6.0"
     }

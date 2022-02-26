@@ -51,19 +51,27 @@ router
     })
     .delete(async (req, res) => {
         try {
-            const { product } = req.body;
+            const { product, all } = req.body;
             let cart = req.cart;
-            const productIndex = cart.products.findIndex(
-                (cartItem) => cartItem._id == product._id
-            );
-            if (productIndex !== -1) {
-                cart.products.splice(productIndex, 1);
+            if (all) {
+                cart.products = [];
                 await cart.save();
                 res.status(200).json({
-                    message: "Product removed from cart",
+                    message: "Cart cleared successfully",
                 });
             } else {
-                throw Error;
+                const productIndex = cart.products.findIndex(
+                    (cartItem) => cartItem._id == product._id
+                );
+                if (productIndex !== -1) {
+                    cart.products.splice(productIndex, 1);
+                    await cart.save();
+                    res.status(200).json({
+                        message: "Product removed from cart",
+                    });
+                } else {
+                    throw Error;
+                }
             }
         } catch (error) {
             res.status(400).json({

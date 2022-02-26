@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { useReducerContext } from "./Context/ReducerContext";
 import { LoaderSvg } from "./components/Helpers/Svg";
@@ -13,6 +15,7 @@ import {
     Signup,
     Home,
     FilterPage,
+    Checkout,
 } from "./Pages";
 import {
     getProductsData,
@@ -70,16 +73,31 @@ export function App() {
     }
 
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <PrivateRoute path="/wishlist" element={<WishList />} />
-            <Route path="/products" element={<ProductListing />} />
-            <PrivateRoute path="/cart" element={<Cart />} />
-            <Route path="/product/:bookId" element={<ProductDetails />} />
-            <Route path="*" element={<Page404 />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/filter" element={<FilterPage />} />
-        </Routes>
+        <>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <PrivateRoute path="/wishlist" element={<WishList />} />
+                <Route path="/products" element={<ProductListing />} />
+                <PrivateRoute path="/cart" element={<Cart />} />
+                <Route path="/product/:bookId" element={<ProductDetails />} />
+                <Route path="*" element={<Page404 />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/filter" element={<FilterPage />} />
+                <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </>
     );
 }

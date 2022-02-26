@@ -61,11 +61,11 @@ export async function updateWishListData(userId, book) {
     }
 }
 
-export async function deleteCartData(userId, book) {
+export async function deleteCartData(userId, book, all) {
     try {
         const response = await axios.delete(
             `${process.env.REACT_APP_API_ENDPOINT}/cart/${userId}`,
-            { data: { product: book } }
+            { data: { product: book, all } }
         );
         return response;
     } catch (error) {

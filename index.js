@@ -1,11 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
 const products = require("./server/routers/products.router");
 const login = require("./server/routers/login.router");
 const signup = require("./server/routers/signup.router");
 const cart = require("./server/routers/cart.router");
 const wishList = require("./server/routers/wishlist.router");
+const payment = require("./server/routers/payment.router");
 const {
     routeNotFound,
 } = require("./server/middlewares/route-not-found.middleware");
@@ -40,6 +42,7 @@ app.use("/signup", signup);
 app.use(auth);
 app.use("/cart", cart);
 app.use("/wishlist", wishList);
+app.use("/payment", payment);
 
 app.use(routeNotFound);
 app.use(errorHandler);

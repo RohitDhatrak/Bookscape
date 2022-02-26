@@ -103,6 +103,11 @@ export function reducer(state, { type, payload }) {
                 cart: [...state.cart, ...payload.cart],
                 wishList: [...state.wishList, ...payload.wishList],
             };
+        case "CLEAR CART":
+            return {
+                ...state,
+                cart: [],
+            };
         default:
             return state;
     }
