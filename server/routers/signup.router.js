@@ -15,7 +15,7 @@ router.route("/").post(async (req, res) => {
             const newWishListFromDB = new WishList({
                 userId: newUserFromDB._id,
             });
-            await Promis.all([
+            await Promise.all([
                 newUserFromDB.save(),
                 newCartFromDB.save(),
                 newWishListFromDB.save(),
