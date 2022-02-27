@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Razorpay = require("razorpay");
 const shortid = require("shortid");
-const { User } = require("../models/user.model");
 
 const KEY_ID = process.env.RAZORPAY_KEY;
 const KEY_SECRET = process.env.RAZORPAY_SECRET;
@@ -35,11 +34,6 @@ router.route("/orders").post(async (req, res) => {
             error,
         });
     }
-});
-
-router.route("/:id").get((req, res) => {
-    try {
-    } catch (error) {}
 });
 
 module.exports = router;

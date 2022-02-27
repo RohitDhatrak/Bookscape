@@ -108,6 +108,9 @@ export function reducer(state, { type, payload }) {
                 ...state,
                 cart: [],
             };
+        case "SET USER": {
+            return { ...state, user: payload };
+        }
         default:
             return state;
     }
@@ -124,4 +127,5 @@ export const initialState = {
     cart: [],
     productsList: [],
     userId: null,
+    user: {},
 };

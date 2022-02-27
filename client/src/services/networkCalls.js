@@ -1,5 +1,32 @@
 import axios from "axios";
 
+export async function getUserData(userId) {
+    try {
+        const {
+            data: { user },
+        } = await axios.get(
+            `${process.env.REACT_APP_API_ENDPOINT}/user/${userId}`
+        );
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function saveUserAddress(address, city, pincode, state, userId) {
+    try {
+        const {
+            data: { user },
+        } = await axios.post(
+            `${process.env.REACT_APP_API_ENDPOINT}/user/address`,
+            { address, city, pincode, state, userId }
+        );
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export async function getProductsData() {
     try {
         const {

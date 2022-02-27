@@ -8,6 +8,7 @@ const signup = require("./server/routers/signup.router");
 const cart = require("./server/routers/cart.router");
 const wishList = require("./server/routers/wishlist.router");
 const payment = require("./server/routers/payment.router");
+const user = require("./server/routers/user.router");
 const {
     routeNotFound,
 } = require("./server/middlewares/route-not-found.middleware");
@@ -43,6 +44,7 @@ app.use(auth);
 app.use("/cart", cart);
 app.use("/wishlist", wishList);
 app.use("/payment", payment);
+app.use("/user", user);
 
 app.use(routeNotFound);
 app.use(errorHandler);
