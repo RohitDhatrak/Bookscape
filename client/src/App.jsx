@@ -21,6 +21,7 @@ import {
     getProductsData,
     getCartData,
     getWishListData,
+    getUserData,
 } from "./services/networkCalls";
 import { setupAuthHeaderForServiceCalls } from "./services/setupAuthHeaders";
 import { setupAuthExceptionHandler } from "./services/setupAuthExceptionHandler";
@@ -42,6 +43,8 @@ export function App() {
             dispatch({ type: "LOAD PRODUCTS", payload: productsData });
         }
         if (session?.userId) {
+            const user = await getUserData(session.userId);
+
             const cart = await getCartData(session.userId);
             const wishList = await getWishListData(session.userId);
             if (cart && wishList) {
@@ -53,6 +56,7 @@ export function App() {
                         wishList: wishList,
                     },
                 });
+                dispatch({ type: "SET USER", payload: user });
             }
         }
         setIsLoading(false);

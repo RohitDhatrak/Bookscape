@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import form from "./AddressForm.module.css";
 import { saveUserAddress } from "../../../../services/networkCalls";
@@ -6,20 +6,11 @@ import { useReducerContext } from "../../../../Context/ReducerContext";
 
 export function AddressForm() {
     const { user, dispatch, userId } = useReducerContext();
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [pincode, setPincode] = useState("");
-    const [state, setState] = useState("");
+    const [address, setAddress] = useState(user?.address || "");
+    const [city, setCity] = useState(user?.city || "");
+    const [pincode, setPincode] = useState(user?.pincode || "");
+    const [state, setState] = useState(user?.state || "");
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (user?.address) {
-            setAddress(user.address);
-            setCity(user.city);
-            setPincode(user.pincode);
-            setState(user.state);
-        }
-    }, [user]);
 
     async function saveAddress() {
         setLoading(true);

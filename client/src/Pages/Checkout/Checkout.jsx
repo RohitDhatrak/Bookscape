@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import { CartInvoice } from "../Cart/components/CartInvoice/CartInvoice";
 import { Address } from "./components/Address";
-import { useReducerContext } from "../../Context/ReducerContext";
 
 export function Checkout() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div>
             <Header />
