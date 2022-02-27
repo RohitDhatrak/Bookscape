@@ -38,8 +38,10 @@ export function CartCard({ book }) {
             await deleteCartData(userId, book);
             return;
         }
-        const response = await deleteCartData(userId, book);
-        const response2 = await updateWishListData(userId, book);
+        const [response, response2] = await Promise.all([
+            deleteCartData(userId, book),
+            updateWishListData(userId, book),
+        ]);
         if (response && response2) {
             dispatch({
                 type: "MOVE TO WISHLIST",

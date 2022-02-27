@@ -43,10 +43,12 @@ export function App() {
             dispatch({ type: "LOAD PRODUCTS", payload: productsData });
         }
         if (session?.userId) {
-            const user = await getUserData(session.userId);
+            const [user, cart, wishList] = await Promise.all([
+                getUserData(session.userId),
+                getCartData(session.userId),
+                getWishListData(session.userId),
+            ]);
 
-            const cart = await getCartData(session.userId);
-            const wishList = await getWishListData(session.userId);
             if (cart && wishList) {
                 dispatch({ type: "RESUME SESSION", payload: session.userId });
                 dispatch({

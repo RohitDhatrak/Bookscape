@@ -11,13 +11,15 @@ router.route("/").post(async (req, res) => {
         const user = await User.findOne({ emailId: newUser.emailId }).exec();
         if (!user) {
             const newUserFromDB = new User(newUser);
-            await newUserFromDB.save();
             const newCartFromDB = new Cart({ userId: newUserFromDB._id });
-            await newCartFromDB.save();
             const newWishListFromDB = new WishList({
                 userId: newUserFromDB._id,
             });
-            await newWishListFromDB.save();
+            await Promis.all([
+                newUserFromDB.save(),
+                newCartFromDB.save(),
+                newWishListFromDB.save(),
+            ]);
             const jwt = signTokenAndSetCookie(newUserFromDB._id);
             res.status(200).json({
                 userId: newUserFromDB._id,

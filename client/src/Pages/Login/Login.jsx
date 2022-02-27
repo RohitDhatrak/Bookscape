@@ -55,8 +55,10 @@ export function Login() {
                     payload: { userId, jwt },
                 });
                 setupAuthHeaderForServiceCalls(jwt);
-                const cart = await getCartData(userId);
-                const wishList = await getWishListData(userId);
+                const [cart, wishList] = await Promise.all([
+                    getCartData(userId),
+                    getWishListData(userId),
+                ]);
                 dispatch({
                     type: "LOAD USER DATA",
                     payload: {
