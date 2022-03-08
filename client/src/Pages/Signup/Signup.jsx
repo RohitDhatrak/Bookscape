@@ -52,7 +52,7 @@ export function Signup() {
         e.preventDefault();
         try {
             const {
-                data: { userId, jwt },
+                data: { userId, user, jwt },
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/signup`,
                 {
@@ -66,6 +66,7 @@ export function Signup() {
             );
             if (userId && jwt) {
                 dispatch({ type: "SAVE SESSION", payload: { userId, jwt } });
+                dispatch({ type: "SET USER", payload: user });
                 setupAuthHeaderForServiceCalls(jwt);
                 navigate(previousPath, { replace: "true" });
             }

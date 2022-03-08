@@ -23,6 +23,7 @@ router.route("/").post(async (req, res) => {
             const jwt = signTokenAndSetCookie(newUserFromDB._id);
             res.status(200).json({
                 userId: newUserFromDB._id,
+                user,
                 message: "Successfully registered",
                 jwt,
             });

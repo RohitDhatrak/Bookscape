@@ -39,7 +39,7 @@ export function Login() {
         e.preventDefault();
         try {
             const {
-                data: { userId, jwt },
+                data: { userId, user, jwt },
             } = await axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}/login`,
                 {
@@ -66,6 +66,7 @@ export function Login() {
                         wishList: wishList,
                     },
                 });
+                dispatch({ type: "SET USER", payload: user });
                 navigate(previousPath, { replace: "true" });
             }
         } catch (error) {

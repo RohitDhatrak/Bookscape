@@ -15,6 +15,7 @@ router.route("/").post(async (req, res) => {
             const jwt = signTokenAndSetCookie(user._id);
             res.status(200).json({
                 userId: user._id,
+                user,
                 message: "Logged in successfully",
                 jwt,
             });
