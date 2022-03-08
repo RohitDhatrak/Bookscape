@@ -59,6 +59,18 @@ async function openRazorpay(total, navigate, userId, dispatch) {
         theme: {
             color: "#6fe0cc",
         },
+        method: {
+            netbanking: true,
+            card: false,
+            wallet: false,
+            upi: false,
+        },
+        config: {
+            display: {
+                hide: [{ method: "paylater" }],
+                preferences: { show_default_blocks: true },
+            },
+        },
     };
 
     const paymentObject = new window.Razorpay(options);
